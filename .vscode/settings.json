@@ -1,0 +1,20 @@
+{
+    "files.exclude": {
+        "**/dist/": true,
+        "**/node_modules/": true,
+        "firebase/firestore-debug.log": true,
+        "firebase/firebase-debug.log": true,
+        "firebase/ui-debug.log": true,
+        "shared/hitpoints-shared-1.0.0.tgz": true,
+    },
+    "search.exclude": {
+        "**/package-lock.json": true,
+        "**/dist/": true,
+    },
+    // "eslint.workingDirectories": [
+    //     "./client",
+    //     "./server",
+    // ],
+    "eslint.nodePath": "node_modules/eslint",
+    "typescript.tsdk": "node_modules/typescript/lib",
+}

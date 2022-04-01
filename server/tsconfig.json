@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist",
+        "sourceMap": true,
+        "strict": true,
+        "target": "es2020",
+        "skipLibCheck": true,
+
+        "module": "esnext",
+        "moduleResolution": "node",
+    },
+}

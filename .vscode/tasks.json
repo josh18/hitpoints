@@ -1,0 +1,45 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "typescript",
+			"tsconfig": "shared/tsconfig.json",
+			"option": "watch",
+			"problemMatcher": "$tsc-watch",
+			"label": "start shared",
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+			"presentation": {
+				"reveal": "never"
+			},
+			"isBackground": true,
+		}, {
+			"type": "npm",
+			"script": "start",
+			"path": "client/",
+			"label": "start client",
+			"detail": "ts-node scripts/start",
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+			"presentation": {
+				"reveal": "never"
+			},
+			"isBackground": true,
+		}, {
+			"type": "npm",
+			"script": "start",
+			"path": "server/",
+			"label": "start server",
+			"detail": "ts-node scripts/start",
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+			"presentation": {
+				"reveal": "never"
+			},
+			"isBackground": true,
+		}
+	]
+}

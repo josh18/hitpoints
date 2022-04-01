@@ -1,0 +1,1111 @@
+// Vitest Snapshot v1
+
+exports[`scrapeRecipe > https://ohmyveggies.com/veggie-packed-spanish-rice/ 1`] = `
+{
+  "cookTime": 35,
+  "imageUrl": "https://ohmyveggies.com/wp-content/uploads/2015/04/Veggie_packed_spanish_rice3.jpg",
+  "ingredients": [
+    {
+      "amount": "3",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": "Tablespoon",
+      "name": "olive oil",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": undefined,
+      "name": "small onion (diced)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": undefined,
+      "name": "medium green pepper (diced)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": undefined,
+      "name": "large carrot (peeled and diced)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "3",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": undefined,
+      "name": "cloves garlic (minced)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1 1/2",
+      "id": "9d0ec52f-fe79-570f-886b-f72b2198d095",
+      "measurement": "Cup",
+      "name": "long grain white rice",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      "measurement": "Tablespoon",
+      "name": "tomato paste",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "04be3ab0-fc11-59f4-b387-2c999dea74ac",
+      "measurement": "Cup",
+      "name": "crushed tomatoes*",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2 2/3",
+      "id": "7516fedb-5699-5772-8cb5-57ed6a72fe60",
+      "measurement": "Cup",
+      "name": "vegetable broth",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "3/4",
+      "id": "1ba2a3aa-866b-5d71-bcce-57b390dbcc4c",
+      "measurement": "Cup",
+      "name": "frozen corn kernels",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "46e9d0f5-ccfe-5ea8-9f62-1165ad2c9e64",
+      "measurement": "Cup",
+      "name": "frozen peas",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "83a0b448-f87a-5fc0-a6b3-ea64ef0f10eb",
+      "measurement": "Teaspoon",
+      "name": "ground cumin",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f56c4f9e-2686-56f6-948a-ce4adc1bc4eb",
+      "measurement": "Teaspoon",
+      "name": "chili powder",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "4eb4f9a7-dce0-51a9-b86b-6ba196a01557",
+      "measurement": "Teaspoon",
+      "name": "salt",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "eb472730-566b-575e-b36f-46fef426bed7",
+      "measurement": undefined,
+      "name": "chopped cilantro (for garnish)",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "text": "Add the olive oil to a large skillet set over medium heat. When the oil is hot, add in the onion, pepper and carrot. Cook for about 2 minutes, until the vegetables start to soften. Stir in the garlic and cook for 30 seconds, until fragrant. Add the rice. Cook for about 6 to 8 minutes, stirring frequently (and then almost constantly toward the end of the 6 to 8 minutes), until the rice is lightly golden brown.",
+      },
+    ],
+    [
+      {
+        "text": "Add in the tomato paste and stir to combine, then stir in the tomatoes, the broth, corn, peas, cumin, chili powder and salt. Increase the heat and bring to a boil. Cover, reduce the heat and let gently simmer until the liquid is absorbed and the rice is tender, about 15 to 20 minutes. Turn off the heat and let the rice stand covered for 5 to 10 minutes untouched.",
+      },
+    ],
+    [
+      {
+        "text": "Fluff the rice with a fork. Taste and season with additional salt if needed, then garnish with the cilantro.",
+      },
+    ],
+  ],
+  "name": "Veggie-Packed Spanish Rice",
+  "prepTime": 10,
+}
+`;
+
+exports[`scrapeRecipe > https://sallysbakingaddiction.com/chocolate-chip-loaf-cake/ 1`] = `
+{
+  "cookTime": 5,
+  "imageUrl": "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2021/04/chocolate-chip-loaf-cake-225x225.jpg",
+  "ingredients": [
+    {
+      "amount": "1 3/4",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": "Cup",
+      "name": "(219g) all-purpose flour (spoon & leveled)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1 1/2",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": "Teaspoon",
+      "name": "baking powder",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/4",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": "Teaspoon",
+      "name": "salt",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "3/4",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": "Cup",
+      "name": "(1.5 sticks; 170g) unsalted butter, softened to room temperature",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "3/4",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": "Cup",
+      "name": "(150g) granulated sugar",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "9d0ec52f-fe79-570f-886b-f72b2198d095",
+      "measurement": undefined,
+      "name": "large eggs, at room temperature",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/4",
+      "id": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      "measurement": "Cup",
+      "name": "(60g) sour cream, at room temperature",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1 1/2",
+      "id": "04be3ab0-fc11-59f4-b387-2c999dea74ac",
+      "measurement": "Teaspoon",
+      "name": "pure vanilla extract",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "7516fedb-5699-5772-8cb5-57ed6a72fe60",
+      "measurement": "Cup",
+      "name": "(120ml) whole milk",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "1ba2a3aa-866b-5d71-bcce-57b390dbcc4c",
+      "measurement": "Cup",
+      "name": "(180g) mini chocolate chips",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "46e9d0f5-ccfe-5ea8-9f62-1165ad2c9e64",
+      "measurement": "Cup",
+      "name": "(90g) mini chocolate chips",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "83a0b448-f87a-5fc0-a6b3-ea64ef0f10eb",
+      "measurement": "Tablespoon",
+      "name": "(30g) creamy peanut butter",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "text": "Preheat the oven to 350°F (177°C) and generously grease a 9×5 inch loaf pan.",
+      },
+    ],
+    [
+      {
+        "text": "Whisk the flour, baking powder, and salt together. Set aside.",
+      },
+    ],
+    [
+      {
+        "text": "Using a handheld or stand mixer fitted with a paddle or whisk attachment, beat the butter and sugar together on medium-high speed until smooth and creamy, about 2 minutes. Scrape down the sides and up the bottom of the bowl with a rubber spatula as needed. Add the eggs and beat on high speed for 1 minute, then beat in the sour cream and vanilla extract. Scrape down the sides and up the bottom of the bowl as needed. The mixture will be very lumpy and appear curdled– that’s ok. Pour the dry ingredients into the wet ingredients. Turn the mixer to low speed and as the mixer runs, slowly pour in the milk. Beat on low speed just until all of the ingredients are combined. Do not over-mix. You may need to whisk it all by hand to make sure there are no large lumps at the bottom of the bowl. The batter will be slightly thick. Gently fold in the chocolate chips.",
+      },
+    ],
+    [
+      {
+        "text": "Pour and spread batter evenly into prepared loaf pan.",
+      },
+    ],
+    [
+      {
+        "text": "Bake for about 60-75 minutes or until a toothpick inserted in the center comes out clean. That time is a guideline— all ovens differ, so keep a close eye on the cake after 55 minutes. If the cake is browning too quickly on top, loosely tent with aluminum foil as it bakes.",
+      },
+    ],
+    [
+      {
+        "text": "Cool cake in the pan set on a wire rack for at least 1 hour before removing from the pan. Feel free to continue cooling it directly on a wire rack or slice and enjoy then. (It will still be slightly warm.) You can drizzle the topping on the cake when the cake is still slightly warm after that 1 hour of cooling or wait until the cake has cooled completely to top it.",
+      },
+    ],
+    [
+      {
+        "text": "Stir and melt chocolate chips and peanut butter together in a small saucepan over medium heat on the stove or in a heatproof bowl using the microwave. We usually use the microwave and melt in 30 second increments, stirring after each until smooth. Drizzle over cake. Topping sets into a fudge-like consistency after several hours.",
+      },
+    ],
+    [
+      {
+        "text": "Cover leftovers tightly and store cake (with or without topping) at room temperature for 3 days or in the refrigerator for up to 1 week.",
+      },
+    ],
+  ],
+  "name": "Chocolate Chip Loaf Cake",
+  "prepTime": 15,
+}
+`;
+
+exports[`scrapeRecipe > https://whatsgabycooking.com/cauliflower-rice-kale-bowls-instant-pot-black-beans/ 1`] = `
+{
+  "cookTime": 45,
+  "imageUrl": "https://cdn.whatsgabycooking.com/wp-content/uploads/2018/02/WGC-Instant-Pot-Bowl-copy-2.jpg",
+  "ingredients": [
+    {
+      "amount": "1",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": undefined,
+      "name": "red onion (finely diced)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "6",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": undefined,
+      "name": "cloves garlic (roughly chopped)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": "Tablespoon",
+      "name": "olive oil",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": undefined,
+      "name": "bay leaf",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": "Teaspoon",
+      "name": "dried oregano",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "9d0ec52f-fe79-570f-886b-f72b2198d095",
+      "measurement": "Teaspoon",
+      "name": "cumin",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      "measurement": "Teaspoon",
+      "name": "paprika",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "3-4",
+      "id": "04be3ab0-fc11-59f4-b387-2c999dea74ac",
+      "measurement": undefined,
+      "name": "chipotles in adobo",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "7516fedb-5699-5772-8cb5-57ed6a72fe60",
+      "measurement": undefined,
+      "name": "pound dry black beans",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "1ba2a3aa-866b-5d71-bcce-57b390dbcc4c",
+      "measurement": "Teaspoon",
+      "name": "kosher salt",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "6",
+      "id": "46e9d0f5-ccfe-5ea8-9f62-1165ad2c9e64",
+      "measurement": "Cup",
+      "name": "water",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "3",
+      "id": "83a0b448-f87a-5fc0-a6b3-ea64ef0f10eb",
+      "measurement": undefined,
+      "name": "large sweet potatoes (diced)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "f56c4f9e-2686-56f6-948a-ce4adc1bc4eb",
+      "measurement": "Tablespoon",
+      "name": "olive oil",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "4eb4f9a7-dce0-51a9-b86b-6ba196a01557",
+      "measurement": undefined,
+      "name": "kosher salt and freshly cracked black pepper",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "4",
+      "id": "eb472730-566b-575e-b36f-46fef426bed7",
+      "measurement": "Cup",
+      "name": "cauliflower florets",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "13e42191-b456-5cfe-97cc-51356afc5013",
+      "measurement": undefined,
+      "name": "bunch dinosaur kale (thinly sliced)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "79b972d8-4104-5b82-ba26-74270242d262",
+      "measurement": "Tablespoon",
+      "name": "olive oil",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "65687013-b387-5dba-9a7f-5bd897cea5ca",
+      "measurement": undefined,
+      "name": "recipe homemade guacamole",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "bold": true,
+        "text": "For the Black Beans",
+      },
+    ],
+    [
+      {
+        "text": "Turn the instant pot to saute. Add the oil, red onion and garlic and saute for 3-4 minutes. Add the spices and peppers and stir to combine. Add the dry beans, salt, and water in the bowl of the Instant Pot and give it a stir.  Cover with the lid, and be sure to turn the vent at the top to the \\"sealed\\" position. Set the Instant Pot to cook for 45 minutes on the Chili setting. When the timer goes off, let the steam pressure naturally release for at least 20 minutes before attempting to remove the lid. Drain the beans from most of their liquid and store them in an airtight container the fridge or freezer until ready to use.",
+      },
+    ],
+    [
+      {
+        "bold": true,
+        "text": "For the sweet potatoes",
+      },
+    ],
+    [
+      {
+        "text": "While the beans are cooking, dice the sweet potatoes and transfer to a baking sheet. Drizzle with olive oil, salt and pepper and roast in a 425 degree oven for 25-30 minutes until golden brown. Remove and set aside.",
+      },
+    ],
+    [
+      {
+        "bold": true,
+        "text": "For the Cauliflower rice",
+      },
+    ],
+    [
+      {
+        "text": "Make sure your cauliflower is fully dry. Place the cauliflower in a food processor and pulse until it has the texture of rice. Work in batches and don’t over process or it will get mushy. In a large skillet, heat 1 tablespoons of olive oil over medium heat. Add the kale and sauté until wilted. Add the cauliflower and saute, until heated through, about 5 minutes. Season with salt, pepper and a squeeze of lemon juice to help remove any bitterness from the raw cauliflower.",
+      },
+    ],
+    [
+      {
+        "bold": true,
+        "text": "Assembly",
+      },
+    ],
+    [
+      {
+        "text": "Portion the Cauliflower rice into 4 serving bowls. Add a spoonful of the beans to each bowl and a spoonful of the roasted sweet potatoes. Top with plenty of guacamole and serve.",
+      },
+    ],
+  ],
+  "name": "Cauliflower Rice Veggie Bowls (with Instant Pot Black Beans)",
+  "prepTime": 5,
+}
+`;
+
+exports[`scrapeRecipe > https://www.101cookbooks.com/coleslaw-recipe/ 1`] = `
+{
+  "cookTime": undefined,
+  "imageUrl": "https://images.101cookbooks.com/coleslaw-recipe-h.jpg?w=680&auto=format",
+  "ingredients": [
+    {
+      "amount": "1 1/2",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": "Cup",
+      "name": "unsalted raw peanuts",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": undefined,
+      "name": "a medium-large cabbage",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": undefined,
+      "name": "basket of tiny cherry tomatoes, washed and quartered",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": undefined,
+      "name": "jalapeno chile, seeded and diced",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "3/4",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": "Cup",
+      "name": "cilantro, chopped",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/4",
+      "id": "9d0ec52f-fe79-570f-886b-f72b2198d095",
+      "measurement": "Cup",
+      "name": "freshly squeezed lime juice",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      "measurement": "Tablespoon",
+      "name": "olive oil",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/4",
+      "id": "04be3ab0-fc11-59f4-b387-2c999dea74ac",
+      "measurement": "Teaspoon",
+      "name": "+ fine-grain sea salt",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "7516fedb-5699-5772-8cb5-57ed6a72fe60",
+      "measurement": undefined,
+      "name": "honey, to taste",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "bold": true,
+        "text": "Blister the Peanuts",
+      },
+    ],
+    [
+      {
+        "text": "In a skillet or oven (350F) roast the peanuts for 5 to 10 minutes, shaking the pan once or twice along the way, until golden and blistered.",
+      },
+    ],
+    [
+      {
+        "bold": true,
+        "text": "Prepare the Coleslaw Ingredients",
+      },
+    ],
+    [
+      {
+        "text": "Cut the cabbage into two quarters and cut out the core. Using a knife shred each quarter into whisper thin slices. The key here is bite-sized and thin. If any pieces look like they might be awkwardly long, cut those in half. Combine the cabbage, tomatoes, jalapeno (opt), and cilantro in a bowl.",
+      },
+    ],
+    [
+      {
+        "bold": true,
+        "text": "Make the Dressing",
+      },
+    ],
+    [
+      {
+        "text": "In a separate bowl combine the lime juice, olive oil, salt. Taste, and whisk in a teaspoon or two of honey if the lime is too strong for you. Add to the cabbage mixture and gently stir to combine. Just before serving fold in the peanuts (add them too earl and they lose some of their crunch). Taste and adjust the flavor with more salt if needed.",
+      },
+    ],
+  ],
+  "name": "Lime & Blistered Peanut Coleslaw",
+  "prepTime": 15,
+}
+`;
+
+exports[`scrapeRecipe > https://www.allrecipes.com/recipe/20513/classic-waffles/ 1`] = `
+{
+  "cookTime": 15,
+  "imageUrl": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F03%2F34761.jpg",
+  "ingredients": [
+    {
+      "amount": "2",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": "Cup",
+      "name": "all-purpose flour",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": "Teaspoon",
+      "name": "salt",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "4",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": "Teaspoon",
+      "name": "baking powder",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": "Tablespoon",
+      "name": "white sugar",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": undefined,
+      "name": "eggs",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1 1/2",
+      "id": "9d0ec52f-fe79-570f-886b-f72b2198d095",
+      "measurement": "Cup",
+      "name": "warm milk",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/3",
+      "id": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      "measurement": "Cup",
+      "name": "butter, melted",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "04be3ab0-fc11-59f4-b387-2c999dea74ac",
+      "measurement": "Teaspoon",
+      "name": "vanilla extract",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "text": "In a large bowl, mix together flour, salt, baking powder and sugar; set aside. Preheat waffle iron to desired temperature.",
+      },
+    ],
+    [
+      {
+        "text": "In a separate bowl, beat the eggs. Stir in the milk, butter and vanilla. Pour the milk mixture into the flour mixture; beat until blended.",
+      },
+    ],
+    [
+      {
+        "text": "Ladle the batter into a preheated waffle iron. Cook the waffles until golden and crisp. Serve immediately.",
+      },
+    ],
+  ],
+  "name": "Classic Waffles",
+  "prepTime": 10,
+}
+`;
+
+exports[`scrapeRecipe > https://www.ambitiouskitchen.com/street-corn-pasta-salad-with-cilantro-pesto-goat-cheese/ 1`] = `
+{
+  "cookTime": 30,
+  "imageUrl": "https://www.ambitiouskitchen.com/wp-content/uploads/2018/07/Street-Corn-Pasta-Salad-4-725x725-1.jpg",
+  "ingredients": [
+    {
+      "amount": "1",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": undefined,
+      "name": "for the corn",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": undefined,
+      "name": "large ears of corn, shucked and cleaned",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1-2",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": "Teaspoon",
+      "name": "avocado or olive oil",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": "Teaspoon",
+      "name": "chili powder",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": "Teaspoon",
+      "name": "cumin",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "9d0ec52f-fe79-570f-886b-f72b2198d095",
+      "measurement": undefined,
+      "name": "freshly ground salt and pepper",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      "measurement": undefined,
+      "name": "for the pasta",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "8",
+      "id": "04be3ab0-fc11-59f4-b387-2c999dea74ac",
+      "measurement": undefined,
+      "name": "ounces bow tie pasta (or your favorite pasta)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "7516fedb-5699-5772-8cb5-57ed6a72fe60",
+      "measurement": undefined,
+      "name": "red bell pepper, diced",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "1ba2a3aa-866b-5d71-bcce-57b390dbcc4c",
+      "measurement": undefined,
+      "name": "avocado, diced",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/3",
+      "id": "46e9d0f5-ccfe-5ea8-9f62-1165ad2c9e64",
+      "measurement": "Cup",
+      "name": "goat cheese crumbles",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "83a0b448-f87a-5fc0-a6b3-ea64ef0f10eb",
+      "measurement": "Cup",
+      "name": "diced red onion",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f56c4f9e-2686-56f6-948a-ce4adc1bc4eb",
+      "measurement": undefined,
+      "name": "for the cilantro pesto",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "4eb4f9a7-dce0-51a9-b86b-6ba196a01557",
+      "measurement": "Cup",
+      "name": "cilantro leaves (about 1/2 a bunch)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/3",
+      "id": "eb472730-566b-575e-b36f-46fef426bed7",
+      "measurement": "Cup",
+      "name": "roasted or raw cashews",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "13e42191-b456-5cfe-97cc-51356afc5013",
+      "measurement": undefined,
+      "name": "small lime, juiced",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "79b972d8-4104-5b82-ba26-74270242d262",
+      "measurement": undefined,
+      "name": "clove garlic",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "65687013-b387-5dba-9a7f-5bd897cea5ca",
+      "measurement": undefined,
+      "name": "jalapeño, seeded",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "e7185a66-97d2-5bf2-b393-03a8ee274054",
+      "measurement": "Tablespoon",
+      "name": "olive oil or avocado oil",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/4",
+      "id": "2c5b78f3-63b4-590d-a9fc-8b7b31ee9b91",
+      "measurement": "Teaspoon",
+      "name": "salt, plus more to taste",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "aaf31050-f6c2-5faf-bf63-506bd0546cdf",
+      "measurement": undefined,
+      "name": "freshly ground black pepper",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1-2",
+      "id": "b353ab0b-10f8-5806-8a62-2e2406a2b991",
+      "measurement": "Tablespoon",
+      "name": "water, if necessary to thin the pesto",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "28626c61-f895-5fe5-969b-15b5359f9c91",
+      "measurement": undefined,
+      "name": "to garnish:",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "899eab16-4b31-5ecd-b786-ae490bdd9e47",
+      "measurement": undefined,
+      "name": "extra cilantro",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "1096f82c-92fa-5ee6-873e-ab3eed6c3b95",
+      "measurement": undefined,
+      "name": "avocado, if desired",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "30738a3f-d656-514d-a877-b98bfa581359",
+      "measurement": "Tablespoon",
+      "name": "goat cheese crumbles",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "text": "Preheat grill to high. Drizzle corn with olive or avocado oil. Sprinkle with chili powder, cumin, salt and pepper. Place the corn directly on grill and turn occasionally until corn is charred and cooked, about 10 minutes. Allow corn to cool then cut the corn from the cob and set aside.",
+      },
+    ],
+    [
+      {
+        "text": "While the corn is cooking, you can boil your pasta until al dente, according to the directions on the pasta package.",
+      },
+    ],
+    [
+      {
+        "text": "Once the pasta is done, drain, rinse with cool water then add to a large bowl.",
+      },
+    ],
+    [
+      {
+        "text": "Next make the cilantro pesto: Add cilantro, cashews, lime juice, garlic clove, jalapeno, olive oil, salt and pepper to the bowl of a food processor. Process until smooth, add water if necessary to help thin the pesto and make it easier to process.",
+      },
+    ],
+    [
+      {
+        "text": "Add the pesto directly to the bowl with the pasta and mix to combine.",
+      },
+    ],
+    [
+      {
+        "text": "Next add in the corn, red bell pepper, avocado, goat cheese and red onion. Gently mix together.",
+      },
+    ],
+    [
+      {
+        "text": "Place in fridge for serving for later, or serve immediately! Once ready to serve, garnish with extra cilantro, avocado, goat cheese and jalapeno slices, if you'd like. Serves 6.",
+      },
+    ],
+  ],
+  "name": "Street Corn Pasta Salad with Cilantro Pesto &amp; Goat Cheese",
+  "prepTime": 15,
+}
+`;
+
+exports[`scrapeRecipe > https://www.bbc.co.uk/food/recipes/sausage_and_gnocchi_bake_80924 1`] = `
+{
+  "cookTime": 30,
+  "imageUrl": "https://food-images.files.bbci.co.uk/food/recipes/sausage_and_gnocchi_bake_80924_16x9.jpg",
+  "ingredients": [
+    {
+      "amount": "1",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": undefined,
+      "name": "red pepper, deseeded and cut into chunks",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": undefined,
+      "name": "yellow pepper, deseeded and cut into chunks",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": undefined,
+      "name": "orange pepper, deseeded and cut into chunks",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "250",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": undefined,
+      "name": "g/9oz gnocchi",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": "Tablespoon",
+      "name": "olive oil",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "4",
+      "id": "9d0ec52f-fe79-570f-886b-f72b2198d095",
+      "measurement": undefined,
+      "name": "pork sausages",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      "measurement": undefined,
+      "name": "salt and freshly ground black pepper",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "text": "Preheat the oven to 200C/180C Fan/Gas 6.",
+      },
+    ],
+    [
+      {
+        "text": "Toss together the peppers, gnocchi, olive oil and a generous amount of salt and pepper on a large baking tray.",
+      },
+    ],
+    [
+      {
+        "text": "Place the sausages on the tray. Roast for 25 minutes, or until the sausages and gnocchi are golden-brown and the peppers are soft and have started to brown around the edges. Serve.",
+      },
+    ],
+  ],
+  "name": "Sausage bake with gnocchi",
+  "prepTime": 30,
+}
+`;
+
+exports[`scrapeRecipe > https://www.bbcgoodfood.com/recipes/doughnut-muffins 1`] = `
+{
+  "cookTime": 18,
+  "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-856543_10-0d65b66.jpg",
+  "ingredients": [
+    {
+      "amount": "140",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": "Gram",
+      "name": "golden caster sugar , plus 200g extra for dusting",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "200",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": "Gram",
+      "name": "plain flour",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": "Teaspoon",
+      "name": "bicarbonate of soda",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "100",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": "Millilitre",
+      "name": "natural yogurt",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": undefined,
+      "name": "large eggs , beaten",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "9d0ec52f-fe79-570f-886b-f72b2198d095",
+      "measurement": "Teaspoon",
+      "name": "vanilla extract",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "140",
+      "id": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      "measurement": "Gram",
+      "name": "butter , melted, plus extra for greasing",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "12",
+      "id": "04be3ab0-fc11-59f4-b387-2c999dea74ac",
+      "measurement": "Teaspoon",
+      "name": "seedless raspberry jam",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "text": "Heat oven to 190C/170C fan/gas 5. Lightly grease a 12-hole muffin tin (or use a silicone one). Put 140g sugar, flour and bicarb in a bowl and mix to combine. In a jug, whisk together the yogurt, eggs and vanilla. Tip the jug contents and melted butter into the dry ingredients and quickly fold with a metal spoon to combine.",
+      },
+    ],
+    [
+      {
+        "text": "Divide two-thirds of the mixture between the muffin holes. Carefully add 1 tsp jam into the centre of each, then cover with the remaining mixture. Bake for 16-18 mins until risen, golden and springy to touch.",
+      },
+    ],
+    [
+      {
+        "text": "Leave the muffins to cool for 5 mins before lifting out of the tin and rolling in the extra sugar.",
+      },
+    ],
+  ],
+  "name": "Doughnut muffins",
+  "prepTime": 20,
+}
+`;
+
+exports[`scrapeRecipe > https://www.jamieoliver.com/recipes/chicken-recipes/crispy-garlicky-chicken/ 1`] = `
+{
+  "cookTime": undefined,
+  "imageUrl": "https://img.jamieoliver.com/jamieoliver/recipe-database/89080977.jpg?tr=w-450",
+  "ingredients": [
+    {
+      "amount": "2",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": undefined,
+      "name": "x 120 g free-range skinless chicken breasts",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "2",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": undefined,
+      "name": "thick slices of seeded wholemeal bread (75g each)",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": undefined,
+      "name": "clove of garlic",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": undefined,
+      "name": "lemon",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "50",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": "Gram",
+      "name": "rocket",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "text": "Place the chicken breasts between two large sheets of greaseproof paper, and whack with the base of a large non-stick frying pan to flatten them to about 1cm thick.",
+      },
+    ],
+    [
+      {
+        "text": "Tear the bread into a food processor, then peel, chop and add the garlic, and blitz into fairly fine crumbs.",
+      },
+    ],
+    [
+      {
+        "text": "Pour the crumbs over the chicken, roughly pat on to each side, then re-cover with the paper and whack again, to hammer the crumbs into the chicken and flatten them further.",
+      },
+    ],
+    [
+      {
+        "text": "Put the pan on a medium heat. Fry the crumbed chicken in 1 tablespoon of olive oil for 3 minutes on each side, or until crisp, golden and cooked through.",
+      },
+    ],
+    [
+      {
+        "text": "Slice, plate up, season to perfection with sea salt and black pepper, sprinkle with lemon-dressed rocket, and serve with lemon wedges, for squeezing over.",
+      },
+    ],
+  ],
+  "name": "Crispy garlicky chicken",
+  "prepTime": undefined,
+}
+`;
