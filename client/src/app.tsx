@@ -71,7 +71,7 @@ export function App(): JSX.Element {
         <StyleSheetManager disableVendorPrefixes>
             <ThemeProvider theme={theme}>
                 <StoreProvider store={store}>
-                    <Router>
+                    <Router basename={process.env.PUBLIC_PATH}>
                         <Content />
 
                         <Notification />

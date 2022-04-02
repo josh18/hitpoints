@@ -5,7 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
-import { Configuration, EnvironmentPlugin } from 'webpack';
+import { Compiler, Configuration, EnvironmentPlugin } from 'webpack';
 import { InjectManifest } from 'workbox-webpack-plugin';
 
 import { paths } from './paths';
@@ -17,6 +17,23 @@ function isTruthy<T>(value: false | T): value is T {
 interface ConfigOptions {
     isProduction: boolean;
     isDemo?: boolean;
+}
+
+process.env.PUBLIC_PATH = '/hitpoints';
+const publicPath = process.env.PUBLIC_PATH ?? '';
+
+class HtmlPublicPathPlugin {
+    apply(compiler: Compiler) {
+        compiler.hooks.compilation.tap('HtmlPublicPathPlugin', compilation => {
+            HtmlWebpackPlugin
+                .getHooks(compilation)
+                .afterTemplateExecution.tap('HtmlPublicPathPlugin', data => {
+                    data.html = data.html.replaceAll('%PUBLIC_PATH%', publicPath);
+
+                    return data;
+                });
+        });
+    }
 }
 
 export function config({ isProduction, isDemo }: ConfigOptions): Configuration {
@@ -31,7 +48,7 @@ export function config({ isProduction, isDemo }: ConfigOptions): Configuration {
             path: paths.dist,
             filename: 'static/js/[name].[contenthash:8].js',
             chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
-            publicPath: '/',
+            publicPath: publicPath + '/',
             devtoolModuleFilenameTemplate: isProduction
                 ? (info: any) => path
                     .relative(paths.src, info.absoluteResourcePath)
@@ -104,6 +121,7 @@ export function config({ isProduction, isDemo }: ConfigOptions): Configuration {
             new HtmlWebpackPlugin({
                 template: path.resolve(paths.public, 'index.html'),
             }),
+            new HtmlPublicPathPlugin(),
             isDevelopment && new ReactRefreshWebpackPlugin(),
             isProduction && new MiniCssExtractPlugin({
                 filename: 'static/css/[name].[contenthash:8].css',
@@ -122,6 +140,7 @@ export function config({ isProduction, isDemo }: ConfigOptions): Configuration {
             }),
             new EnvironmentPlugin({
                 HITPOINTS_DEMO: !!isDemo,
+                PUBLIC_PATH: publicPath,
             }),
         ].filter(isTruthy),
     };

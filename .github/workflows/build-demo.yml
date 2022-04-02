@@ -1,0 +1,36 @@
+name: Deploy to GitHub pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+    - run: npm ci
+    - name: Build shareda
+      run: |
+        npm ci
+        npm run build
+      working-directory: shared
+    - name: Build client
+      run: |
+        npm ci
+        npm run build-demo
+      env:
+       PUBLIC_PATH: /hitpoints
+      working-directory: client
+    - name: Move files
+      run: |
+        mv client/dist docs
+        cp docs/index.html docs/404.html
+    - name: Push to gh-pages
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add -A
+        git commit -m 'Build demo'
+        git push --force origin HEAD:gh-pages
