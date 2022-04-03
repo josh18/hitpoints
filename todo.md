@@ -1,6 +1,5 @@
-Build demo
 Pinned recipes
-Add initial shopping item
+Demo recipes
 
 -----
 

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 import styled, { css } from 'styled-components';
 
-import { ShoppingListItem } from '@hitpoints/shared';
+import { initialShoppingListState, ShoppingListItem } from '@hitpoints/shared';
 
 import { Menu, MenuItem } from '../../components/actionsMenu';
 import { Button } from '../../components/button';
@@ -29,13 +29,13 @@ const Container = styled(Card)`
 `;
 
 const List = styled.div`
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
     width: 100%;
 
-    // Droppable div
-    > div {
-        display: flex;
-        flex-direction: column;
-        row-gap: 8px;
+    & + & {
+        margin-top: 8px;
     }
 `;
 
@@ -133,16 +133,59 @@ export function ShoppingList() {
         const load = async () => {
             const data = await keyVal.get('shoppingList');
 
-            if (data) {
-                dispatch({
-                    type: 'ShoppingListViewUpdated',
-                    shoppingList: data,
-                });
-            }
+            dispatch({
+                type: 'ShoppingListViewUpdated',
+                shoppingList: data ?? initialShoppingListState(),
+            });
         };
 
         load();
     }, [dispatch]);
+
+    // Add item if there are none
+    useEffect(() => {
+        if (!shoppingList) {
+            return;
+        }
+
+        if (!shoppingList.items.length && !shoppingList.checked.length) {
+            updateShoppingList({
+                type: 'ShoppingListItemsAdded',
+                items: [{
+                    id: uuid(),
+                    name: '',
+                }],
+            });
+        }
+    }, [shoppingList, updateShoppingList]);
+
+    const inputGroup = useInputGroup({
+        addLine(index, value) {
+            const id = addItem(index);
+
+            if (value) {
+                updateItem(id, value);
+            }
+        },
+        updateLine(index, value) {
+            if (!shoppingList) {
+                return;
+            }
+
+            updateItem(shoppingList.items[index].id, value);
+        },
+        removeLine(index) {
+            if (!shoppingList) {
+                return;
+            }
+
+            removeItem(shoppingList.items[index]);
+        },
+    });
+
+    if (!shoppingList) {
+        return null;
+    }
 
     const addItem = (index?: number) => {
         const id = uuid();
@@ -233,22 +276,6 @@ export function ShoppingList() {
         },
     ];
 
-    const inputGroup = useInputGroup({
-        addLine(index, value) {
-            const id = addItem(index);
-
-            if (value) {
-                updateItem(id, value);
-            }
-        },
-        updateLine(index, value) {
-            updateItem(shoppingList.items[index].id, value);
-        },
-        removeLine(index) {
-            removeItem(shoppingList.items[index]);
-        },
-    });
-
     const onDragEnd = (result: DropResult) => {
         setIsDragActive(false);
 
@@ -273,7 +300,7 @@ export function ShoppingList() {
     const createRef = (index: number, id: string) => {
         const inputGroupRef = inputGroup.ref(index);
 
-        return (element: HTMLTextAreaElement | null) => {
+        return (element: HTMLElement | null) => {
             inputGroupRef(element);
 
             if (element && newItem.current === id) {
@@ -309,6 +336,22 @@ export function ShoppingList() {
         </Draggable>
     ));
 
+    let uncheckedList;
+    if (uncheckedItems.length) {
+        uncheckedList = (
+            <DragDropContext onDragStart={() => setIsDragActive(true)} onDragEnd={onDragEnd}>
+                <Droppable droppableId="shoppingList">
+                    {({ droppableProps, innerRef, placeholder }) => (
+                        <List {...droppableProps} ref={innerRef}>
+                            {uncheckedItems}
+                            {placeholder}
+                        </List>
+                    )}
+                </Droppable>
+            </DragDropContext>
+        );
+    }
+
     const checkedItems = shoppingList.checked.map((item, index) => {
         index += shoppingList.items.length;
 
@@ -330,22 +373,20 @@ export function ShoppingList() {
         );
     });
 
-    return (
-        <Container>
+    let checkedList;
+    if (checkedItems.length) {
+        checkedList = (
             <List>
-                <DragDropContext onDragStart={() => setIsDragActive(true)} onDragEnd={onDragEnd}>
-                    <Droppable droppableId="shoppingList">
-                        {({ droppableProps, innerRef, placeholder }) => (
-                            <div {...droppableProps} ref={innerRef}>
-                                {uncheckedItems}
-                                {placeholder}
-                            </div>
-                        )}
-                    </Droppable>
-                </DragDropContext>
-
                 {checkedItems}
             </List>
+        );
+    }
+
+    return (
+        <Container>
+            {uncheckedList}
+
+            {checkedList}
 
             <ListActions>
                 <Button onClick={() => addItem()}><AddIcon /> Add item</Button>
