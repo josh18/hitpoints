@@ -3,7 +3,7 @@ import { forwardRef, KeyboardEvent } from 'react';
 import { RecipeIngredientHeading, RecipeIngredientHeadingUpdated } from '@hitpoints/shared';
 
 import { TextInput } from '../../../components/textInput';
-import { PartialRecipeEvent } from '../hooks/use-update-recipe';
+import { PartialRecipeEvent } from '../hooks/useUpdateRecipe';
 
 export interface RecipeIngredientHeadingProps {
     heading: RecipeIngredientHeading;

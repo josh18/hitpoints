@@ -10,7 +10,6 @@ import {
 import styled, { css } from 'styled-components';
 
 import { useDebounce } from '../util/useDebounce';
-import { useOnDestroy } from '../util/useOnDestroy';
 import { usePreventExit } from '../util/usePreventExit';
 
 export const TextInputContainer = styled.div`
@@ -138,8 +137,6 @@ export const TextInput = forwardRef<HTMLElement, TextInputProps>(
         }
 
     }, [externalValue, setPreventExit]);
-
-    useOnDestroy(commit);
 
     const onInput = (event: FormEvent<HTMLElement>) => {
         const element = event.currentTarget;

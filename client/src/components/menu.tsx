@@ -1,6 +1,6 @@
 import { rgba } from 'polished';
 import { ReactNode, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { MenuIcon } from '../icons/menuIcon';
 import { AnchorPosition, positionInViewport } from '../util/positionInViewport';
@@ -8,13 +8,21 @@ import { IconButton } from './button';
 import { Card } from './card';
 import { Portal } from './portal';
 
-const MenuButton = styled(IconButton)`
+const MenuButton = styled(IconButton)<{ small?: boolean }>`
     width: 36px;
+
+    ${props => props.small && css`
+        padding: 2px;
+        width: 28px;
+    `}
 `;
 
 const MenuDropdown = styled(Card)`
     position: absolute;
     min-width: 200px;
+    width: max-content;
+    padding-top: 8px;
+    padding-bottom: 8px;
 `;
 
 const MenuItem = styled.div`
@@ -42,9 +50,10 @@ export interface MenuItem {
 
 export interface ActionsMenuProps {
     items: MenuItem[];
+    small?: boolean;
 }
 
-export function Menu({ items: items }: ActionsMenuProps) {
+export function Menu({ items, small }: ActionsMenuProps) {
     const buttonPosition = useRef<AnchorPosition>();
     const [open, setOpen] = useState(false);
 
@@ -92,6 +101,7 @@ export function Menu({ items: items }: ActionsMenuProps) {
                 onClick={toggleMenu}
                 onBlur={hideMenu}
                 ref={setButtonRef}
+                small={small}
                 aria-label="More actions"
                 aria-haspopup="true"
                 aria-expanded={open}

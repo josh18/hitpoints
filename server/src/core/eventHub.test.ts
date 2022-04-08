@@ -11,6 +11,18 @@ import { EventHub } from './eventHub';
 
 const useFirebase = false;
 
+let eventValidators: EventValidator[];
+vi.mock('@hitpoints/shared', async () => {
+    const actual: any = await vi.importActual('@hitpoints/shared');
+
+    return {
+        ...actual,
+        get eventValidators() {
+            return eventValidators;
+        },
+    };
+});
+
 const warnSpy = vi.spyOn(Logger.prototype, 'warn').mockImplementation(() => vi.fn());
 
 function createEvent(event?: Partial<HitpointsEvent>): HitpointsEvent {
@@ -24,7 +36,7 @@ function createEvent(event?: Partial<HitpointsEvent>): HitpointsEvent {
 }
 
 const validator: EventValidator = {
-    entityType: 'test',
+    entityType: 'test' as any,
     eventSchema() {
         return HitpointsEvent;
     },
@@ -44,7 +56,7 @@ describe('EventHub', () => {
     const eventHub = new EventHub(store);
 
     beforeEach(() => {
-        (eventHub as any).eventValidators = [validator];
+        eventValidators = [validator];
     });
 
     test('drops duplicate events', async () => {
@@ -74,7 +86,7 @@ describe('EventHub', () => {
             },
         };
 
-        (eventHub as any).eventValidators = [modifiedValidator];
+        eventValidators = [modifiedValidator];
 
         const event = createEvent();
 

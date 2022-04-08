@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { NumberInput } from '../../../components/numberInput';
 import { TimeIcon } from '../../../icons/timeIcon';
 import { useTransitionResize } from '../../../util/useTransitionResize';
-import { useUpdateRecipe } from '../hooks/use-update-recipe';
+import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
 
 const Container = styled.div`
     display: flex;

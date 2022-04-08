@@ -2,46 +2,32 @@ import { produce } from 'immer';
 
 import { isRecipeEvent, Recipe, RecipeEvent, recipeReducer } from '@hitpoints/shared';
 
-export interface ActiveRecipeViewSet {
-    type: 'ActiveRecipeViewSet';
-    id: string;
-}
+import { RecipeViewUpdated } from '../../api/event.middleware';
 
-export interface ActiveRecipeViewUnset {
-    type: 'ActiveRecipeViewUnset';
-}
-
-export interface ActiveRecipeViewUpdated {
-    type: 'ActiveRecipeViewUpdated';
+export interface ActiveRecipeLoaded {
+    type: 'ActiveRecipeLoaded';
     recipe: Recipe;
 }
 
-export type ActiveRecipeEvent = ActiveRecipeViewSet | ActiveRecipeViewUnset | ActiveRecipeViewUpdated;
-
-export interface ActiveRecipeState {
-    recipe?: Recipe;
-    id?: string;
+export interface ActiveRecipeUnloaded {
+    type: 'ActiveRecipeUnloaded';
 }
 
-export const activeRecipeReducer = produce((state: ActiveRecipeState, event: ActiveRecipeEvent | RecipeEvent) => {
+export type ActiveRecipeEvent = ActiveRecipeLoaded | ActiveRecipeUnloaded;
+
+export const activeRecipeReducer = produce((state: Recipe | null, event: ActiveRecipeEvent | RecipeViewUpdated | RecipeEvent) => {
     switch (event.type) {
-        case 'ActiveRecipeViewSet':
-            state.id = event.id;
-            return;
-        case 'ActiveRecipeViewUnset':
-            state.id = undefined;
-            state.recipe = undefined;
-            return;
-        case 'ActiveRecipeViewUpdated':
-            state.recipe = event.recipe;
-            return;
+        case 'ActiveRecipeLoaded':
+            return event.recipe;
+        case 'ActiveRecipeUnloaded':
+            return null;
+        case 'RecipeViewUpdated':
+            if (event.recipe.id === state?.id) {
+                return event.recipe;
+            }
     }
 
-    if (!isRecipeEvent(event)) {
-        return;
+    if (isRecipeEvent(event) && event.entityId === state?.id) {
+        return recipeReducer(state, event);
     }
-
-    if (event.entityId === state.id) {
-        state.recipe = recipeReducer(state.recipe, event);
-    }
-}, {} as ActiveRecipeState);
+}, null);

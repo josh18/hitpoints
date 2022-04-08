@@ -4,7 +4,6 @@ import { HistoryEditor, withHistory } from 'slate-history';
 import { Editable, ReactEditor, RenderElementProps, RenderLeafProps, Slate, withReact } from 'slate-react';
 
 import { useDebounce } from '../../util/useDebounce';
-import { useOnDestroy } from '../../util/useOnDestroy';
 import { usePreventExit } from '../../util/usePreventExit';
 import { AtElementRenderer, AtItems, useAtPlugin, withAts } from './atPlugin';
 import { useFormatPlugin } from './formatPlugin';
@@ -92,9 +91,6 @@ export function TextEditor({ atItems, value, setValue, onCommit, placeholder }: 
 
         onCommit(value);
     };
-
-    // TODO delete this?
-    // useOnDestroy(commit);
 
     const onBlur = () => {
         commit();

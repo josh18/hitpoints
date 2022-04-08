@@ -7,7 +7,6 @@ import { auth } from './api/auth';
 import { Error404 } from './components/error404';
 import { demoMode } from './config';
 import { Advanced } from './modules/advanced';
-import { MealPlan } from './modules/mealPlan/mealPlan';
 import { Notification } from './modules/notification/notification';
 import { RecipeSearch } from './modules/recipe/search/recipeSearch';
 import { Recipe } from './modules/recipe/view/recipe';
@@ -56,7 +55,6 @@ function Content() {
                     <Route path="/" element={<Navigate to="/recipes" />} />
                     <Route path="recipes" element={<RecipeSearch />} />
                     <Route path="recipes/:id" element={<Recipe />} />
-                    <Route path="meal-planner" element={<MealPlan />} />
                     <Route path="shopping-list" element={<ShoppingList />} />
                     <Route path="advanced" element={<Advanced />} />
                     <Route path="*" element={<Error404 />} />

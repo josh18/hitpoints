@@ -6,6 +6,7 @@ interface ValidationState {
     ingredients: Map<string, string>;
     tags: Set<string>;
     deleted: boolean;
+    pinned: boolean;
 }
 
 export const recipeValidator: EventValidator<RecipeEvent, ValidationState> = {
@@ -22,6 +23,7 @@ export const recipeValidator: EventValidator<RecipeEvent, ValidationState> = {
             ingredients: new Map(),
             tags: new Set(),
             deleted: false,
+            pinned: false,
         };
     },
     reducer(state, event) {
@@ -91,7 +93,7 @@ export const recipeValidator: EventValidator<RecipeEvent, ValidationState> = {
                 }
 
                 if (event.type === 'RecipeIngredientUpdated' && type !== 'Ingredient') {
-                    throw new Error(`Recipe ingredient ${event.itemId} is an ingredient, not a heading..`);
+                    throw new Error(`Recipe ingredient ${event.itemId} is an ingredient, not a heading.`);
                 }
                 break;
             }

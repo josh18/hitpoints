@@ -5,15 +5,15 @@ import styled, { css } from 'styled-components';
 
 import { initialShoppingListState, ShoppingListItem } from '@hitpoints/shared';
 
-import { Menu, MenuItem } from '../../components/actionsMenu';
 import { Button } from '../../components/button';
 import { Card } from '../../components/card';
 import { Checkbox } from '../../components/checkbox';
+import { Menu, MenuItem } from '../../components/menu';
 import { RemoveButton } from '../../components/removeButton';
 import { TextInput } from '../../components/textInput';
 import { AddIcon } from '../../icons/addIcon';
 import { DragIcon } from '../../icons/dragIcon';
-import { keyVal } from '../../localDatabase/local.db';
+import { keyVal } from '../../localDatabase/client.db';
 import { useDispatch } from '../../util/useDispatch';
 import { useInputGroup } from '../../util/useInputGroup';
 import { useSelector } from '../../util/useSelector';
@@ -46,7 +46,7 @@ const Line = styled.div`
     width: 100%;
 `;
 
-export const EditableListDragHandle = styled.div<{ isDragging: boolean; isDragActive: boolean; }>`
+export const EditableListDragHandle = styled.div<{ isDragging: boolean; dragActive: boolean; }>`
     position: absolute;
     right: 100%;
     display: flex;
@@ -61,7 +61,7 @@ export const EditableListDragHandle = styled.div<{ isDragging: boolean; isDragAc
         opacity: 1;
     }
 
-    ${({ isDragActive }) => isDragActive && css`
+    ${({ dragActive }) => dragActive && css`
         opacity: 0 !important;
     `}
 
@@ -70,7 +70,7 @@ export const EditableListDragHandle = styled.div<{ isDragging: boolean; isDragAc
     `}
 `;
 
-export const EditableListRemoveButton = styled(RemoveButton) <{ isDragActive: boolean; }>`
+export const EditableListRemoveButton = styled(RemoveButton) <{ dragActive: boolean; }>`
     position: absolute;
     right: 6px;
     opacity: 0;
@@ -79,7 +79,7 @@ export const EditableListRemoveButton = styled(RemoveButton) <{ isDragActive: bo
         opacity: 1;
     }
 
-    ${({ isDragActive }) => isDragActive && css`
+    ${({ dragActive }) => dragActive && css`
         opacity: 0 !important;
     `}
 `;
@@ -88,10 +88,11 @@ const CheckboxStyled = styled(Checkbox)`
     margin-right: 8px;
 `;
 
-const TextInputStyled = styled(TextInput) < { checked: boolean; isDragging: boolean }>`
+const TextInputStyled = styled(TextInput)<{ checked: boolean; isDragging: boolean }>`
     flex: 1;
     background-color: #e8e9ea; // Solid color so it works when dragging
     transition: ${props => props.theme.transition('box-shadow')};
+    transition: box-shadow 2s;
     width: 100%;
     padding-right: 34px;
 
@@ -113,7 +114,7 @@ const TextInputStyled = styled(TextInput) < { checked: boolean; isDragging: bool
 const ListActions = styled.div`
     display: flex;
     column-gap: 8px;
-    margin-top: 32px;
+    margin-bottom: 32px;
     margin-left: auto;
 `;
 
@@ -124,8 +125,6 @@ export function ShoppingList() {
     const removedItem = useRef<string | undefined>();
 
     const shoppingList = useSelector(state => state.shoppingList);
-
-    const [isDragActive, setIsDragActive] = useState(false);
 
     useTitle('Shopping List');
 
@@ -277,22 +276,13 @@ export function ShoppingList() {
     ];
 
     const onDragEnd = (result: DropResult) => {
-        setIsDragActive(false);
-
         if (!result.destination) {
-            return;
-        }
-
-        const item = shoppingList.items.find(item => item.id === result.draggableId);
-
-        if (!item) {
-            console.error('Could not find moved item');
             return;
         }
 
         updateShoppingList({
             type: 'ShoppingListItemMoved',
-            itemId: item.id,
+            itemId: result.draggableId,
             index: result.destination.index,
         });
     };
@@ -310,11 +300,11 @@ export function ShoppingList() {
         };
     };
 
-    const uncheckedItems = shoppingList.items.map((item, index) => (
+    const uncheckedItems = (dragActive: boolean) => shoppingList.items.map((item, index) => (
         <Draggable draggableId={item.id} index={index} key={item.id}>
             {({ draggableProps, dragHandleProps, innerRef }, { isDragging, isDropAnimating }) => (
                 <Line {...draggableProps} ref={innerRef}>
-                    <EditableListDragHandle isDragging={isDragging} isDragActive={isDragActive} {...dragHandleProps}>
+                    <EditableListDragHandle isDragging={isDragging} dragActive={dragActive} {...dragHandleProps}>
                         <DragIcon />
                     </EditableListDragHandle>
 
@@ -330,7 +320,7 @@ export function ShoppingList() {
                         onEnter={inputGroup.onEnter(index)}
                     />
 
-                    <EditableListRemoveButton isDragActive={isDragActive} small onClick={() => removeItem(item)} aria-label="Remove" />
+                    <EditableListRemoveButton dragActive={dragActive} small onClick={() => removeItem(item)} aria-label="Remove" />
                 </Line>
             )}
         </Draggable>
@@ -339,11 +329,11 @@ export function ShoppingList() {
     let uncheckedList;
     if (uncheckedItems.length) {
         uncheckedList = (
-            <DragDropContext onDragStart={() => setIsDragActive(true)} onDragEnd={onDragEnd}>
+            <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="shoppingList">
-                    {({ droppableProps, innerRef, placeholder }) => (
+                    {({ droppableProps, innerRef, placeholder }, { draggingFromThisWith }) => (
                         <List {...droppableProps} ref={innerRef}>
-                            {uncheckedItems}
+                            {uncheckedItems(!!draggingFromThisWith)}
                             {placeholder}
                         </List>
                     )}
@@ -368,7 +358,7 @@ export function ShoppingList() {
                     onKeyDown={inputGroup.onKeyDown(index)}
                 />
 
-                <EditableListRemoveButton isDragActive={false} small onClick={() => removeItem(item)} aria-label="Remove" />
+                <EditableListRemoveButton dragActive={false} small onClick={() => removeItem(item)} aria-label="Remove" />
             </Line>
         );
     });
@@ -384,14 +374,14 @@ export function ShoppingList() {
 
     return (
         <Container>
-            {uncheckedList}
-
-            {checkedList}
-
             <ListActions>
                 <Button onClick={() => addItem()}><AddIcon /> Add item</Button>
                 <Menu items={menuItems} />
             </ListActions>
+
+            {uncheckedList}
+
+            {checkedList}
         </Container>
     );
 }

@@ -1,5 +1,5 @@
 import { rgba } from 'polished';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { useOnEscape } from '../util/useOnEscape';

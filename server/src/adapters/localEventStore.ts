@@ -1,5 +1,3 @@
-import { SqliteError } from 'better-sqlite3';
-
 import { EventStoreItem } from '../core/eventItem';
 import { once } from '../util/once';
 import { EventConflictError, EventStore } from './eventStore';

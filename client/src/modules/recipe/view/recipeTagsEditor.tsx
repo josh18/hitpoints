@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { RecipeTag, recipeTags } from '@hitpoints/shared';
 
 import { Checkbox } from '../../../components/checkbox';
-import { useUpdateRecipe } from '../hooks/use-update-recipe';
+import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
 
 const CheckboxStyled = styled(Checkbox)`
     & + & {

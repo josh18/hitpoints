@@ -4,8 +4,6 @@ import { TransitionHeight } from './transitionHeight';
 
 const TransitionHeightStyled = styled(TransitionHeight)`
     display: flex;
-    /* height: 36px; */
-    overflow: hidden;
 `;
 
 export const Error = styled.div`
@@ -21,17 +19,13 @@ interface FormErrorProps {
 }
 
 export function FormError({ error }: FormErrorProps) {
-    // const transitionStart = {
-    //     height: '0',
-    // };
-
     let errorContainer;
     if (error) {
         errorContainer = <Error>{error}</Error>;
     }
 
     return (
-        <TransitionHeightStyled role="alert" visible={!!error}>
+        <TransitionHeightStyled data-test="yes" role="alert" visible={!!error}>
             {errorContainer}
         </TransitionHeightStyled>
     );

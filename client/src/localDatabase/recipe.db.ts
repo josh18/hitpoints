@@ -1,12 +1,38 @@
-import { buildRecipe, RecipeEvent, recipeReducer } from '@hitpoints/shared';
+import { Recipe, RecipeEvent, recipeReducer } from '@hitpoints/shared';
 
 import { recipeImageUrl } from '../modules/recipe/recipeImage';
-import { Dispatch, StoreState } from '../store';
-import { getDatabase } from './local.db';
+import { getDatabase } from './client.db';
 
 const recipeIndexWorker = new Worker(new URL('./recipeIndex.worker', import.meta.url));
 const indexRecipes = () => recipeIndexWorker.postMessage('Index recipes please.');
 
+export async function getRecipe(id: string) {
+    const db = await getDatabase();
+    return db.get('recipes', id);
+}
+
+export async function getRecipes(ids: string[]) {
+    let attempts = 1;
+    while (attempts <= 5) {
+        attempts++;
+        const db = await getDatabase();
+        const transaction = db.transaction('recipes');
+
+        const recipes = await Promise.all(
+            ids.map(id => transaction.store.get(id)),
+        );
+
+        await transaction.done;
+
+        if (recipes.every((recipe): recipe is Recipe => !!recipe)) {
+            return recipes;
+        }
+    }
+
+    throw new Error('Some recipes were not found.');
+}
+
+/** Updates a recipe from a local event */
 export async function updateRecipe(event: RecipeEvent) {
     const id = event.entityId;
 
@@ -22,16 +48,7 @@ export async function updateRecipe(event: RecipeEvent) {
     indexRecipes();
 }
 
-export async function rebuildRecipe(events: RecipeEvent[], { activeRecipe }: StoreState, dispatch: Dispatch) {
-    const recipe = buildRecipe(events);
-
-    if (recipe.id === activeRecipe.id) {
-        dispatch({
-            type: 'ActiveRecipeViewUpdated',
-            recipe,
-        });
-    }
-
+export async function putRecipe(recipe: Recipe) {
     // Pre-cache images for offline use
     if (recipe.imageId) {
         const image = new Image();
@@ -42,4 +59,9 @@ export async function rebuildRecipe(events: RecipeEvent[], { activeRecipe }: Sto
     await db.put('recipes', recipe);
 
     indexRecipes();
+}
+
+export async function deleteRecipe(id: string) {
+    const db = await getDatabase();
+    await db.delete('recipes', id);
 }

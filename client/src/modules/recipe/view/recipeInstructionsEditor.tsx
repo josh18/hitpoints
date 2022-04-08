@@ -5,7 +5,7 @@ import { isInstructionText, Recipe, RecipeInstruction } from '@hitpoints/shared'
 
 import { AtItems } from '../../../components/textEditor/atPlugin';
 import { ParagraphElement, TextEditor } from '../../../components/textEditor/textEditor';
-import { useUpdateRecipe } from '../hooks/use-update-recipe';
+import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
 
 function instructionsToValue(instructions: RecipeInstruction[] = []): Element[] {
     if (!instructions.length) {

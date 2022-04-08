@@ -2,7 +2,8 @@ import lunr from 'lunr';
 
 import { Recipe, RecipeTag } from '@hitpoints/shared';
 
-import { getDatabase, keyVal, RecipeSearchIndex } from '../../../localDatabase/local.db';
+import { keyVal, RecipeSearchIndex } from '../../../localDatabase/client.db';
+import { getRecipes } from '../../../localDatabase/recipe.db';
 
 export interface RecipeQuery {
     text?: string[];
@@ -186,7 +187,7 @@ export class SearchInterface {
         this.cancelLoad = () => cancelled = true;
 
         const nextRecipeIds = this.recipeIds.splice(0, this.itemsPerPage);
-        const recipes = await this.getRecipes(nextRecipeIds);
+        const recipes = await getRecipes(nextRecipeIds);
 
         if (cancelled) {
             return;
@@ -204,19 +205,6 @@ export class SearchInterface {
         }
 
         this.isLoading = false;
-    }
-
-    private async getRecipes(ids: string[]) {
-        const db = await getDatabase();
-        const transaction = db.transaction('recipes');
-
-        const recipes = await Promise.all(
-            ids.map(id => transaction.store.get(id)),
-        );
-
-        await transaction.done;
-
-        return recipes.filter((recipe): recipe is Recipe => !!recipe);
     }
 
     private indexListener(event: MessageEvent<RecipeSearchIndex>) {

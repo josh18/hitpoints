@@ -14,7 +14,8 @@ import { SearchIcon } from '../../../icons/searchIcon';
 import { useRefInstance } from '../../../util/useRefInstance';
 import { useTitle } from '../../../util/useTitle';
 import { uuid } from '../../../util/uuid';
-import { useUpdateRecipe } from '../hooks/use-update-recipe';
+import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
+import { PinnedRecipes } from './pinnedRecipes';
 import { RecipeImport } from './recipeImport';
 import { RecipeSearchFilter } from './recipeSearchFilter';
 import { RecipeSearchItem } from './recipeSearchItem';
@@ -116,11 +117,6 @@ const Actions = styled.div`
     @media print {
         display: none;
     }
-`;
-
-const PinnedRecipes = styled(Card)`
-    grid-area: PinnedRecipes;
-    padding: 32px;
 `;
 
 const NoResults = styled.div`
@@ -228,9 +224,7 @@ export function RecipeSearch(): JSX.Element {
                 {items.length ? items : <NoResults>No recipes found</NoResults>}
             </RecipeGrid>
 
-            <PinnedRecipes>
-
-            </PinnedRecipes>
+            <PinnedRecipes />
 
             <Dialog active={importActive} onClose={() => setImportActive(false)}>
                 <RecipeImport onCancel={() => setImportActive(false)} />

@@ -33,6 +33,7 @@ const Control = styled.div`
 
 const Submit = styled(Button)`
     margin-left: 32px;
+    align-self: flex-start;
 
     @media (max-width: 550px) {
         margin-left: auto;

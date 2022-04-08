@@ -1,5 +1,6 @@
 import { z, ZodType } from 'zod';
 
+import { HitpointsEntityType } from './index.js';
 import { isISOString } from './validation/iso8601.js';
 
 export const HitpointsEvent = z.object({
@@ -13,7 +14,7 @@ export const HitpointsEvent = z.object({
 export type HitpointsEvent = z.infer<typeof HitpointsEvent>;
 
 export interface EventValidator<EventTypes extends HitpointsEvent = HitpointsEvent, ValidationState = unknown> {
-    entityType: string;
+    entityType: HitpointsEntityType;
     eventSchema(type: EventTypes['type']): ZodType<EventTypes> | undefined;
     matches(event: HitpointsEvent): boolean;
     initialState(): ValidationState;

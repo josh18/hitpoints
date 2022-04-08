@@ -7,7 +7,7 @@ interface ValidationState {
 }
 
 export const shoppingListValidator: EventValidator<ShoppingListEvent, ValidationState> = {
-    entityType: 'shoppinList',
+    entityType: 'shoppingList',
     eventSchema(type) {
         return shoppingListTypeMap[type];
     },
@@ -90,6 +90,7 @@ export const shoppingListValidator: EventValidator<ShoppingListEvent, Validation
                 if (event.index > state.itemIds.size) {
                     throw new Error(`Invalid item index ${event.index}.`);
                 }
+
                 break;
             }
         }

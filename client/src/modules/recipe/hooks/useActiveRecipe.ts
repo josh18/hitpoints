@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
-import { getDatabase } from '../../../localDatabase/local.db';
+import { getRecipe } from '../../../localDatabase/recipe.db';
 import { useDispatch } from '../../../util/useDispatch';
 import { useSelector } from '../../../util/useSelector';
 
@@ -17,14 +17,8 @@ export function useActiveRecipe() {
     useEffect(() => {
         let cancelled = false;
 
-        dispatch({
-            type: 'ActiveRecipeViewSet',
-            id,
-        });
-
         const open = async (id: string) => {
-            const db = await getDatabase();
-            const recipe = await db.get('recipes', id);
+            const recipe = await getRecipe(id);
 
             if (cancelled) {
                 return;
@@ -36,25 +30,23 @@ export function useActiveRecipe() {
             }
 
             dispatch({
-                type: 'ActiveRecipeViewUpdated',
+                type: 'ActiveRecipeLoaded',
                 recipe,
             });
         };
 
-        if (id) {
-            open(id);
-        }
+        open(id);
 
         return () => {
             cancelled = true;
 
             dispatch({
-                type: 'ActiveRecipeViewUnset',
+                type: 'ActiveRecipeUnloaded',
             });
         };
     }, [id, dispatch]);
 
-    const recipe = useSelector(state => state.activeRecipe.recipe);
+    const recipe = useSelector(state => state.activeRecipe);
 
     return { recipe, recipeNotFound };
 }

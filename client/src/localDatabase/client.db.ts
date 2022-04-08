@@ -1,4 +1,4 @@
-import { DBSchema, IDBPTransaction, openDB } from 'idb/with-async-ittr';
+import { DBSchema, deleteDB, IDBPTransaction, openDB } from 'idb';
 
 import { HitpointsEntityType, HitpointsEvent, Recipe, RecipeTag, ShoppingList } from '@hitpoints/shared';
 
@@ -16,6 +16,7 @@ export interface AssortedMap {
     shoppingList: ShoppingList;
     recipeSearchIndexCursor: Date;
     recipeSearchIndex: RecipeSearchIndex;
+    pinnedRecipes: string[];
 }
 
 export interface StoredEvents {
@@ -26,7 +27,7 @@ export interface StoredEvents {
     unsynced?: 1;
 }
 
-export interface LocalDB extends DBSchema  {
+export interface ClientDB extends DBSchema  {
     assorted: {
         key: string;
         value: unknown;
@@ -34,6 +35,9 @@ export interface LocalDB extends DBSchema  {
     recipes: {
         key: string;
         value: Recipe;
+        indexes: {
+            pinned: number;
+        }
     };
     events: {
         key: string;
@@ -46,40 +50,29 @@ export interface LocalDB extends DBSchema  {
 
 const databaseVersion = 2;
 
-const localDb = openDB<LocalDB>('hitpoints', databaseVersion, {
-    upgrade(db, oldVersion) {
-        if (db.objectStoreNames.contains('recipeEvents' as any)) {
-            db.deleteObjectStore('recipeEvents' as any);
-        }
+const clientDB = openDB<ClientDB>('hitpoints', databaseVersion, {
+    upgrade(db) {
+        db.createObjectStore('assorted');
 
-        // v1
-        if (oldVersion < 1) {
-            db.createObjectStore('assorted');
+        const events = db.createObjectStore('events', {
+            keyPath: 'id',
+        });
+        events.createIndex('unsynced', 'unsynced');
 
-            db.createObjectStore('recipes', {
-                keyPath: 'id',
-            });
-        }
-
-        // v2
-        if (oldVersion < 2) {
-            const events = db.createObjectStore('events', {
-                keyPath: 'id',
-            });
-
-            events.createIndex('unsynced', 'unsynced');
-        }
+        db.createObjectStore('recipes', {
+            keyPath: 'id',
+        });
     },
 });
 
 export function getDatabase() {
-    return localDb;
+    return clientDB;
 }
 
 export const keyVal = {
     async get<Key extends keyof AssortedMap, Value extends AssortedMap[Key]>(
         key: Key,
-        transaction?: IDBPTransaction<LocalDB, ['assorted'], 'readonly' | 'readwrite'>,
+        transaction?: IDBPTransaction<ClientDB, ['assorted'], 'readonly' | 'readwrite'>,
     ) {
         if (transaction) {
             return transaction.objectStore('assorted').get(key) as Promise<Value | undefined>;
@@ -92,7 +85,7 @@ export const keyVal = {
     async set<Key extends keyof AssortedMap, Value extends AssortedMap[Key]>(
         key: Key,
         value: Value,
-        transaction?: IDBPTransaction<LocalDB, ['assorted'], 'readwrite'>,
+        transaction?: IDBPTransaction<ClientDB, ['assorted'], 'readwrite'>,
     ) {
         if (transaction) {
             await transaction.objectStore('assorted').put(value, key);

@@ -19,7 +19,6 @@ interface ConfigOptions {
     isDemo?: boolean;
 }
 
-process.env.PUBLIC_PATH = '/hitpoints';
 const publicPath = process.env.PUBLIC_PATH ?? '';
 
 class HtmlPublicPathPlugin {

@@ -1,9 +1,13 @@
-Pinned recipes
+Update dependencies
 Demo recipes
+
+Recipe menu / pinned menu
+- add to shopping list
 
 -----
 
 Potential Features
+- Pixel nav icons
 - Focus mode <-----?
     - Finished button (sets cooked count)
 - Instructions header
@@ -23,6 +27,3 @@ ARIA
 - tabindex when editor panel is hidden (visibility hidden?)
 - Tab arrow keys / tabindex - https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html
 - at suggest
-
-Extra
-- Check if can improve styled-components types

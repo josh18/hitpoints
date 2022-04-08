@@ -2,7 +2,7 @@ import { rgba } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { TextInput } from '../../../components/textInput';
-import { useUpdateRecipe } from '../hooks/use-update-recipe';
+import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
 
 const H1 = styled.h1<{ editing: boolean }>`
     position: relative;

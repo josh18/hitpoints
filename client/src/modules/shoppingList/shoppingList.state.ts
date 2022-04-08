@@ -2,12 +2,9 @@ import { produce } from 'immer';
 
 import { isShoppingListEvent, ShoppingList, ShoppingListEvent, shoppingListReducer } from '@hitpoints/shared';
 
-export interface ShoppingListViewUpdated {
-    type: 'ShoppingListViewUpdated';
-    shoppingList: ShoppingList;
-}
+import { ShoppingListViewUpdated } from '../../api/event.middleware';
 
-export const activeShoppingListReducer = produce((state: ShoppingList | null, event: ShoppingListViewUpdated | ShoppingListEvent) => {
+export const localShoppingListReducer = produce((state: ShoppingList | null, event: ShoppingListViewUpdated | ShoppingListEvent) => {
     switch (event.type) {
         case 'ShoppingListViewUpdated':
             return event.shoppingList;

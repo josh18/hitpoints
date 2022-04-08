@@ -1,50 +1,43 @@
 import {
     AddEventsRequest,
+    buildPinnedRecipes,
+    buildRecipe,
+    buildShoppingList,
     eventEntityType,
     HitpointsEntityType,
     HitpointsEvent,
     isHitpointsEvent,
+    isPinnedRecipesEvent,
     isRecipeEvent,
     isShoppingListEvent,
-    RecipeEvent,
-    ShoppingListEvent,
+    Recipe,
+    ShoppingList,
 } from '@hitpoints/shared';
 
-import { getDatabase, keyVal, StoredEvents } from '../localDatabase/local.db';
-import { rebuildRecipe, updateRecipe } from '../localDatabase/recipe.db';
-import { rebuildShoppingList, updateShoppingList } from '../localDatabase/shoppingList.db';
+import { keyVal } from '../localDatabase/client.db';
+import { addEvent, addSyncedEvents, checkoutUnsavedEvents, removeFailedEvents } from '../localDatabase/event.db';
+import { putPinnedRecipes, updatePinnedRecipes } from '../localDatabase/pinnedRecipes.db';
+import { deleteRecipe, putRecipe, updateRecipe } from '../localDatabase/recipe.db';
+import { putShoppingList, updateShoppingList } from '../localDatabase/shoppingList.db';
 import { Middleware } from '../store';
 import { connection } from './connection';
 
-const syncCursorKey = 'eventSyncCursor';
-
-async function addEvent(event: HitpointsEvent, connected: boolean) {
-    const id = event.entityId;
-
-    const db = await getDatabase();
-    const transaction = db.transaction('events', 'readwrite');
-
-    let storedEvents = await transaction.store.get(id);
-    storedEvents = storedEvents ?? {
-        id,
-        type: eventEntityType(event),
-        events: new Map(),
-        syncing: new Map(),
-    };
-
-    storedEvents.events.set(event.id, event);
-
-    if (!event.version) {
-        storedEvents.unsynced = 1;
-
-        if (connected) {
-            storedEvents.syncing.set(event.id, new Date());
-        }
-    }
-
-    await transaction.store.put(storedEvents);
-    await transaction.done;
+export interface RecipeViewUpdated {
+    type: 'RecipeViewUpdated';
+    recipe: Recipe;
 }
+
+export interface ShoppingListViewUpdated {
+    type: 'ShoppingListViewUpdated';
+    shoppingList: ShoppingList;
+}
+
+export interface PinnedRecipesViewUpdated {
+    type: 'PinnedRecipesViewUpdated';
+    pinnedRecipes: string[];
+}
+
+const syncCursorKey = 'eventSyncCursor';
 
 function syncEventsFromServer(onUpdate: (events: HitpointsEvent[]) => void) {
     const request = async () => {
@@ -56,79 +49,9 @@ function syncEventsFromServer(onUpdate: (events: HitpointsEvent[]) => void) {
     connection.subscribe('syncEvents', request, async result => {
         await keyVal.set(syncCursorKey, result.cursor);
 
-        // Group events by entityId
-        const groupedEvents: { [key: string]: HitpointsEvent[]; } = {};
-        result.events.forEach(event => {
-            groupedEvents[event.entityId] = groupedEvents[event.entityId] ?? [];
-            groupedEvents[event.entityId].push(event);
-        });
-
-        const db = await getDatabase();
-        const transaction = db.transaction('events', 'readwrite');
-
-        // Save events
-        const updatedEvents = await Promise.all(
-            Object.entries(groupedEvents).map(async ([id, events]) => {
-                const existingEvents = await transaction.objectStore('events').get(id);
-                const storedEvents: StoredEvents = existingEvents ?? {
-                    id,
-                    type: eventEntityType(events[0]),
-                    events: new Map(),
-                    syncing: new Map(),
-                };
-
-                events.forEach(event => {
-                    storedEvents.events.set(event.id, event);
-                    storedEvents.syncing.delete(event.id);
-                });
-
-                if ([...storedEvents.events.values()].some(event => !event.version)) {
-                    storedEvents.unsynced = 1;
-                } else {
-                    delete storedEvents.unsynced;
-                }
-
-                await transaction.objectStore('events').put(storedEvents);
-
-                return [...storedEvents.events.values()];
-            }),
-        );
-
-        await transaction.done;
-
+        const updatedEvents = await addSyncedEvents(result.events);
         updatedEvents.forEach(events => onUpdate(events));
     });
-}
-
-async function getUnsavedEvents() {
-    const db = await getDatabase();
-    const transaction = db.transaction(['events'], 'readwrite');
-    const unsyncedEvents = await transaction.objectStore('events').index('unsynced').getAll();
-
-    const unsyncedMap = new Map<string, HitpointsEvent[]>();
-
-    // 30 seconds ago
-    const timeout = new Date(Date.now() - 30_000);
-
-    unsyncedEvents.forEach(({ id, events, syncing }) => {
-        const unsyncedEvents = [...events.values()]
-            .filter(event => {
-                if (event.version) {
-                    return false;
-                }
-
-                const syncTime = syncing.get(event.id);
-
-                return !syncTime || timeout > syncTime;
-            })
-            .sort((a, b) => a.timestamp.localeCompare(b.timestamp));
-
-        if (unsyncedEvents.length) {
-            unsyncedMap.set(id, unsyncedEvents);
-        }
-    });
-
-    return unsyncedMap;
 }
 
 function sendEventsToServer(
@@ -148,37 +71,13 @@ function sendEventsToServer(
 
         onError(failed.map(({ error }) => error));
 
-        const db = await getDatabase();
-        const transaction = db.transaction('events', 'readwrite');
-        const storedEvents = await transaction.store.get(entityId);
+        const validEvents = await removeFailedEvents(entityId, failed.map(({ eventId }) => eventId));
 
-        if (!storedEvents) {
-            return;
-        }
-
-        failed.forEach(({ eventId }) => {
-            storedEvents.syncing.delete(eventId);
-            storedEvents.events.delete(eventId);
-        });
-
-        // Failed to create the entity so removing it from the local db
-        if (!storedEvents.events.size) {
-            await transaction.store.delete(entityId);
-            await transaction.done;
-            onDelete(storedEvents.type, entityId);
-            return;
-        }
-
-        if ([...storedEvents.events.values()].some(event => !event.version)) {
-            storedEvents.unsynced = 1;
+        if (validEvents.length) {
+            onUpdate(validEvents);
         } else {
-            delete storedEvents.unsynced;
+            onDelete(eventEntityType(events[0]), entityId);
         }
-
-        await transaction.store.put(storedEvents);
-        await transaction.done;
-
-        onUpdate([...storedEvents.events.values()]);
     });
 }
 
@@ -187,7 +86,7 @@ async function sendUnsavedEventsToServer(
     onDelete: (entityType: HitpointsEntityType, entityId: string) => void,
     onError: (errors: string[],
 ) => void) {
-    const unsavedEvents = await getUnsavedEvents();
+    const unsavedEvents = await checkoutUnsavedEvents();
 
     for (const [entityId, events] of unsavedEvents) {
         sendEventsToServer(entityId, events, onUpdate, onDelete, onError);
@@ -197,19 +96,42 @@ async function sendUnsavedEventsToServer(
 export const eventMiddleware: Middleware = ({ getState, dispatch }) => {
     const onUpdate = (events: HitpointsEvent[]) => {
         if (events.every(isRecipeEvent)) {
-            rebuildRecipe(events , getState(), dispatch);
+            const recipe = buildRecipe(events);
+
+            dispatch({
+                type: 'RecipeViewUpdated',
+                recipe,
+            });
+
+            putRecipe(recipe);
         }
 
         if (events.every(isShoppingListEvent)) {
-            rebuildShoppingList(events, dispatch);
+            const shoppingList = buildShoppingList(events);
+
+            dispatch({
+                type: 'ShoppingListViewUpdated',
+                shoppingList,
+            });
+
+            putShoppingList(shoppingList);
+        }
+
+        if (events.every(isPinnedRecipesEvent)) {
+            const pinnedRecipes = buildPinnedRecipes(events);
+
+            dispatch({
+                type: 'PinnedRecipesViewUpdated',
+                pinnedRecipes,
+            });
+
+            putPinnedRecipes(pinnedRecipes);
         }
     };
 
     const onDelete = async (entityType: HitpointsEntityType, entityId: string) => {
-        const db = await getDatabase();
-
         if (entityType === 'recipe') {
-            await db.delete('recipes', entityId);
+            await deleteRecipe(entityId);
         }
     };
 
@@ -243,6 +165,10 @@ export const eventMiddleware: Middleware = ({ getState, dispatch }) => {
 
         if (isShoppingListEvent(event)) {
             updateShoppingList(event);
+        }
+
+        if (isPinnedRecipesEvent(event)) {
+            updatePinnedRecipes(event);
         }
 
         return next(event);

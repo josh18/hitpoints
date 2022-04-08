@@ -12,7 +12,7 @@ import { AddIcon } from '../../../icons/addIcon';
 import { DragIcon } from '../../../icons/dragIcon';
 import { useInputGroup } from '../../../util/useInputGroup';
 import { uuid } from '../../../util/uuid';
-import { PartialRecipeEvent, useUpdateRecipe } from '../hooks/use-update-recipe';
+import { PartialRecipeEvent, useUpdateRecipe } from '../hooks/useUpdateRecipe';
 import { RecipeIngredientEditor } from './recipeIngredientEditor';
 import { RecipeIngredientHeadingEditor } from './recipeIngredientHeadingEditor';
 

@@ -2,7 +2,7 @@ import lunr from 'lunr';
 
 import { Recipe, RecipeTag } from '@hitpoints/shared';
 
-import { getDatabase, keyVal } from './local.db';
+import { getDatabase, keyVal } from './client.db';
 
 onmessage = () => {
     // TODO debounce

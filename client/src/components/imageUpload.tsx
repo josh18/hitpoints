@@ -22,7 +22,7 @@ const Overlay = styled.div<{ active?: boolean }>`
     justify-content: center;
     font-size: 20px;
     text-align: center;
-    color: #fff;
+    color: ${props => props.theme.white};
     background-image: radial-gradient(${rgba('#000', 0.8)}, ${rgba('#000', 0.6)});
     opacity: 0;
     transition: ${props => props.theme.transition('opacity')};

@@ -27,7 +27,7 @@ export const theme: DefaultTheme = {
     warning: '#ff792c',
     error: '#ca0013',
     shadow: `0 1px 2px 0 ${rgba('#000', 0.1)}, 0 2px 10px 0 ${rgba('#000', 0.05)}`,
-    highShadow: `0 8px 10px 0 ${rgba('#000', 0.15)}, 0 4px 16px 0 ${rgba('#000', 0.1)}`,
+    highShadow: `0 8px 10px 1px ${rgba('#000', 0.20)}, 0 4px 16px 0 ${rgba('#000', 0.15)}, 0 4px 8px -2px ${rgba('#000', 0.15)}`,
     black: rgba('#000', 0.88),
     white: rgba('#fff', 0.88),
     transition(...properties: string[]) {
@@ -35,3 +35,5 @@ export const theme: DefaultTheme = {
         return properties.map(property => `${property} ${time}ms cubic-bezier(0.4, 0, 0.2, 1)`).join(', ');
     },
 };
+
+// 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);

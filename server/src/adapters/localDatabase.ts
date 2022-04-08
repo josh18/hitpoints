@@ -1,4 +1,4 @@
-import type { Database } from 'better-sqlite3';
+import { Database } from 'better-sqlite3';
 
 import { once } from '../util/once';
 import { localConfig } from './localConfig';

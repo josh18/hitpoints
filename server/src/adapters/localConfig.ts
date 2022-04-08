@@ -2,6 +2,8 @@ import { existsSync, lstatSync, mkdirSync } from 'fs';
 import { homedir } from 'os';
 import { join as pathJoin } from 'path';
 
+import { once } from '../util/once';
+
 function isDirectory(path: string): boolean {
     try {
         return lstatSync(path).isDirectory();
@@ -36,21 +38,15 @@ interface LocalConfig {
     resizedImagesDir: string;
 }
 
-let configData: LocalConfig | undefined;
+export const localConfig = once((): LocalConfig => {
+    const dataPath = getDataPath();
+    const dbPath = pathJoin(dataPath, 'hitpoints.db');
+    const imagesDir = pathJoin(dataPath, 'images');
+    const resizedImagesDir = pathJoin(imagesDir, 'resized');
 
-export function localConfig(): LocalConfig {
-    if (!configData) {
-        const dataPath = getDataPath();
-        const dbPath = pathJoin(dataPath, 'hitpoints.db');
-        const imagesDir = pathJoin(dataPath, 'images');
-        const resizedImagesDir = pathJoin(imagesDir, 'resized');
-
-        configData = {
-            dbPath,
-            imagesDir,
-            resizedImagesDir,
-        };
-    }
-
-    return configData;
-}
+    return {
+        dbPath,
+        imagesDir,
+        resizedImagesDir,
+    };
+});

@@ -12,12 +12,20 @@ function toAutoHeight(element: HTMLElement) {
     element.style.height = 'auto';
 
     const height = element.offsetHeight;
+
+    if (height === originalHeight) {
+        element.style.transition = originalTransition;
+        element.style.height = '';
+        return;
+    }
+
     element.style.height = `${originalHeight}px`;
 
     element.getBoundingClientRect(); // Force reflow to enable transition
 
     element.style.transition = originalTransition;
     element.style.height = `${height}px`;
+    element.style.overflow = 'hidden';
 }
 
 function to0Height(element: HTMLElement) {
@@ -26,22 +34,27 @@ function to0Height(element: HTMLElement) {
     element.getBoundingClientRect(); // Force reflow to enable transition
 
     element.style.height = `0`;
+    element.style.overflow = 'hidden';
 }
 
 export interface TransitionHeightProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode;
     visible: boolean;
-    className?: string;
+    transitionOnMount?: boolean;
+    onExit?: () => void;
 }
 
 export function TransitionHeight({
     children,
     visible,
+    transitionOnMount = false,
+    onExit,
     ...props
 }: TransitionHeightProps) {
     const elementRef = useRef<HTMLElement | null>(null);
     const childRef = useRef<ReactNode>(null);
     const [mounted, setMounted] = useState(visible);
+    const transitionIn = useRef(transitionOnMount);
 
     if (children || visible) {
         childRef.current = children;
@@ -65,10 +78,14 @@ export function TransitionHeight({
         }
     }, [visible]);
 
+    useEffect(() => {
+        transitionIn.current = true;
+    }, []);
+
     const setRef = useCallback((element: HTMLElement | null) => {
         elementRef.current = element;
 
-        if (element !== null) {
+        if (element && transitionIn.current) {
             element.style.height = '0';
             toAutoHeight(element);
         }
@@ -86,9 +103,11 @@ export function TransitionHeight({
         if (visible) {
             if (elementRef.current) {
                 elementRef.current.style.height = '';
+                elementRef.current.style.overflow = '';
             }
         } else {
             setMounted(false);
+            onExit?.();
         }
     };
 

@@ -10,8 +10,8 @@ import { DoneIcon } from '../../../icons/doneIcon';
 import { EditIcon } from '../../../icons/editIcon';
 import { useTitle } from '../../../util/useTitle';
 import { useTransitionResize } from '../../../util/useTransitionResize';
-import { useActiveRecipe } from '../hooks/use-active-recipe';
-import { useUpdateRecipe } from '../hooks/use-update-recipe';
+import { useActiveRecipe } from '../hooks/useActiveRecipe';
+import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
 import { RecipeImage } from '../recipeImage';
 import { RecipeDeletedWarning } from './recipeDeletedWarning';
 import { RecipeEditorPanel } from './recipeEditorPanel';
@@ -200,7 +200,7 @@ export function Recipe() {
                     <DoneIconStyled editing={editing} />
                     {editing ? 'Finish' : 'Edit'}
                 </EditButton>
-                <RecipeMenu />
+                <RecipeMenu recipe={recipe} />
             </>
         );
     }

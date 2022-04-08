@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { concat, filter, from, Observable, Subject } from 'rxjs';
 
-import { EventValidator, HitpointsEvent, recipeValidator, shoppingListValidator } from '@hitpoints/shared';
+import { EventValidator, eventValidators, HitpointsEvent } from '@hitpoints/shared';
 
 import { EventConflictError, EventStore } from '../adapters/eventStore';
 import { toEvent, toStoreItem } from './eventItem';
@@ -20,10 +20,6 @@ interface EventsResult<EventTypes extends HitpointsEvent> {
 export class EventHub {
     private eventsSubject = new Subject<HitpointsEvent[]>();
     private logger = new Logger(EventHub.name);
-    private eventValidators: EventValidator[] = [
-        shoppingListValidator,
-        recipeValidator,
-    ];
 
     constructor(
         private eventStore: EventStore,
@@ -45,7 +41,7 @@ export class EventHub {
     }
 
     async addEvents(entityId: string, events: HitpointsEvent[]): Promise<FailedEvent[]> {
-        const validator = this.eventValidators.find(validator => validator.matches(events[0]));
+        const validator = eventValidators.find(validator => validator.matches(events[0]));
 
         if (!validator) {
             this.logger.error(`Could not find event validator for ${events[0].type}`);

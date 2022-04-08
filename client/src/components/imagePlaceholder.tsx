@@ -15,20 +15,19 @@ const Container = styled.div<{ $width?: number; $height?: number; }>`
 const ImageIconStyled = styled(ImageIcon)`
     position: absolute;
     fill: ${rgba('#000', 0.3)};
-    width: 50px;
-    height: 50px;
 `;
 
 interface ImagePlaceholderProps {
     width?: number;
     height?: number;
     className?: string;
+    iconSize?: number;
 }
 
-export function ImagePlaceholder({ className, width, height }: ImagePlaceholderProps) {
+export function ImagePlaceholder({ className, width, height, iconSize = 48 }: ImagePlaceholderProps) {
     return (
         <Container className={className} $width={width} $height={height}>
-            <ImageIconStyled size={48} />
+            <ImageIconStyled size={iconSize} />
         </Container>
     );
 }

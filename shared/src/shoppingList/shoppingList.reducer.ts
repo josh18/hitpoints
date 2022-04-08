@@ -1,5 +1,5 @@
 import { orderEvents } from '../util/orderEvents.js';
-import { ShoppingListEvent, ShoppingListItemsChecked } from './shoppingList.events';
+import { ShoppingListEvent } from './shoppingList.events';
 import { ShoppingList } from './shoppingList.view';
 
 export const initialShoppingListState = (): ShoppingList => ({

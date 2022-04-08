@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { TextButton } from '../../../components/button';
 import { WarningIcon } from '../../../icons/warningIcon';
-import { useUpdateRecipe } from '../hooks/use-update-recipe';
+import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
 
 const Warning = styled.div`
     display: flex;

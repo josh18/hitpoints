@@ -1,7 +1,6 @@
-import { buildShoppingList, ShoppingListEvent, shoppingListReducer } from '@hitpoints/shared';
+import { ShoppingList, ShoppingListEvent, shoppingListReducer } from '@hitpoints/shared';
 
-import { Dispatch } from '../store';
-import { getDatabase, keyVal } from './local.db';
+import { getDatabase, keyVal } from './client.db';
 
 export async function updateShoppingList(event: ShoppingListEvent) {
     const db = await getDatabase();
@@ -14,13 +13,6 @@ export async function updateShoppingList(event: ShoppingListEvent) {
     await transaction.done;
 }
 
-export async function rebuildShoppingList(events: ShoppingListEvent[], dispatch: Dispatch) {
-    const shoppingList = buildShoppingList(events);
-
-    dispatch({
-        type: 'ShoppingListViewUpdated',
-        shoppingList,
-    });
-
+export async function putShoppingList(shoppingList: ShoppingList) {
     await keyVal.set('shoppingList', shoppingList);
 }
