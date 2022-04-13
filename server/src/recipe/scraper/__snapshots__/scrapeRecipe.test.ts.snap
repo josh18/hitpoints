@@ -136,7 +136,7 @@ exports[`scrapeRecipe > https://ohmyveggies.com/veggie-packed-spanish-rice/ 1`] 
 exports[`scrapeRecipe > https://sallysbakingaddiction.com/chocolate-chip-loaf-cake/ 1`] = `
 {
   "cookTime": 5,
-  "imageUrl": "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2021/04/chocolate-chip-loaf-cake-225x225.jpg",
+  "imageUrl": "https://sallysbakingaddiction.com/wp-content/uploads/2021/04/chocolate-chip-loaf-cake-225x225.jpg",
   "ingredients": [
     {
       "amount": "1 3/4",
@@ -565,7 +565,7 @@ exports[`scrapeRecipe > https://www.101cookbooks.com/coleslaw-recipe/ 1`] = `
 exports[`scrapeRecipe > https://www.allrecipes.com/recipe/20513/classic-waffles/ 1`] = `
 {
   "cookTime": 15,
-  "imageUrl": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F03%2F34761.jpg",
+  "imageUrl": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F09%2F20513-classic-waffles-mfs-023.jpg",
   "ingredients": [
     {
       "amount": "2",

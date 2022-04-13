@@ -1,4 +1,3 @@
-Update dependencies
 Demo recipes
 
 Recipe menu / pinned menu
