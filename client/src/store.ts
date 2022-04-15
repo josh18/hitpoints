@@ -6,9 +6,9 @@ import { PinnedRecipesEvent } from '@hitpoints/shared';
 import { connectionMiddleware } from './api/connection.middleware';
 import { connectedReducer } from './api/connection.state';
 import { eventMiddleware, PinnedRecipesViewUpdated } from './api/event.middleware';
+import { commonMiddleware } from './modules/common.middleware';
 import { errorReducer } from './modules/notification/error.state';
 import { activeRecipeReducer } from './modules/recipe/activeRecipe.state';
-import { pinnedRecipesMiddleware } from './modules/recipe/pinnedRecipes.middleware';
 import { localPinnedRecipesReducer } from './modules/recipe/pinnedRecipes.state';
 import { localShoppingListReducer } from './modules/shoppingList/shoppingList.state';
 
@@ -21,9 +21,9 @@ const rootReducer = combineReducers({
 });
 
 const middleware = [
+    commonMiddleware,
     connectionMiddleware,
     eventMiddleware,
-    pinnedRecipesMiddleware,
 ];
 
 export type StoreState = ReturnType<typeof rootReducer>;

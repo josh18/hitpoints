@@ -1,11 +1,11 @@
-import { Recipe } from '@hitpoints/shared';
+import { initialShoppingListState } from '@hitpoints/shared';
 
-import { keyVal } from '../../localDatabase/client.db';
-import {  getRecipes } from '../../localDatabase/recipe.db';
-import { Middleware } from '../../store';
+import { keyVal } from '../localDatabase/client.db';
+import {  getRecipes } from '../localDatabase/recipe.db';
+import { Middleware } from '../store';
 
-/** Loads pinned recipes */
-export const pinnedRecipesMiddleware: Middleware = ({ dispatch, getState }) => {
+export const commonMiddleware: Middleware = ({ dispatch, getState }) => {
+    /** Loads newly pinned recipes */
     async function loadRecipes() {
         const state = getState().pinnedRecipes;
 
@@ -29,6 +29,13 @@ export const pinnedRecipesMiddleware: Middleware = ({ dispatch, getState }) => {
         dispatch({
             type: 'PinnedRecipesViewUpdated',
             pinnedRecipes,
+        });
+    });
+
+    keyVal.get('shoppingList').then((shoppingList = initialShoppingListState()) => {
+        dispatch({
+            type: 'ShoppingListViewUpdated',
+            shoppingList,
         });
     });
 

@@ -128,19 +128,6 @@ export function ShoppingList() {
 
     useTitle('Shopping List');
 
-    useEffect(() => {
-        const load = async () => {
-            const data = await keyVal.get('shoppingList');
-
-            dispatch({
-                type: 'ShoppingListViewUpdated',
-                shoppingList: data ?? initialShoppingListState(),
-            });
-        };
-
-        load();
-    }, [dispatch]);
-
     // Add item if there are none
     useEffect(() => {
         if (!shoppingList) {
@@ -221,7 +208,7 @@ export function ShoppingList() {
             type: 'ShoppingListItemUpdated',
             item: {
                 id,
-                name,
+                name: name.trim(),
             },
         });
     };

@@ -31,7 +31,7 @@ export const theme: DefaultTheme = {
     black: rgba('#000', 0.88),
     white: rgba('#fff', 0.88),
     transition(...properties: string[]) {
-        const time = 250;
+        const time = 200;
         return properties.map(property => `${property} ${time}ms cubic-bezier(0.4, 0, 0.2, 1)`).join(', ');
     },
 };

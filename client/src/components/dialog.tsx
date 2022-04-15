@@ -24,10 +24,18 @@ const Overlay = styled.div`
 `;
 
 const Content = styled(Card)`
+    display: flex;
+    flex-direction: column;
     position: relative;
     z-index: 2;
     padding: 32px;
     margin: 32px;
+    max-height: calc(100% - 64px);
+
+    @media (max-width: 550px) {
+        padding: 16px;
+        margin: 16px;
+    }
 `;
 
 interface DialogProps {
@@ -53,9 +61,15 @@ export function Dialog({ active, children, onClose }: DialogProps) {
 }
 
 export const DialogActions = styled.div`
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     column-gap: 8px;
     justify-content: end;
     margin-top: 32px;
+`;
+
+export const DailogScrollContent = styled.div`
+    overflow: auto;
+    margin: -32px -32px 0 -32px;
+    padding: 32px;
+    border-bottom: 1px solid ${rgba('#000', 0.08)};
 `;

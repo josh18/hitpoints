@@ -57,10 +57,10 @@ const AddIconStyled = styled(AddIcon)<{ importing: boolean }>`
 `;
 
 export interface RecipeImportProps {
-    onCancel(): void;
+    onClose(): void;
 }
 
-export function RecipeImport({ onCancel }: RecipeImportProps) {
+export function RecipeImport({ onClose }: RecipeImportProps) {
     const connected = useSelector(state => state.connected);
     const unbsubscribe = useRef<Unsubscribe>();
     const navigate = useNavigate();
@@ -71,11 +71,7 @@ export function RecipeImport({ onCancel }: RecipeImportProps) {
     const [importing, setImporting] = useState(false);
 
     useEffect(() => {
-        return () => {
-            if (unbsubscribe.current) {
-                unbsubscribe.current();
-            }
-        };
+        return () => unbsubscribe.current?.();
     }, []);
 
     const importRecipe = () => {
@@ -117,7 +113,7 @@ export function RecipeImport({ onCancel }: RecipeImportProps) {
             </div>
 
             <DialogActions>
-                <Button onClick={onCancel}>Cancel</Button>
+                <Button onClick={onClose}>Cancel</Button>
                 <Button disabled={!value || importing} onClick={importRecipe}>
                     <GrowContainer importing={importing}>
                         <AddIconStyled importing={importing} />

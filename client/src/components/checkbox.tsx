@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef, useEffect, useState } from 'react';
+import { ChangeEvent, forwardRef } from 'react';
 import styled from 'styled-components';
 
 import { CheckboxCheckedIcon } from '../icons/checkboxCheckedIcon';
@@ -8,6 +8,10 @@ const Container = styled.div`
     display: flex;
     padding-top: 4px;
     padding-bottom: 4px;
+
+    & + & {
+        margin-top: 4px;
+    }
 `;
 
 const Label = styled.label`

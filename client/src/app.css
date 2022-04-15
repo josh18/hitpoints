@@ -36,6 +36,7 @@ button {
     background: none;
     border: 0;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 input,
@@ -95,12 +96,15 @@ img {
 }
 
 #app {
+    position: relative;
+    z-index: 1;
     display: flex;
     height: 100%;
 }
 
 #portal {
     position: absolute;
+    z-index: 2;
     top: 0;
     left: 0;
 }

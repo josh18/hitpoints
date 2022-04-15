@@ -7,13 +7,15 @@ import styled, { css } from 'styled-components';
 import { pinnedRecipesId, Recipe } from '@hitpoints/shared';
 
 import { Card } from '../../../components/card';
+import { Dialog } from '../../../components/dialog';
 import { Menu, MenuItem } from '../../../components/menu';
 import { TransitionHeight } from '../../../components/transitionHeight';
-import { AddIcon } from '../../../icons/addIcon';
 import { DeleteIcon } from '../../../icons/deleteIcon';
+import { ShoppingIcon } from '../../../icons/shoppingIcon';
 import { useDispatch } from '../../../util/useDispatch';
 import { useSelector } from '../../../util/useSelector';
 import { uuid } from '../../../util/uuid';
+import { AddToShoppingList } from '../addToShoppingList';
 import { RecipeImage } from '../recipeImage';
 
 const Container = styled(Card)`
@@ -124,6 +126,7 @@ export function PinnedRecipes() {
     const isFirstRender = useRef(true);
     const visible = useRef<PinnedVisible[]>([]);
     const [_visibleCount, setVisibleCount] = useState(0);
+    const [addToShoppingListActive, setAddToShoppingListActive] = useState(false);
 
     const recipes = pinnedRecipes.ids.reduce<PinnedVisible[]>((recipes, id) => {
         const recipe = pinnedRecipes.recipes[id];
@@ -214,8 +217,8 @@ export function PinnedRecipes() {
     const menuItems: MenuItem[] = [
         {
             name: 'Add to shopping list',
-            icon: <AddIcon />,
-            action: () => console.log('TODO'),
+            icon: <ShoppingIcon />,
+            action: () => setAddToShoppingListActive(true),
         },
     ];
 
@@ -235,6 +238,10 @@ export function PinnedRecipes() {
                     </Droppable>
                 </DragDropContext>
             ) : <NoPinned>No pinned recipes</NoPinned>}
+
+        <Dialog active={addToShoppingListActive} onClose={() => setAddToShoppingListActive(false)}>
+            <AddToShoppingList recipes={Object.values(pinnedRecipes.recipes)} onClose={() => setAddToShoppingListActive(false)} />
+        </Dialog>
         </Container>
     );
 }

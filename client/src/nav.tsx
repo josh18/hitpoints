@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import { Logo } from './components/logo';
 import { demoMode } from './config';
 import { SettingsIcon } from './icons/settingsIcon';
+import { ShoppingIcon } from './icons/shoppingIcon';
 import { createIcon } from './icons/svgIcon';
 import { useSelector } from './util/useSelector';
 
@@ -132,7 +133,6 @@ const Advanced = styled(Link)<{ $active: boolean }>`
 `;
 
 const RecipesIcon = createIcon('RecipesIcon', <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z" />);
-const ShoppingIcon = createIcon('ShoppingIcon', <path d="M22 9h-4.79l-4.38-6.56c-.19-.28-.51-.42-.83-.42s-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1zM12 4.8L14.8 9H9.2L12 4.8zM18.5 19l-12.99.01L3.31 11H20.7l-2.2 8zM12 13c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />);
 
 const useActive = (path: string) => {
     return !!useMatch({

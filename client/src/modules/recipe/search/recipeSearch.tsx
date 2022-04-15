@@ -227,7 +227,7 @@ export function RecipeSearch(): JSX.Element {
             <PinnedRecipes />
 
             <Dialog active={importActive} onClose={() => setImportActive(false)}>
-                <RecipeImport onCancel={() => setImportActive(false)} />
+                <RecipeImport onClose={() => setImportActive(false)} />
             </Dialog>
         </Container>
     );

@@ -1,7 +1,5 @@
 Demo recipes
-
-Recipe menu / pinned menu
-- add to shopping list
+js to apply focus
 
 -----
 
