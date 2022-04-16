@@ -9,10 +9,12 @@ const Button = styled.button<{ invert?: boolean; small?: boolean }>`
     border-radius: 50%;
     color: ${props => props.invert ? rgba('#fff', 0.8) : rgba('#000', 0.5)};
 
-    &:hover,
-    &:focus-visible {
-        color: ${props => props.invert ? rgba('#fff', 0.9) : rgba('#000', 0.8)};
-        background-color: ${props => props.invert ? rgba('#fff', 0.16) : rgba('#000', 0.12)};
+    @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            color: ${props => props.invert ? rgba('#fff', 0.9) : rgba('#000', 0.8)};
+            background-color: ${props => props.invert ? rgba('#fff', 0.16) : rgba('#000', 0.12)};
+        }
     }
 
     ${({ small }) => small && css`

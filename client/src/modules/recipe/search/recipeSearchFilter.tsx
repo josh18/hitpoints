@@ -51,8 +51,11 @@ const FilterItemContainer = styled.div`
         fill: ${rgba('#000', 0.5)};
     }
 
-    &:hover {
-        background-color: ${rgba('#000', 0.08)};
+    @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            background-color: ${rgba('#000', 0.08)};
+        }
     }
 
     & + & {

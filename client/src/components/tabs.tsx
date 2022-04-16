@@ -11,9 +11,11 @@ const TabList = styled.div`
 const Tab = styled.button`
     padding: 12px 24px;
 
-    &:hover,
-    &:focus-visible {
-        background-color: ${rgba('#000', 0.08)};
+    @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            background-color: ${rgba('#000', 0.08)};
+        }
     }
 `;
 

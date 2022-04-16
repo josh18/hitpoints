@@ -37,8 +37,10 @@ const MenuItem = styled.div`
         fill: ${rgba('#000', 0.5)};
     }
 
-    &:hover {
-        background-color: ${rgba('#000', 0.08)};
+    @media (hover: hover) {
+        &:hover {
+            background-color: ${rgba('#000', 0.08)};
+        }
     }
 `;
 

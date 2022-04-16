@@ -57,13 +57,15 @@ const CollapseButton = styled.button<{ collapsed: boolean }>`
     grid-area: CollapseButton;
     flex: 0;
     border-radius: 50%;
-    padding: 4px;
-    margin: -4px;
+    padding: 8px;
+    margin: -8px;
     color: ${rgba('#000', 0.4)};
 
-    &:hover,
-    &:focus-visible {
-        background-color: ${rgba('#000', 0.08)};
+    @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            background-color: ${rgba('#000', 0.08)};
+        }
     }
 
     svg {
@@ -111,10 +113,9 @@ function Item({ name, value, commit, recipes, showRecipes }: ItemProps) {
         return <Row>{checkbox}</Row>;
     }
 
-    let recipeHint;
     if (collapseEnabled) {
         return (
-            <>
+            <div>
                 <Row>
                     {checkbox}
                     <CollapseButton onClick={() => setCollapsed(!collapsed)} collapsed={collapsed}>
@@ -124,7 +125,7 @@ function Item({ name, value, commit, recipes, showRecipes }: ItemProps) {
                 <TransitionHeight visible={!collapsed}>
                     <RecipeNamesText>{recipeText}</RecipeNamesText>
                 </TransitionHeight>
-            </>
+            </div>
         );
     }
 

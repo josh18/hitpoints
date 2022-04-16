@@ -13,9 +13,11 @@ const style = css<{ active?: boolean; secondary?: boolean }>`
     box-shadow: ${props => props.theme.shadow};
     border-radius: 2px;
 
-    &:hover,
-    &:focus-visible {
-        background-color: ${({ secondary, theme }) => secondary ? theme.darkActive : theme.primaryActive};
+    @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            background-color: ${({ secondary, theme }) => secondary ? theme.darkActive : theme.primaryActive};
+        }
     }
 
     ${({ active }) => active && css<{ secondary?: boolean }>`
@@ -63,8 +65,10 @@ export const TextButton = styled.button`
     font-weight: 600;
     border-radius: 2px;
 
-    &:hover,
-    &:focus-visible {
-        background-color: ${rgba('#000', 0.08)};
+    @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            background-color: ${rgba('#000', 0.08)};
+        }
     }
 `;

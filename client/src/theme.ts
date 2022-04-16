@@ -30,7 +30,7 @@ export const theme: DefaultTheme = {
     highShadow: `0 8px 10px 1px ${rgba('#000', 0.20)}, 0 4px 16px 0 ${rgba('#000', 0.15)}, 0 4px 8px -2px ${rgba('#000', 0.15)}`,
     black: rgba('#000', 0.88),
     white: rgba('#fff', 0.88),
-    transition(...properties: string[]) {
+    transition(...properties) {
         const time = 200;
         return properties.map(property => `${property} ${time}ms cubic-bezier(0.4, 0, 0.2, 1)`).join(', ');
     },

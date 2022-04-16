@@ -29,8 +29,10 @@ const Overlay = styled.div<{ active?: boolean }>`
     z-index: 10;
     cursor: pointer;
 
-    &:hover {
-        opacity: 1;
+    @media (hover: hover) {
+        &:hover {
+            opacity: 1;
+        }
     }
 
     ${props => props.active && css`

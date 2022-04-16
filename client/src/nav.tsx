@@ -55,9 +55,11 @@ const NavLink = styled(Link)<{ $active: boolean }>`
         border-color: ${props => props.theme.primary};
     `}
 
-    &:hover,
-    &:focus-visible {
-        background-color: ${props => props.theme.darkActive};
+    @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            background-color: ${props => props.theme.darkActive};
+        }
     }
 
     svg {

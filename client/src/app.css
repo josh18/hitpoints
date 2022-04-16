@@ -87,6 +87,7 @@ p + p {
 a {
     color: #38a3f1;
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 img {

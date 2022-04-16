@@ -1,5 +1,4 @@
 Demo recipes
-js to apply focus
 
 -----
 
@@ -24,3 +23,4 @@ ARIA
 - tabindex when editor panel is hidden (visibility hidden?)
 - Tab arrow keys / tabindex - https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html
 - at suggest
+- checkbox focus
