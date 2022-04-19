@@ -1,7 +1,4 @@
 Redesign recipe time
-Responsive
-- View tags / action buttons
-- Editor
 
 Link ingredients when importing
 Demo recipes

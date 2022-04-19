@@ -193,7 +193,6 @@ export function RecipeFocus({ active, recipe, onClose }: RecipeFocusProps) {
         const completedOn = !!recipe.completedOn && new Date(recipe.completedOn).getTime();
 
         if (!completedOn || Date.now() - completedOn > twelveHours) {
-            console.log('startTimer');
             const timeout = setTimeout(() => {
                 updateRecipe({
                     type: 'RecipeCompleted',
@@ -201,10 +200,7 @@ export function RecipeFocus({ active, recipe, onClose }: RecipeFocusProps) {
                 });
             }, setCompletedDelay);
 
-            return () => {
-                console.log('cleanup');
-                clearTimeout(timeout);
-            };
+            return () => clearTimeout(timeout);
         }
     }, [active, recipe.id, recipe.completedOn, updateRecipe]);
 

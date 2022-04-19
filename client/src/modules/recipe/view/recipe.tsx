@@ -7,9 +7,11 @@ import { Dialog } from '../../../components/dialog';
 import { Error404 } from '../../../components/error404';
 import { ImageUpload } from '../../../components/imageUpload';
 import { TitleDivider } from '../../../components/titleDivider';
+import { TransitionHeight } from '../../../components/transitionHeight';
 import { DoneIcon } from '../../../icons/doneIcon';
 import { EditIcon } from '../../../icons/editIcon';
 import { FocusIcon } from '../../../icons/focusIcon';
+import { useMaxWidth } from '../../../util/useMaxWidth';
 import { useTitle } from '../../../util/useTitle';
 import { useTransitionResize } from '../../../util/useTransitionResize';
 import { useActiveRecipe } from '../hooks/useActiveRecipe';
@@ -95,7 +97,7 @@ const DoneIconStyled = styled(DoneIcon)<{ editing: boolean }>`
     `}
 `;
 
-const DetailsContainer = styled.div<{ isPlaceholder?: boolean }>`
+const DetailsContainer = styled.div`
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -103,9 +105,9 @@ const DetailsContainer = styled.div<{ isPlaceholder?: boolean }>`
     margin-top: 16px;
     transition: ${props => props.theme.transition('height')};
 
-    ${({ isPlaceholder }) => isPlaceholder && css`
-        margin-top: 80px;
-    `}
+    @media (max-width: 850px) {
+        display: block;
+    }
 
     @media print {
         display: block;
@@ -123,11 +125,13 @@ const DetailsCard = styled(Card)<{ editing?: boolean }>`
     padding: 48px 32px;
     transition: ${props => props.theme.transition('margin-right')};
 
-    ${({ editing }) => editing && css`
-        margin-right: 50%;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    `}
+    @media (min-width: 851px) {
+        ${({ editing }) => editing && css`
+            margin-right: 50%;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        `}
+    }
 
     @media (max-width: 850px) {
         padding: 32px 24px;
@@ -145,13 +149,14 @@ const EditorContainer = styled.div<{ editing: boolean }>`
     border-bottom-right-radius: 2px;
     box-shadow: inset 2px 0px 4px rgb(0 0 0 / 5%);
 
-    ${({ editing }) => !editing && css`
-        position: absolute;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        top: 0;
-    `}
+    /* @media (max-width: 850px) {
+        height: 0;
+        transition: ${props => props.theme.transition('height')};
+
+        ${({ editing }) => editing && css`
+            height: auto;
+        `}
+    } */
 
     @media print {
         display: none;
@@ -165,10 +170,13 @@ export function Recipe() {
     const [focusActive, setFocusActive] = useState(false);
     const detailsContainerRef = useRef<HTMLDivElement>(null);
     const detailsCardRef = useRef<HTMLDivElement>(null);
+    const editorContainerRef = useRef<HTMLDivElement>(null);
     const editButtonRef = useRef<HTMLButtonElement>(null);
 
     const resizeContainer = useTransitionResize(detailsContainerRef, [[detailsCardRef, ['margin-right']]]);
+    // const resizeContainer = useTransitionResize(detailsContainerRef, [[editorContainerRef, ['height']]]);
     const resizeEditButton = useTransitionResize(editButtonRef);
+    const smallEditor = useMaxWidth(850);
 
     useTitle(recipe?.name);
 
@@ -181,7 +189,10 @@ export function Recipe() {
     }
 
     const toggleEditing = () => {
-        resizeContainer();
+        if (!smallEditor) {
+            resizeContainer();
+        }
+
         resizeEditButton();
 
         setEditing(!editing);
@@ -218,6 +229,20 @@ export function Recipe() {
         image = <ImageUpload onUpload={onUpload}>{image}</ImageUpload>;
     }
 
+    let editor = (
+        <EditorContainer ref={editorContainerRef} editing={editing}>
+            <RecipeEditorPanel recipe={recipe} />
+        </EditorContainer>
+    );
+
+    if (smallEditor) {
+        editor = (
+            <TransitionHeight visible={editing}>
+                {editor}
+            </TransitionHeight>
+        );
+    }
+
     return (
         <Container>
             <Top>
@@ -239,6 +264,8 @@ export function Recipe() {
             </Middle>
 
             <DetailsContainer ref={detailsContainerRef}>
+                {editor}
+
                 <DetailsCard ref={detailsCardRef} editing={editing}>
                     <TitleDivider title="Ingredients" first />
 
@@ -248,10 +275,6 @@ export function Recipe() {
 
                     <RecipeInstructions ingredients={recipe.ingredients} instructions={recipe.instructions} />
                 </DetailsCard>
-
-                <EditorContainer editing={editing}>
-                    <RecipeEditorPanel recipe={recipe} />
-                </EditorContainer>
             </DetailsContainer>
 
             <RecipeFocus active={focusActive} recipe={recipe} onClose={() => setFocusActive(false)} />
