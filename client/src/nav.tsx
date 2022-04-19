@@ -44,7 +44,7 @@ const NavLink = styled(Link)<{ $active: boolean }>`
     display: flex;
     align-items: center;
     padding: 12px 32px 12px 28px;
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.whiteText};
     font-size: 18px;
     border: 0 solid transparent;
     border-left-width: 2px;
@@ -92,7 +92,7 @@ const Advanced = styled(Link)<{ $active: boolean }>`
     margin-top: auto;
     margin-bottom: 32px;
     align-self: center;
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.whiteText};
     padding: 8px 12px;
     border-radius: 20px;
     border: 1px solid transparent;

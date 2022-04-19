@@ -7,6 +7,7 @@ interface ValidationState {
     tags: Set<string>;
     deleted: boolean;
     pinned: boolean;
+    completedOn?: number;
 }
 
 export const recipeValidator: EventValidator<RecipeEvent, ValidationState> = {
@@ -125,6 +126,17 @@ export const recipeValidator: EventValidator<RecipeEvent, ValidationState> = {
 
                 state.deleted = false;
                 break;
+            case 'RecipeCompleted': {
+                const twelveHours = 1000 * 60 * 60 * 12;
+                const eventTime = new Date(event.timestamp).getTime();
+
+                if (state.completedOn && eventTime - state.completedOn < twelveHours) {
+                    throw new Error(`Recipe has already been completed in the last 12 hours.`);
+                }
+
+                state.completedOn = eventTime;
+                break;
+            }
         }
 
         return state;

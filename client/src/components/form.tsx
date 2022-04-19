@@ -9,7 +9,7 @@ const TransitionHeightStyled = styled(TransitionHeight)`
 export const Error = styled.div`
     padding: 4px 8px;
     margin-top: 8px;
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.whiteText};
     border-radius: 2px;
     background-color: ${props => props.theme.error};
 `;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Element } from 'slate';
 
-import { isInstructionText, Recipe, RecipeInstruction } from '@hitpoints/shared';
+import { isInstructionContent, Recipe, RecipeInstruction } from '@hitpoints/shared';
 
 import { AtItems } from '../../../components/textEditor/atPlugin';
 import { ParagraphElement, TextEditor } from '../../../components/textEditor/textEditor';
@@ -15,7 +15,7 @@ function instructionsToValue(instructions: RecipeInstruction[] = []): Element[] 
 
     return instructions.map(instruction => {
         let children: ParagraphElement['children'] = instruction.map(content => {
-            if (isInstructionText(content)) {
+            if (isInstructionContent(content)) {
                 return content;
             }
 

@@ -34,7 +34,7 @@ export const RecipeIngredient = z.object({
     measurement: z.enum(recipeMeasurements).optional(),
 });
 
-export const RecipeInstructionText = z.object({
+export const RecipeInstructionContent = z.object({
     text: z.string(),
     bold: z.boolean().optional(),
     italic: z.boolean().optional(),
@@ -44,13 +44,17 @@ export const RecipeInstructionAt = z.object({
     at: z.string().uuid(),
 });
 
-export const RecipeInstruction = z.union([RecipeInstructionText, RecipeInstructionAt]).array();
+export const RecipeInstruction = z.union([RecipeInstructionContent, RecipeInstructionAt]).array();
 
 export type RecipeIngredient = z.infer<typeof RecipeIngredient>;
-export type RecipeInstructionText = z.infer<typeof RecipeInstructionText>;
+export type RecipeInstructionContent = z.infer<typeof RecipeInstructionContent>;
 export type RecipeInstructionAt = z.infer<typeof RecipeInstructionAt>;
 export type RecipeInstruction = z.infer<typeof RecipeInstruction>;
 
-export function isInstructionText(content: RecipeInstructionText | RecipeInstructionAt): content is RecipeInstructionText {
-    return (content as RecipeInstructionText).text !== undefined;
+export function isInstructionContent(content: RecipeInstructionContent | RecipeInstructionAt): content is RecipeInstructionContent {
+    return (content as RecipeInstructionContent).text !== undefined;
+}
+
+export function isInstructionAt(content: RecipeInstructionContent | RecipeInstructionAt): content is RecipeInstructionAt {
+    return (content as RecipeInstructionContent).text === undefined;
 }

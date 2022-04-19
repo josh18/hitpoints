@@ -7,7 +7,7 @@ const style = css<{ active?: boolean; secondary?: boolean }>`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.whiteText};
     line-height: 1.5;
     background-color: ${({ secondary, theme }) => secondary ? theme.dark : theme.primary};
     box-shadow: ${props => props.theme.shadow};

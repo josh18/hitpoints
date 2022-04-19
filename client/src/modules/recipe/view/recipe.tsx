@@ -3,11 +3,13 @@ import styled, { css } from 'styled-components';
 
 import { Button } from '../../../components/button';
 import { Card } from '../../../components/card';
+import { Dialog } from '../../../components/dialog';
 import { Error404 } from '../../../components/error404';
 import { ImageUpload } from '../../../components/imageUpload';
 import { TitleDivider } from '../../../components/titleDivider';
 import { DoneIcon } from '../../../icons/doneIcon';
 import { EditIcon } from '../../../icons/editIcon';
+import { FocusIcon } from '../../../icons/focusIcon';
 import { useTitle } from '../../../util/useTitle';
 import { useTransitionResize } from '../../../util/useTransitionResize';
 import { useActiveRecipe } from '../hooks/useActiveRecipe';
@@ -15,6 +17,7 @@ import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
 import { RecipeImage } from '../recipeImage';
 import { RecipeDeletedWarning } from './recipeDeletedWarning';
 import { RecipeEditorPanel } from './recipeEditorPanel';
+import { RecipeFocus } from './recipeFocus';
 import { RecipeIngredients } from './recipeIngredients';
 import { RecipeInstructions } from './recipeInstructions';
 import { RecipeMenu } from './recipeMenu';
@@ -43,6 +46,7 @@ const Middle = styled.div`
     display: flex;
     align-items: flex-end;
     margin-top: 32px;
+    column-gap: 8px;
 `;
 
 const RecipeImageCard = styled(Card)`
@@ -55,6 +59,7 @@ const RecipeImageCard = styled(Card)`
 
 const Actions = styled.div`
     display: flex;
+    column-gap: 8px;
     margin-left: auto;
 
     @media print {
@@ -64,7 +69,6 @@ const Actions = styled.div`
 
 const EditButton = styled(Button)`
     transition: ${props => props.theme.transition('width')};
-    margin-left: 8px;
 `;
 
 const EditIconStyled = styled(EditIcon)<{ editing: boolean }>`
@@ -158,6 +162,7 @@ export function Recipe() {
     const updateRecipe = useUpdateRecipe();
     const { recipe, recipeNotFound } = useActiveRecipe();
     const [editing, setEditing] = useState(false);
+    const [focusActive, setFocusActive] = useState(false);
     const detailsContainerRef = useRef<HTMLDivElement>(null);
     const detailsCardRef = useRef<HTMLDivElement>(null);
     const editButtonRef = useRef<HTMLButtonElement>(null);
@@ -195,6 +200,9 @@ export function Recipe() {
     } else {
         recipeActions = (
             <>
+                <Button onClick={() => setFocusActive(true)}>
+                    <FocusIcon /> Focus
+                </Button>
                 <EditButton ref={editButtonRef} onClick={toggleEditing}>
                     <EditIconStyled editing={editing} />
                     <DoneIconStyled editing={editing} />
@@ -245,6 +253,8 @@ export function Recipe() {
                     <RecipeEditorPanel recipe={recipe} />
                 </EditorContainer>
             </DetailsContainer>
+
+            <RecipeFocus active={focusActive} recipe={recipe} onClose={() => setFocusActive(false)} />
         </Container>
     );
 }

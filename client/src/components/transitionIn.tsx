@@ -37,6 +37,7 @@ export function TransitionIn({ children, visible, transitionStart = { opacity: 0
 
     const onTransitionEnd = (event: TransitionEvent) => {
         if (event.target === element.current && !visible) {
+            childRef.current = null;
             setMounted(false);
         }
     };

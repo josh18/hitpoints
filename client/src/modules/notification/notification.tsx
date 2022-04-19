@@ -45,7 +45,7 @@ const DefaultNotification = styled.div`
     display: flex;
     align-items: center;
     padding: 16px 32px;
-    background-color: #fcfdfe;
+    background-color: ${props => props.theme.whiteBackground};
     border-radius: 2px;
     min-width: 300px;
     max-width: 600px;
@@ -62,7 +62,7 @@ const DefaultNotification = styled.div`
 
 const ErrorNotification = styled(DefaultNotification) <{ visible?: boolean; }>`
     padding: 16px 32px;
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.whiteText};
     background-color: ${props => props.theme.error};
 `;
 

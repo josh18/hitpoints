@@ -13,10 +13,6 @@ import { AddToShoppingList } from '../addToShoppingList';
 import { usePinnedRecipe } from '../hooks/usePinRecipe';
 import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
 
-const Container = styled.div`
-    margin-left: 8px;
-`;
-
 const BookmarkFilled = styled(BookmarkIcon)`
     path:first-child {
         fill: ${rgba('#000', 0.2)};
@@ -55,12 +51,12 @@ export function RecipeMenu({ recipe }: RecipeMenuProps) {
     ];
 
     return (
-        <Container>
+        <>
             <Menu items={items} />
 
             <Dialog active={addToShoppingListActive} onClose={() => setAddToShoppingListActive(false)}>
                 <AddToShoppingList recipes={[recipe]} onClose={() => setAddToShoppingListActive(false)} />
             </Dialog>
-        </Container>
+        </>
     );
 }

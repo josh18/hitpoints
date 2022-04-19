@@ -1,6 +1,6 @@
 import { rgba } from 'polished';
 import { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { RecipeTag, recipeTags } from '@hitpoints/shared';
 
@@ -29,16 +29,11 @@ const Panel = styled(Card)`
 
 const InputContainer = styled.div`
     padding: 16px;
+    margin-top: -1px;
     border-top: 1px solid ${rgba('#000', 0.08)};
 `;
 
-interface FilterItemProps {
-    tag: RecipeTag;
-    selected: boolean;
-    toggle(): void;
-}
-
-const FilterItemContainer = styled.div`
+const FilterItemContainer = styled.div<{ active: boolean }>`
     position: relative;
     display: flex;
     align-items: center;
@@ -52,33 +47,32 @@ const FilterItemContainer = styled.div`
     }
 
     @media (hover: hover) {
-        &:hover,
-        &:focus-visible {
-            background-color: ${rgba('#000', 0.08)};
+        &:hover {
+            background-color: ${rgba('#000', 0.16)};
         }
     }
 
-    & + & {
-        margin-top: 1px;
+    ${props => props.active && css`
+        background-color: ${rgba('#000', 0.08)};
+    `}
 
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: -1px;
-            height: 1px;
-            left: 0;
-            right: 0;
-            background-color: ${rgba('#000', 0.08)};
-        }
+    & + & {
+        margin-top: -1px;
+        border-top: 1px solid ${rgba('#000', 0.08)};
     }
 `;
 
-function FilterItem({ tag, selected, toggle }: FilterItemProps) {
-    const icon = selected ? <CheckIcon /> : null;
+interface FilterItemProps {
+    tag: RecipeTag;
+    active: boolean;
+    toggle(): void;
+}
+
+function FilterItem({ tag, active, toggle }: FilterItemProps) {
+    const icon = active ? <CheckIcon /> : null;
 
     return (
-        <FilterItemContainer onClick={toggle}>
+        <FilterItemContainer active={active} onClick={toggle}>
             {tag} {icon}
         </FilterItemContainer>
     );
@@ -141,7 +135,7 @@ export function RecipeSearchFilter({ tagFilters, hasFilter, notFilter, toggleTag
                     <FilterItem
                         key={tag}
                         tag={tag}
-                        selected={tagFilters.includes(tag)}
+                        active={tagFilters.includes(tag)}
                         toggle={() => toggleTagFilter(tag)}
                     />,
                 )}

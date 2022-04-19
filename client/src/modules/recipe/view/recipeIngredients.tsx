@@ -1,16 +1,12 @@
 import { rgba } from 'polished';
 import { Fragment } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { measurementToString, Recipe } from '@hitpoints/shared';
 
-interface RecipeIngredientsProps {
-    ingredients: Recipe['ingredients'];
-}
-
 const Ingredients = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     column-gap: 8px;
     row-gap: 8px;
     max-width: 800px;
@@ -29,15 +25,30 @@ const Heading = styled.div`
     }
 `;
 
-const Name = styled.div`
+const highlightStyle = css<{ highlight: boolean; }>`
+    ${props => props.highlight && css`
+        color: ${props => props.theme.primaryText};
+    `}
+`;
+
+const Name = styled.div<{ highlight: boolean; }>`
     font-weight: 600;
+
+    ${highlightStyle}
 `;
 
-const Amount = styled.div`
+const Amount = styled.div<{ highlight: boolean; }>`
     text-align: right;
+
+    ${highlightStyle}
 `;
 
-export function RecipeIngredients({ ingredients }: RecipeIngredientsProps) {
+interface RecipeIngredientsProps {
+    ingredients: Recipe['ingredients'];
+    focused?: string[];
+}
+
+export function RecipeIngredients({ ingredients, focused }: RecipeIngredientsProps) {
     return (
         <Ingredients>
             {ingredients.map(ingredient => {
@@ -45,15 +56,14 @@ export function RecipeIngredients({ ingredients }: RecipeIngredientsProps) {
                     return <Heading key={ingredient.id}>{ingredient.name || 'Untitled'}</Heading>;
                 }
 
-                let measurement = '';
-                if (ingredient.measurement) {
-                    measurement = measurementToString(ingredient.measurement, ingredient.amount);
-                }
+                const measurement = ingredient.measurement && measurementToString(ingredient.measurement, ingredient.amount);
+
+                const highlight = !!focused && focused.includes(ingredient.id);
 
                 return (
                     <Fragment key={ingredient.id}>
-                        <Amount>{ingredient.amount} {measurement}</Amount>
-                        <Name>{ingredient.name}</Name>
+                        <Amount highlight={highlight}>{ingredient.amount} {measurement}</Amount>
+                        <Name highlight={highlight}>{ingredient.name}</Name>
                     </Fragment>
                 );
             })}

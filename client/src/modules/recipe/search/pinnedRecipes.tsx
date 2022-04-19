@@ -37,7 +37,7 @@ const Item = styled(Link)`
     color: inherit;
     padding: 8px;
     border-radius: 2px;
-    background-color: #fcfdfe;
+    background-color: ${props => props.theme.whiteBackground}; // Background for when beinbg dragged
 
     &::before,
     &::after {
@@ -102,7 +102,7 @@ const RemoveIndicator = styled.div<{ active?: boolean }>`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.whiteText};
     background-color: ${props => rgba(props.theme.error, 0.8)};
     border-radius: 2px;
     opacity: 0;

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const Card = styled.div<{ floating?: boolean }>`
     border-radius: 2px;
-    background-color: #fcfdfe;
+    background-color: ${props => props.theme.whiteBackground};
     box-shadow: ${({ floating, theme }) => floating ? theme.highShadow : theme.shadow};
     overflow: hidden;
 

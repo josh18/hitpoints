@@ -2,7 +2,7 @@ import he from 'he';
 import { DomUtils, parseDocument } from 'htmlparser2';
 import { v4 as uuid } from 'uuid';
 
-import { RecipeIngredient, RecipeInstructionText, stringToIngredient } from '@hitpoints/shared';
+import { RecipeIngredient, RecipeInstructionContent, stringToIngredient } from '@hitpoints/shared';
 
 import { ImportedRecipe, ScrapeRecipeLogger } from './scrapeRecipe';
 
@@ -55,7 +55,7 @@ export function mapJSONLD(recipeSchema: RecipeSchema, log: ScrapeRecipeLogger): 
     };
 }
 
-function getInstructions({ recipeInstructions = [] }: RecipeSchema, log: ScrapeRecipeLogger): RecipeInstructionText[] {
+function getInstructions({ recipeInstructions = [] }: RecipeSchema, log: ScrapeRecipeLogger): RecipeInstructionContent[] {
     if (typeof recipeInstructions === 'string') {
         const startingTag = recipeInstructions.trim().substring(0, 3) + '>'.toLowerCase();
         if (startingTag !== '<ol>' && startingTag !== '<ul>') {
@@ -76,7 +76,7 @@ function getInstructions({ recipeInstructions = [] }: RecipeSchema, log: ScrapeR
             });
     }
 
-    return recipeInstructions.reduce<RecipeInstructionText[]>((instructions, instruction) => {
+    return recipeInstructions.reduce<RecipeInstructionContent[]>((instructions, instruction) => {
         if (typeof instruction === 'string') {
             instructions.push({ text: instruction });
         } else if ('text' in instruction) {

@@ -119,7 +119,6 @@ const ListActions = styled.div`
 `;
 
 export function ShoppingList() {
-    const dispatch = useDispatch();
     const updateShoppingList = useUpdateShoppingList();
     const newItem = useRef<string | undefined>();
     const removedItem = useRef<string | undefined>();

@@ -1,22 +1,20 @@
+Redesign recipe time
+Responsive
+- View tags / action buttons
+- Editor
+
+Link ingredients when importing
 Demo recipes
 
 -----
 
-Potential Features
+Improvements
 - Pixel nav icons
-- Focus mode <-----?
-    - Finished button (sets cooked count)
 - Instructions header
 - Portion adjustment
 - Restore to previous version
 - View & Restore deleted recipes
 - Export recipe(s)
-- Link ingredients when importing
-- Editor on small screens
-
-Improvements
-- Redesign recipe time <-----
-- Nav icons
 
 ARIA
 - menu arrow keys

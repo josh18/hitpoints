@@ -1,9 +1,11 @@
 import { rgba } from 'polished';
 import styled from 'styled-components';
 
-import { isInstructionText, Recipe, RecipeInstructionText } from '@hitpoints/shared';
+import { isInstructionContent, Recipe } from '@hitpoints/shared';
 
-const Instructions = styled.ol`
+import { InstructionText } from './instructionText';
+
+const List = styled.ol`
     max-width: 800px;
     align-self: center;
     list-style: none;
@@ -45,19 +47,6 @@ const Item = styled.li`
     }
 `;
 
-function formatText(content: RecipeInstructionText) {
-    let text: string | JSX.Element = content.text;
-    if (content.italic) {
-        text = <em>{text}</em>;
-    }
-
-    if (content.bold) {
-        text = <strong>{text}</strong>;
-    }
-
-    return text;
-}
-
 interface RecipeInstructionsProps {
     ingredients: Recipe['ingredients'];
     instructions: Recipe['instructions'];
@@ -65,15 +54,15 @@ interface RecipeInstructionsProps {
 
 export function RecipeInstructions({ ingredients, instructions = [] }: RecipeInstructionsProps) {
     return (
-        <Instructions>
+        <List>
             {instructions
-                .filter(instruction => instruction.length && (!isInstructionText(instruction[0]) || instruction[0].text))
+                .filter(instruction => instruction.length && (!isInstructionContent(instruction[0]) || instruction[0].text))
                 .map((instruction, i) => {
                     return (
                         <Item key={i}>
-                            {instruction.map(content => {
-                                if (isInstructionText(content)) {
-                                    return formatText(content);
+                            {instruction.map((content, j) => {
+                                if (isInstructionContent(content)) {
+                                    return <InstructionText key={j} content={content} />;
                                 }
 
                                 return ingredients.find(({ id }) => id === content.at)?.name ?? 'removed';
@@ -82,6 +71,6 @@ export function RecipeInstructions({ ingredients, instructions = [] }: RecipeIns
                     );
                 })
             }
-        </Instructions>
+        </List>
     );
 }
