@@ -1,6 +1,5 @@
 Redesign recipe time
 
-Link ingredients when importing
 Demo recipes
 
 -----

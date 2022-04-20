@@ -2,7 +2,7 @@ import he from 'he';
 import { DomUtils, parseDocument } from 'htmlparser2';
 import { v4 as uuid } from 'uuid';
 
-import { RecipeIngredient, RecipeInstructionContent, stringToIngredient } from '@hitpoints/shared';
+import { isInstructionAt, RecipeIngredient, RecipeInstruction, RecipeInstructionContent, stringToIngredient } from '@hitpoints/shared';
 
 import { ImportedRecipe, ScrapeRecipeLogger } from './scrapeRecipe';
 
@@ -37,13 +37,15 @@ export function mapJSONLD(recipeSchema: RecipeSchema, log: ScrapeRecipeLogger): 
         };
     });
 
-    const instructions = getInstructions(recipeSchema, log)
+    const instructionContent: RecipeInstructionContent[] = getInstructions(recipeSchema, log)
         .map(({ text, ...options }) => {
-            return [{
+            return {
                 text: cleanString(text),
                 ...options,
-            }];
+            };
         });
+
+    const instructions = linkIngredients(instructionContent, ingredients);
 
     return {
         name: recipeSchema.name ?? '',
@@ -159,4 +161,76 @@ function cleanString(value: string): string {
     value = value.trim();
 
     return value;
+}
+
+function linkIngredients(instructionContent: RecipeInstructionContent[], ingredients: RecipeIngredient[]): RecipeInstruction[] {
+    // Clone so we can modify it
+    ingredients = [...ingredients];
+
+    return instructionContent.map(content => {
+        // Starts as a single text object
+        const initial = [content];
+
+        const matchedIngredients = new Set<string>();
+
+        const instruction = ingredients.reduce<RecipeInstruction>((instruction, ingredient) => {
+            const name = ingredient.name;
+
+            if (!name) {
+                return instruction;
+            }
+
+            const next: RecipeInstruction = [];
+
+            instruction.forEach(content => {
+                // Skip at links that have already been inserted
+                if (isInstructionAt(content)) {
+                    next.push(content);
+                    return;
+                }
+
+                let text = content.text;
+                let index = text.toLowerCase().indexOf(name);
+                while (index !== -1) {
+                    const before = text.substring(0, index);
+
+                    if (before.length) {
+                        next.push({
+                            ...content,
+                            text: before,
+                        });
+                    }
+
+                    matchedIngredients.add(name);
+                    next.push({
+                        at: ingredient.id,
+                    });
+
+                    text = text.substring(index + name.length);
+                    index = text.toLowerCase().indexOf(name);
+                }
+
+                if (text.length) {
+                    next.push({
+                        ...content,
+                        text,
+                    });
+                }
+            });
+
+            return next;
+        }, initial);
+
+        // Remove ingredients that were matched and are listed twice
+        matchedIngredients.forEach(name => {
+            const matching = ingredients.filter(ingredient => ingredient.name === name);
+
+            if (matching.length > 1) {
+                const index = ingredients.findIndex(ingredient => ingredient.name === name);
+                ingredients.splice(index, 1);
+            }
+        });
+
+        return instruction;
+    });
 }

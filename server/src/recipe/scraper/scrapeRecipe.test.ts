@@ -22,6 +22,7 @@ describe('scrapeRecipe', () => {
         'https://www.bbc.co.uk/food/recipes/sausage_and_gnocchi_bake_80924',
         'https://www.bbcgoodfood.com/recipes/doughnut-muffins',
         'https://www.jamieoliver.com/recipes/chicken-recipes/crispy-garlicky-chicken/',
+        'https://www.thekiwicountrygirl.com/chocolate-self-saucing-pudding/',
     ];
     const recipeData: {
         [url: string]: any;

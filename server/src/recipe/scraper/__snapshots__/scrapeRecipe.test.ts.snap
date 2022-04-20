@@ -114,17 +114,47 @@ exports[`scrapeRecipe > https://ohmyveggies.com/veggie-packed-spanish-rice/ 1`] 
   "instructions": [
     [
       {
-        "text": "Add the olive oil to a large skillet set over medium heat. When the oil is hot, add in the onion, pepper and carrot. Cook for about 2 minutes, until the vegetables start to soften. Stir in the garlic and cook for 30 seconds, until fragrant. Add the rice. Cook for about 6 to 8 minutes, stirring frequently (and then almost constantly toward the end of the 6 to 8 minutes), until the rice is lightly golden brown.",
+        "text": "Add the ",
+      },
+      {
+        "at": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      },
+      {
+        "text": " to a large skillet set over medium heat. When the oil is hot, add in the onion, pepper and carrot. Cook for about 2 minutes, until the vegetables start to soften. Stir in the garlic and cook for 30 seconds, until fragrant. Add the rice. Cook for about 6 to 8 minutes, stirring frequently (and then almost constantly toward the end of the 6 to 8 minutes), until the rice is lightly golden brown.",
       },
     ],
     [
       {
-        "text": "Add in the tomato paste and stir to combine, then stir in the tomatoes, the broth, corn, peas, cumin, chili powder and salt. Increase the heat and bring to a boil. Cover, reduce the heat and let gently simmer until the liquid is absorbed and the rice is tender, about 15 to 20 minutes. Turn off the heat and let the rice stand covered for 5 to 10 minutes untouched.",
+        "text": "Add in the ",
+      },
+      {
+        "at": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      },
+      {
+        "text": " and stir to combine, then stir in the tomatoes, the broth, corn, peas, cumin, ",
+      },
+      {
+        "at": "f56c4f9e-2686-56f6-948a-ce4adc1bc4eb",
+      },
+      {
+        "text": " and ",
+      },
+      {
+        "at": "4eb4f9a7-dce0-51a9-b86b-6ba196a01557",
+      },
+      {
+        "text": ". Increase the heat and bring to a boil. Cover, reduce the heat and let gently simmer until the liquid is absorbed and the rice is tender, about 15 to 20 minutes. Turn off the heat and let the rice stand covered for 5 to 10 minutes untouched.",
       },
     ],
     [
       {
-        "text": "Fluff the rice with a fork. Taste and season with additional salt if needed, then garnish with the cilantro.",
+        "text": "Fluff the rice with a fork. Taste and season with additional ",
+      },
+      {
+        "at": "4eb4f9a7-dce0-51a9-b86b-6ba196a01557",
+      },
+      {
+        "text": " if needed, then garnish with the cilantro.",
       },
     ],
   ],
@@ -231,7 +261,19 @@ exports[`scrapeRecipe > https://sallysbakingaddiction.com/chocolate-chip-loaf-ca
     ],
     [
       {
-        "text": "Whisk the flour, baking powder, and salt together. Set aside.",
+        "text": "Whisk the flour, ",
+      },
+      {
+        "at": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      },
+      {
+        "text": ", and ",
+      },
+      {
+        "at": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      },
+      {
+        "text": " together. Set aside.",
       },
     ],
     [
@@ -411,7 +453,13 @@ exports[`scrapeRecipe > https://whatsgabycooking.com/cauliflower-rice-kale-bowls
     ],
     [
       {
-        "text": "Turn the instant pot to saute. Add the oil, red onion and garlic and saute for 3-4 minutes. Add the spices and peppers and stir to combine. Add the dry beans, salt, and water in the bowl of the Instant Pot and give it a stir.  Cover with the lid, and be sure to turn the vent at the top to the \\"sealed\\" position. Set the Instant Pot to cook for 45 minutes on the Chili setting. When the timer goes off, let the steam pressure naturally release for at least 20 minutes before attempting to remove the lid. Drain the beans from most of their liquid and store them in an airtight container the fridge or freezer until ready to use.",
+        "text": "Turn the instant pot to saute. Add the oil, red onion and garlic and saute for 3-4 minutes. Add the spices and peppers and stir to combine. Add the dry beans, salt, and ",
+      },
+      {
+        "at": "46e9d0f5-ccfe-5ea8-9f62-1165ad2c9e64",
+      },
+      {
+        "text": " in the bowl of the Instant Pot and give it a stir.  Cover with the lid, and be sure to turn the vent at the top to the \\"sealed\\" position. Set the Instant Pot to cook for 45 minutes on the Chili setting. When the timer goes off, let the steam pressure naturally release for at least 20 minutes before attempting to remove the lid. Drain the beans from most of their liquid and store them in an airtight container the fridge or freezer until ready to use.",
       },
     ],
     [
@@ -422,7 +470,13 @@ exports[`scrapeRecipe > https://whatsgabycooking.com/cauliflower-rice-kale-bowls
     ],
     [
       {
-        "text": "While the beans are cooking, dice the sweet potatoes and transfer to a baking sheet. Drizzle with olive oil, salt and pepper and roast in a 425 degree oven for 25-30 minutes until golden brown. Remove and set aside.",
+        "text": "While the beans are cooking, dice the sweet potatoes and transfer to a baking sheet. Drizzle with ",
+      },
+      {
+        "at": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      },
+      {
+        "text": ", salt and pepper and roast in a 425 degree oven for 25-30 minutes until golden brown. Remove and set aside.",
       },
     ],
     [
@@ -433,7 +487,13 @@ exports[`scrapeRecipe > https://whatsgabycooking.com/cauliflower-rice-kale-bowls
     ],
     [
       {
-        "text": "Make sure your cauliflower is fully dry. Place the cauliflower in a food processor and pulse until it has the texture of rice. Work in batches and don’t over process or it will get mushy. In a large skillet, heat 1 tablespoons of olive oil over medium heat. Add the kale and sauté until wilted. Add the cauliflower and saute, until heated through, about 5 minutes. Season with salt, pepper and a squeeze of lemon juice to help remove any bitterness from the raw cauliflower.",
+        "text": "Make sure your cauliflower is fully dry. Place the cauliflower in a food processor and pulse until it has the texture of rice. Work in batches and don’t over process or it will get mushy. In a large skillet, heat 1 tablespoons of ",
+      },
+      {
+        "at": "f56c4f9e-2686-56f6-948a-ce4adc1bc4eb",
+      },
+      {
+        "text": " over medium heat. Add the kale and sauté until wilted. Add the cauliflower and saute, until heated through, about 5 minutes. Season with salt, pepper and a squeeze of lemon juice to help remove any bitterness from the raw cauliflower.",
       },
     ],
     [
@@ -553,7 +613,13 @@ exports[`scrapeRecipe > https://www.101cookbooks.com/coleslaw-recipe/ 1`] = `
     ],
     [
       {
-        "text": "In a separate bowl combine the lime juice, olive oil, salt. Taste, and whisk in a teaspoon or two of honey if the lime is too strong for you. Add to the cabbage mixture and gently stir to combine. Just before serving fold in the peanuts (add them too earl and they lose some of their crunch). Taste and adjust the flavor with more salt if needed.",
+        "text": "In a separate bowl combine the lime juice, ",
+      },
+      {
+        "at": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      },
+      {
+        "text": ", salt. Taste, and whisk in a teaspoon or two of honey if the lime is too strong for you. Add to the cabbage mixture and gently stir to combine. Just before serving fold in the peanuts (add them too earl and they lose some of their crunch). Taste and adjust the flavor with more salt if needed.",
       },
     ],
   ],
@@ -627,12 +693,30 @@ exports[`scrapeRecipe > https://www.allrecipes.com/recipe/20513/classic-waffles/
   "instructions": [
     [
       {
-        "text": "In a large bowl, mix together flour, salt, baking powder and sugar; set aside. Preheat waffle iron to desired temperature.",
+        "text": "In a large bowl, mix together flour, ",
+      },
+      {
+        "at": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      },
+      {
+        "text": ", ",
+      },
+      {
+        "at": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      },
+      {
+        "text": " and sugar; set aside. Preheat waffle iron to desired temperature.",
       },
     ],
     [
       {
-        "text": "In a separate bowl, beat the eggs. Stir in the milk, butter and vanilla. Pour the milk mixture into the flour mixture; beat until blended.",
+        "text": "In a separate bowl, beat the ",
+      },
+      {
+        "at": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      },
+      {
+        "text": ". Stir in the milk, butter and vanilla. Pour the milk mixture into the flour mixture; beat until blended.",
       },
     ],
     [
@@ -837,7 +921,19 @@ exports[`scrapeRecipe > https://www.ambitiouskitchen.com/street-corn-pasta-salad
   "instructions": [
     [
       {
-        "text": "Preheat grill to high. Drizzle corn with olive or avocado oil. Sprinkle with chili powder, cumin, salt and pepper. Place the corn directly on grill and turn occasionally until corn is charred and cooked, about 10 minutes. Allow corn to cool then cut the corn from the cob and set aside.",
+        "text": "Preheat grill to high. Drizzle corn with olive or avocado oil. Sprinkle with ",
+      },
+      {
+        "at": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      },
+      {
+        "text": ", ",
+      },
+      {
+        "at": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      },
+      {
+        "text": ", salt and pepper. Place the corn directly on grill and turn occasionally until corn is charred and cooked, about 10 minutes. Allow corn to cool then cut the corn from the cob and set aside.",
       },
     ],
     [
@@ -867,7 +963,13 @@ exports[`scrapeRecipe > https://www.ambitiouskitchen.com/street-corn-pasta-salad
     ],
     [
       {
-        "text": "Place in fridge for serving for later, or serve immediately! Once ready to serve, garnish with extra cilantro, avocado, goat cheese and jalapeno slices, if you'd like. Serves 6.",
+        "text": "Place in fridge for serving for later, or serve immediately! Once ready to serve, garnish with ",
+      },
+      {
+        "at": "899eab16-4b31-5ecd-b786-ae490bdd9e47",
+      },
+      {
+        "text": ", avocado, goat cheese and jalapeno slices, if you'd like. Serves 6.",
       },
     ],
   ],
@@ -939,7 +1041,13 @@ exports[`scrapeRecipe > https://www.bbc.co.uk/food/recipes/sausage_and_gnocchi_b
     ],
     [
       {
-        "text": "Toss together the peppers, gnocchi, olive oil and a generous amount of salt and pepper on a large baking tray.",
+        "text": "Toss together the peppers, gnocchi, ",
+      },
+      {
+        "at": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      },
+      {
+        "text": " and a generous amount of salt and pepper on a large baking tray.",
       },
     ],
     [
@@ -1101,11 +1209,191 @@ exports[`scrapeRecipe > https://www.jamieoliver.com/recipes/chicken-recipes/cris
     ],
     [
       {
-        "text": "Slice, plate up, season to perfection with sea salt and black pepper, sprinkle with lemon-dressed rocket, and serve with lemon wedges, for squeezing over.",
+        "text": "Slice, plate up, season to perfection with sea salt and black pepper, sprinkle with ",
+      },
+      {
+        "at": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      },
+      {
+        "text": "-dressed ",
+      },
+      {
+        "at": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      },
+      {
+        "text": ", and serve with ",
+      },
+      {
+        "at": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      },
+      {
+        "text": " wedges, for squeezing over.",
       },
     ],
   ],
   "name": "Crispy garlicky chicken",
   "prepTime": undefined,
+}
+`;
+
+exports[`scrapeRecipe > https://www.thekiwicountrygirl.com/chocolate-self-saucing-pudding/ 1`] = `
+{
+  "cookTime": 30,
+  "imageUrl": "https://www.thekiwicountrygirl.com/wp-content/uploads/2019/06/Chocolate-Self-Saucing-Pudding-8.jpg",
+  "ingredients": [
+    {
+      "amount": "1",
+      "id": "4409f579-f4c2-5f0d-aa89-42150bb9c62a",
+      "measurement": "Cup",
+      "name": "(140 grams) plain flour",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "f68b1893-c7d9-52f5-99fc-61956a231284",
+      "measurement": "Cup",
+      "name": "(105 grams) white sugar",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      "measurement": "Teaspoon",
+      "name": "baking powder",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/4",
+      "id": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      "measurement": "Cup",
+      "name": "cocoa powder",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/4",
+      "id": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      "measurement": "Teaspoon",
+      "name": "salt",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "50",
+      "id": "9d0ec52f-fe79-570f-886b-f72b2198d095",
+      "measurement": "Gram",
+      "name": "butter ((melted))",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      "measurement": undefined,
+      "name": "egg",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1",
+      "id": "04be3ab0-fc11-59f4-b387-2c999dea74ac",
+      "measurement": "Teaspoon",
+      "name": "vanilla extract",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "7516fedb-5699-5772-8cb5-57ed6a72fe60",
+      "measurement": "Cup",
+      "name": "(125 ml) milk",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/2",
+      "id": "1ba2a3aa-866b-5d71-bcce-57b390dbcc4c",
+      "measurement": "Cup",
+      "name": "(100 grams) brown sugar",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1/4",
+      "id": "46e9d0f5-ccfe-5ea8-9f62-1165ad2c9e64",
+      "measurement": "Cup",
+      "name": "cocoa powder",
+      "type": "Ingredient",
+    },
+    {
+      "amount": "1 1/2",
+      "id": "83a0b448-f87a-5fc0-a6b3-ea64ef0f10eb",
+      "measurement": "Cup",
+      "name": "(375 ml) boiling water",
+      "type": "Ingredient",
+    },
+  ],
+  "instructions": [
+    [
+      {
+        "text": "Heat the oven to 180°C/350°F and spray a baking dish (approx 25cm x 20cm or similar) with cooking spray.",
+      },
+    ],
+    [
+      {
+        "text": "In a medium sized bowl, whisk together flour, sugar, ",
+      },
+      {
+        "at": "f3e77065-582e-5068-8cd9-e161c9da3e8c",
+      },
+      {
+        "text": ", first measure of ",
+      },
+      {
+        "at": "1a277076-ebd3-5529-b188-ed6e1832cd74",
+      },
+      {
+        "text": " and ",
+      },
+      {
+        "at": "780aebbd-898e-56a7-b33b-3840ca21a289",
+      },
+      {
+        "text": ". Set aside.",
+      },
+    ],
+    [
+      {
+        "text": "In a small bowl or Pyrex jug, whisk together the melted butter, ",
+      },
+      {
+        "at": "15d3b606-9da7-59f0-9200-b9cdfc11d6e4",
+      },
+      {
+        "text": ", vanilla and milk. Pour into the dry ingredients and fold together until just combined.",
+      },
+    ],
+    [
+      {
+        "text": "Pour the cake batter into the prepared baking dish and smooth out the top.",
+      },
+    ],
+    [
+      {
+        "text": "In a small bowl, whisk together the brown sugar and second measure of ",
+      },
+      {
+        "at": "46e9d0f5-ccfe-5ea8-9f62-1165ad2c9e64",
+      },
+      {
+        "text": ". Sprinkle evenly over the top of the cake mixture. Carefully pour over the boiling water.",
+      },
+    ],
+    [
+      {
+        "text": "Bake the pudding for 30 minutes. Remove from the oven and serve immediately with ice cream or whipped cream.",
+      },
+    ],
+    [
+      {
+        "text": "Leftovers can be stored covered in the fridge for 3 days and reheated as needed.",
+      },
+    ],
+  ],
+  "name": "Chocolate Self Saucing Pudding",
+  "prepTime": 10,
 }
 `;

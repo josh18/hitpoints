@@ -5,3 +5,4 @@ node_modules
 /shared/dist
 /gcloud
 hitpoints-shared-1.0.0.tgz
+test.db
