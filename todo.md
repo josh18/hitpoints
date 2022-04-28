@@ -1,6 +1,5 @@
 Redesign recipe time
 Bug - newline on android
-Click/Tap 10 times to show advanced
 Bug Filters
 - Tags filter should be AND?
 - No changes still reloads recipes

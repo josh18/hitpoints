@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link, useMatch } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
@@ -143,10 +144,28 @@ const useActive = (path: string) => {
     });
 };
 
-const showAdvanced = false; // Make it configurable?
-
 export function Nav() {
     const disconnected = useSelector(state => !state.connected);
+    const [showAdvanced, setShowAdvanced] = useState(false);
+
+    useEffect(() => {
+        let timer: number | undefined;
+        let count = 0;
+
+        document.addEventListener('click', () => {
+            count++;
+
+            if (count >= 10) {
+                count = 0;
+                setShowAdvanced(value => !value);
+            }
+
+            window.clearTimeout(timer);
+            timer = window.setTimeout(() => {
+                count = 0;
+            }, 1000);
+        });
+    }, []);
 
     const advanced = (active: boolean) => {
         if (!showAdvanced) {
