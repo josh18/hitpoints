@@ -28,7 +28,7 @@ const Disabled = styled.div`
     align-items: center;
 
     svg {
-        margin-right: 8px;
+        margin-right: 16px;
         fill: ${({ theme }) => theme.warning};
     }
 `;
@@ -54,6 +54,10 @@ const AddIconStyled = styled(AddIcon)<{ importing: boolean }>`
         animation-duration: 1.2s;
         animation-iteration-count: infinite;
     `}
+`;
+
+const Message = styled.div`
+    max-width: 600px;
 `;
 
 export interface RecipeImportProps {
@@ -94,12 +98,12 @@ export function RecipeImport({ onClose }: RecipeImportProps) {
     if (!connected) {
         let message = `Unfortunately you can't import recipes unless you are connected to the server.`;
         if (demoMode) {
-            message = `Unfortunately you can't import recipes in demo mode.`;
+            message = `Unfortunately you can't import recipes in demo mode as there is no server available to provide scraping functionality.`;
         }
 
         return (
             <Disabled>
-                <WarningIcon /> {message}
+                <WarningIcon /> <Message>{message}</Message>
             </Disabled>
         );
     }

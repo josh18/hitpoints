@@ -1,9 +1,9 @@
 import { rgba } from 'polished';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 import styled, { css } from 'styled-components';
 
-import { initialShoppingListState, ShoppingListItem } from '@hitpoints/shared';
+import { ShoppingListItem } from '@hitpoints/shared';
 
 import { Button } from '../../components/button';
 import { Card } from '../../components/card';
@@ -13,8 +13,6 @@ import { RemoveButton } from '../../components/removeButton';
 import { TextInput } from '../../components/textInput';
 import { AddIcon } from '../../icons/addIcon';
 import { DragIcon } from '../../icons/dragIcon';
-import { keyVal } from '../../localDatabase/client.db';
-import { useDispatch } from '../../util/useDispatch';
 import { useInputGroup } from '../../util/useInputGroup';
 import { useSelector } from '../../util/useSelector';
 import { useTitle } from '../../util/useTitle';

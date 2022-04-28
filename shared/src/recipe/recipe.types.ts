@@ -7,6 +7,8 @@ export const recipeMeasurements = [
     'Millilitre',
     'Litre',
     'Gram',
+    'Pound',
+    'Ounce',
 ] as const;
 
 export type RecipeMeasurement = typeof recipeMeasurements[number];

@@ -1,7 +1,7 @@
 import { Document } from 'domhandler';
 import { DomUtils, parseDocument } from 'htmlparser2';
 
-import { RecipeIngredient, RecipeInstruction } from '@hitpoints/shared';
+import { RecipeIngredient, RecipeInstruction, RecipeTag } from '@hitpoints/shared';
 
 import { mapJSONLD, RecipeSchema } from './mapJsonLd';
 
@@ -11,6 +11,7 @@ export interface ImportedRecipe {
     instructions: RecipeInstruction[];
     cookTime?: number;
     prepTime?: number;
+    tags?: RecipeTag[];
     imageUrl?: string;
 }
 

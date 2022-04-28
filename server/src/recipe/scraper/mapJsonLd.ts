@@ -2,7 +2,7 @@ import he from 'he';
 import { DomUtils, parseDocument } from 'htmlparser2';
 import { v4 as uuid } from 'uuid';
 
-import { isInstructionAt, RecipeIngredient, RecipeInstruction, RecipeInstructionContent, stringToIngredient } from '@hitpoints/shared';
+import { isInstructionAt, RecipeIngredient, RecipeInstruction, RecipeInstructionContent, RecipeTag, recipeTags, stringToIngredient } from '@hitpoints/shared';
 
 import { ImportedRecipe, ScrapeRecipeLogger } from './scrapeRecipe';
 
@@ -54,6 +54,7 @@ export function mapJSONLD(recipeSchema: RecipeSchema, log: ScrapeRecipeLogger): 
         cookTime: getMinutes(recipeSchema.cookTime),
         prepTime: getMinutes(recipeSchema.prepTime),
         imageUrl: getImageUrl(recipeSchema, log),
+        tags: mapTags(recipeSchema.name ?? ''),
     };
 }
 
@@ -233,4 +234,70 @@ function linkIngredients(instructionContent: RecipeInstructionContent[], ingredi
 
         return instruction;
     });
+}
+
+function mapTags(name: string): RecipeTag[] | undefined {
+    const map: {
+        [key in RecipeTag]: string[];
+    } = {
+        Baking: [
+            'biscuit',
+            'brownie',
+            'cake',
+            'cookie',
+            'muffin',
+        ],
+        Bread: [],
+        Breakfast: [
+            'pancake',
+            'waffle',
+        ],
+        Main: [
+            'beef',
+            'burger',
+            'chicken',
+            'curry',
+            'meat',
+            'pizza',
+            'steak',
+        ],
+        Pasta: [
+            'fusilli',
+            'lasagna',
+            'lasagne',
+            'macaroni',
+            'penne',
+            'ravioli',
+            'spaghetti',
+        ],
+        Pudding: [
+            'custard',
+            'dessert',
+            'tart',
+        ],
+        Salad: [],
+        Side: [
+            'relish',
+            'salsa',
+        ],
+        Soup: [],
+        Vegetarian: [],
+    };
+
+    name = name.toLowerCase();
+
+    const tags: RecipeTag[] = [];
+
+    Object.entries(map).forEach(([tag, values]) => {
+        // 'Side' doesn't work very well e.g. Upside down cake
+        if (tag !== 'Side') {
+            values = [...values, tag.toLowerCase()];
+        }
+
+        if (values.some(value => name.includes(value))) {
+            tags.push(tag as RecipeTag);
+        }
+    });
+
+    return tags.length ? tags : undefined;
 }

@@ -1,6 +1,27 @@
 Redesign recipe time
+Bug - newline on android
+Click/Tap 10 times to show advanced
+Bug Filters
+- Tags filter should be AND?
+- No changes still reloads recipes
+- Does not preload has / does not have
 
-Demo recipes
+Readme
+- Demo
+ - Restrictions
+ - Recipe dataset
+- Features
+ - Offline support
+- Why I made it
+ - Learn things
+ - Catalog of recipes
+ - Small edits
+ - Loose recipes
+- How to deploy
+- What I learnt
+ - Hard to finish projects
+- Architecture
+- ARIA
 
 -----
 

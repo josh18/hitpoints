@@ -2,8 +2,8 @@ import lunr from 'lunr';
 
 import { Recipe, RecipeTag } from '@hitpoints/shared';
 
-import { keyVal, RecipeSearchIndex } from '../../../localDatabase/client.db';
-import { getRecipes } from '../../../localDatabase/recipe.db';
+import { keyVal, RecipeSearchIndex } from '../../../clientDatabase/client.db';
+import { getRecipes } from '../../../clientDatabase/recipe.db';
 
 export interface RecipeQuery {
     text?: string[];

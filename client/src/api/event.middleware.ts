@@ -14,11 +14,11 @@ import {
     ShoppingList,
 } from '@hitpoints/shared';
 
-import { keyVal } from '../localDatabase/client.db';
-import { addEvent, addSyncedEvents, checkoutUnsavedEvents, removeFailedEvents } from '../localDatabase/event.db';
-import { putPinnedRecipes, updatePinnedRecipes } from '../localDatabase/pinnedRecipes.db';
-import { deleteRecipe, putRecipe, updateRecipe } from '../localDatabase/recipe.db';
-import { putShoppingList, updateShoppingList } from '../localDatabase/shoppingList.db';
+import { keyVal } from '../clientDatabase/client.db';
+import { addEvent, addSyncedEvents, checkoutUnsavedEvents, removeFailedEvents } from '../clientDatabase/event.db';
+import { putPinnedRecipes, updatePinnedRecipes } from '../clientDatabase/pinnedRecipes.db';
+import { deleteRecipe, putRecipe, updateRecipe } from '../clientDatabase/recipe.db';
+import { putShoppingList, updateShoppingList } from '../clientDatabase/shoppingList.db';
 import { Middleware } from '../store';
 import { connection } from './connection';
 

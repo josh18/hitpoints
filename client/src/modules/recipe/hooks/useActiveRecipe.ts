@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
-import { getRecipe } from '../../../localDatabase/recipe.db';
+import { getRecipe } from '../../../clientDatabase/recipe.db';
 import { useDispatch } from '../../../util/useDispatch';
 import { useSelector } from '../../../util/useSelector';
 

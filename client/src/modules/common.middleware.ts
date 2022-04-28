@@ -1,7 +1,7 @@
 import { initialShoppingListState } from '@hitpoints/shared';
 
-import { keyVal } from '../localDatabase/client.db';
-import {  getRecipes } from '../localDatabase/recipe.db';
+import { keyVal } from '../clientDatabase/client.db';
+import {  getRecipes } from '../clientDatabase/recipe.db';
 import { Middleware } from '../store';
 
 export const commonMiddleware: Middleware = ({ dispatch, getState }) => {
@@ -13,6 +13,12 @@ export const commonMiddleware: Middleware = ({ dispatch, getState }) => {
         const newRecipeIds = state.ids.filter(id => !state.recipes[id]);
 
         if (!newRecipeIds.length) {
+            if (!state.loaded) {
+                dispatch({
+                    type: 'PinnedRecipesLoaded',
+                    recipes,
+                });
+            }
             return;
         }
 

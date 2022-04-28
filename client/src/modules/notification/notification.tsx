@@ -6,6 +6,7 @@ import { auth } from '../../api/auth';
 import { RemoveButton } from '../../components/removeButton';
 import { TransitionIn } from '../../components/transitionIn';
 import { demoMode } from '../../config';
+import { importDemoData } from '../../demo/importDemoData';
 import { useDispatch } from '../../util/useDispatch';
 import { useSelector } from '../../util/useSelector';
 
@@ -109,6 +110,7 @@ export function Notification() {
     const [installEvent, setInstallEvent] = useState<BeforeInstallPromptEvent>();
     const [updateAvailable, setUpdateAvailable] = useState(false);
     const [showDemo, setShowDemo] = useState(demoMode);
+    const [importingDemoData, setImportingDemoData] = useState(false);
 
     useEffect(() => {
         window.addEventListener('beforeinstallprompt', event => {
@@ -129,6 +131,17 @@ export function Notification() {
 
         window.addEventListener('serviceWorkerUpdated', () => {
             setUpdateAvailable(true);
+        });
+    }, []);
+
+    useEffect(() => {
+        if (!demoMode) {
+            return;
+        }
+
+        setImportingDemoData(true);
+        importDemoData().then(() => {
+            setImportingDemoData(false);
         });
     }, []);
 
@@ -169,9 +182,11 @@ export function Notification() {
 
     let demoNotification;
     if (showDemo) {
+        const importing = importingDemoData && <>Importing demo recipes...<br /><br /></>;
+
         demoNotification = (
             <DefaultNotification>
-                <NotificationMessage>Running in demo mode.<br /> Data will only be saved in browser storage.</NotificationMessage>
+                <NotificationMessage>{importing}Running in demo mode.<br /> Data will only be saved in browser storage.</NotificationMessage>
                 <DismissButton onClick={() => setShowDemo(false)} />
             </DefaultNotification>
         );

@@ -34,6 +34,8 @@ export function recipeReducer(view = initialRecipeState(), event: RecipeEvent): 
             view.cookTime = event.cookTime;
             view.prepTime = event.prepTime;
             view.imageId = event.imageId;
+            view.source = event.source;
+            view.tags = event.tags ?? [];
             break;
         case 'RecipeImageSet':
             view.imageId = event.imageId;

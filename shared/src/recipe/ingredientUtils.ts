@@ -1,16 +1,26 @@
 import { RecipeIngredient, RecipeMeasurement, recipeMeasurements } from './recipe.types.js';
 
+const measurementAbbreviations: {
+    [key in RecipeMeasurement]?: string;
+} = {
+    Millilitre: 'mL',
+    Litre: 'L',
+    Gram: 'g',
+    Tablespoon: 'tbsp',
+    Teaspoon: 'tsp',
+    Pound: 'lb',
+    Ounce: 'oz',
+};
+
 const measurementAlts: {
     [key: string]: RecipeMeasurement;
 } = {
-    mL: 'Millilitre',
-    L: 'Litre',
-    Liter: 'Litre',
-    g: 'Gram',
-    tsp: 'Teaspoon',
-    tbsp: 'Tablespoon',
     tbs: 'Tablespoon',
 };
+
+Object.entries(measurementAbbreviations).forEach(([key, value]) => {
+    measurementAlts[value] = key as RecipeMeasurement;
+});
 
 const fractionMap = {
     '¼': '1/4',
@@ -97,16 +107,6 @@ export function stringToIngredient(value: string): Omit<RecipeIngredient, 'id' |
         name,
     };
 }
-
-const measurementAbbreviations: {
-    [key in RecipeMeasurement]?: string;
-} = {
-    Millilitre: 'mL',
-    Litre: 'L',
-    Gram: 'g',
-    Tablespoon: 'tbsp',
-    Teaspoon: 'tsp',
-};
 
 export function measurementToString(measurement: RecipeMeasurement, amount = '1'): string {
     const abbreviation = measurementAbbreviations[measurement];

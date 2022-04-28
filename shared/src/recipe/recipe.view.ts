@@ -15,6 +15,7 @@ export interface Recipe {
     completedOn?: string;
     tags: RecipeTag[];
     deleted: boolean;
+    source?: string; // The source of imported recipes
 }
 
 export interface RecipeIngredientHeading {

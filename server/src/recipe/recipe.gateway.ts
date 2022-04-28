@@ -9,7 +9,7 @@ import {
     ImportRecipeRequest,
     ImportRecipeResponse,
     RecipeApi,
-    RecipeEvent,
+    RecipeImported,
 } from '@hitpoints/shared';
 
 import { EventHub } from '../core/eventHub';
@@ -68,7 +68,7 @@ export class RecipeGateway implements RecipeGatewayApi {
                 }
 
                 const entityId = uuid();
-                const event: RecipeEvent = {
+                const event: RecipeImported = {
                     type: 'RecipeImported',
                     id: uuid(),
                     entityId,
@@ -77,6 +77,7 @@ export class RecipeGateway implements RecipeGatewayApi {
                     instructions: recipe.instructions,
                     cookTime: recipe.cookTime,
                     prepTime: recipe.prepTime,
+                    tags: recipe.tags,
                     imageId,
                     source: data.url,
                     timestamp: new Date().toISOString(),

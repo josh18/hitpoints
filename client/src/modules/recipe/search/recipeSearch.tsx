@@ -1,3 +1,4 @@
+import { rgba } from 'polished';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
@@ -100,7 +101,7 @@ const SearchInput = styled(TextInput)`
     width: 100%;
     padding-left: 32px;
     padding-bottom: 6px;
-    border-bottom: 2px solid rgba('#000', 0.88);
+    border-bottom: 2px solid ${rgba('#000', 0.88)};
 `;
 
 const Actions = styled.div`

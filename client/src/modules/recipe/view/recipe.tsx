@@ -1,13 +1,14 @@
+import { rgba } from 'polished';
 import { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Button } from '../../../components/button';
 import { Card } from '../../../components/card';
-import { Dialog } from '../../../components/dialog';
 import { Error404 } from '../../../components/error404';
 import { ImageUpload } from '../../../components/imageUpload';
 import { TitleDivider } from '../../../components/titleDivider';
 import { TransitionHeight } from '../../../components/transitionHeight';
+import { demoMode } from '../../../config';
 import { DoneIcon } from '../../../icons/doneIcon';
 import { EditIcon } from '../../../icons/editIcon';
 import { FocusIcon } from '../../../icons/focusIcon';
@@ -149,18 +150,16 @@ const EditorContainer = styled.div<{ editing: boolean }>`
     border-bottom-right-radius: 2px;
     box-shadow: inset 2px 0px 4px rgb(0 0 0 / 5%);
 
-    /* @media (max-width: 850px) {
-        height: 0;
-        transition: ${props => props.theme.transition('height')};
-
-        ${({ editing }) => editing && css`
-            height: auto;
-        `}
-    } */
-
     @media print {
         display: none;
     }
+`;
+
+const Source = styled.a`
+    margin-top: 48px;
+    font-style: italic;
+    font-size: 14px;
+    color: ${rgba('#000', 0.4)};
 `;
 
 export function Recipe() {
@@ -274,6 +273,8 @@ export function Recipe() {
                     <TitleDivider title="Instructions" />
 
                     <RecipeInstructions ingredients={recipe.ingredients} instructions={recipe.instructions} />
+
+                    {demoMode && recipe.source && <Source href={recipe.source} target="_blank">{new URL(recipe.source).hostname}</Source>}
                 </DetailsCard>
             </DetailsContainer>
 

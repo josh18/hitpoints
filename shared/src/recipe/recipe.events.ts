@@ -14,6 +14,7 @@ const RecipeImported = HitpointsEvent.extend({
     instructions: RecipeInstruction.array(),
     cookTime: z.number().min(0).optional(),
     prepTime: z.number().min(0).optional(),
+    tags: z.enum(recipeTags).array().optional(),
     imageId: z.string().uuid().optional(),
     source: z.string(),
 });
