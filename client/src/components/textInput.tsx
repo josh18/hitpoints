@@ -141,11 +141,7 @@ export const TextInput = forwardRef<HTMLElement, TextInputProps>(
     const onInput = (event: FormEvent<HTMLElement>) => {
         const element = event.currentTarget;
         const nativeEvent = (event.nativeEvent as InputEvent);
-
-        // Android doesn't send key codes sometimes :/
-        if (nativeEvent.inputType === 'insertCompositionText' && nativeEvent.data?.includes('\n') && element.innerHTML.includes('<br')) {
-            onEnter?.();
-        }
+        const androidEnter = nativeEvent.inputType === 'insertCompositionText' && nativeEvent.data?.includes('\n') && element.innerHTML.includes('<br');
 
         let nextValue = element.textContent ?? '';
 
@@ -155,6 +151,11 @@ export const TextInput = forwardRef<HTMLElement, TextInputProps>(
 
         if (nextValue !== event.currentTarget.innerHTML) {
             overrideValue(nextValue);
+        }
+
+        // Android doesn't send key codes sometimes :/
+        if (androidEnter) {
+            onEnter?.();
         }
 
         if (preventExit && isDirty()) {
