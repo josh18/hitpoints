@@ -4,7 +4,7 @@ export async function registerServiceWorker() {
     }
 
     try {
-        const registration = await navigator.serviceWorker.register('/serviceWorker.js');
+        const registration = await navigator.serviceWorker.register(`${process.env.PUBLIC_PATH}/serviceWorker.js`);
 
        registration.addEventListener('updatefound', () => {
             const installingWorker = registration.installing;
