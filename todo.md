@@ -1,9 +1,5 @@
 Redesign recipe time
 Bug - newline on android
-Bug Filters
-- Tags filter should be AND?
-- No changes still reloads recipes
-- Does not preload has / does not have
 
 Readme
 - Demo

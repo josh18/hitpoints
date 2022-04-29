@@ -22,6 +22,11 @@ const FilterButton = styled(Button)`
     }
 `;
 
+const Overlay = styled.div`
+    position: fixed;
+    inset: 0;
+`;
+
 const Panel = styled(Card)`
     position: absolute;
     min-width: 250px;
@@ -130,26 +135,29 @@ export function RecipeSearchFilter({ tagFilters, hasFilter, notFilter, toggleTag
     let panel;
     if (open) {
         panel = (
-            <Panel floating ref={setMenuRef} role="menu">
-                {recipeTags.map(tag =>
-                    <FilterItem
-                        key={tag}
-                        tag={tag}
-                        active={tagFilters.includes(tag)}
-                        toggle={() => toggleTagFilter(tag)}
-                    />,
-                )}
+            <>
+                <Overlay />
+                <Panel floating ref={setMenuRef} role="menu">
+                    {recipeTags.map(tag =>
+                        <FilterItem
+                            key={tag}
+                            tag={tag}
+                            active={tagFilters.includes(tag)}
+                            toggle={() => toggleTagFilter(tag)}
+                        />,
+                    )}
 
-                <InputContainer>
-                    <label htmlFor="recipeSearchHas">Has ingredient</label>
-                    <TextInput id="recipeSearchHas" value={hasFilter} onCommit={value => setIngredientFilter('has', value)} debounceTime={0} />
-                </InputContainer>
+                    <InputContainer>
+                        <label htmlFor="recipeSearchHas">Has ingredient</label>
+                        <TextInput id="recipeSearchHas" value={hasFilter} onCommit={value => setIngredientFilter('has', value)} debounceTime={0} />
+                    </InputContainer>
 
-                <InputContainer>
-                    <label htmlFor="recipeSearchNot">Does not have ingredient</label>
-                    <TextInput id="recipeSearchNot" value={notFilter} onCommit={value => setIngredientFilter('not', value)} debounceTime={0} />
-                </InputContainer>
-            </Panel>
+                    <InputContainer>
+                        <label htmlFor="recipeSearchNot">Does not have ingredient</label>
+                        <TextInput id="recipeSearchNot" value={notFilter} onCommit={value => setIngredientFilter('not', value)} debounceTime={0} />
+                    </InputContainer>
+                </Panel>
+            </>
         );
     }
 

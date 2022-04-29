@@ -4,6 +4,7 @@ import { Recipe, RecipeTag } from '@hitpoints/shared';
 
 import { keyVal, RecipeSearchIndex } from '../../../clientDatabase/client.db';
 import { getRecipes } from '../../../clientDatabase/recipe.db';
+import { deepEqual } from '../../../util/deepEqual';
 
 export interface RecipeQuery {
     text?: string[];
@@ -128,6 +129,10 @@ export class SearchInterface {
     }
 
     setQuery(query: RecipeQuery): void {
+        if (deepEqual(query, this.query)) {
+            return;
+        }
+
         this.query = query;
 
         this.search();
@@ -162,6 +167,7 @@ export class SearchInterface {
         this.recipes = [];
 
         if (!this.index) {
+            // No index
             this.onResults(this.recipes);
             return;
         }
@@ -213,7 +219,7 @@ export class SearchInterface {
             text: lunr.Index.load(JSON.parse(event.data.text)),
         };
 
-        // If there are no recipe displayed
+        // If there are no recipes displayed
         if (!this.recipes.length) {
             // Then reload the results
             this.search();

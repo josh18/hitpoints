@@ -67,7 +67,7 @@ export class SeachQuery {
                     break;
                 case 'is':
                     recipeQuery.tags = recipeQuery.tags ?? [];
-                    recipeQuery.tags.push(value as RecipeTag);
+                    recipeQuery.tags.push(value);
                     break;
                 case 'has':
                     recipeQuery.hasIngredients = recipeQuery.hasIngredients ?? [];

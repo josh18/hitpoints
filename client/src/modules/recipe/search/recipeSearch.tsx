@@ -140,36 +140,30 @@ export function RecipeSearch(): JSX.Element {
 
     useTitle('Recipes');
 
-    const setQuery = (value: string) => {
-        searchQuery.setQuery(value);
+    const updateSearch = () => {
+        const recipeQuery = searchQuery.toRecipeQuery();
+
+        search.setQuery(recipeQuery);
 
         setTextQuery(searchQuery.toString());
-
-        const recipeQuery = searchQuery.toRecipeQuery();
-        search.setQuery(recipeQuery);
         setTagFilters(recipeQuery.tags ?? []);
         setHasFilter(recipeQuery.hasIngredients?.[0] ?? '');
         setNotFilter(recipeQuery.notIngredients?.[0] ?? '');
     };
 
+    const setQuery = (value: string) => {
+        searchQuery.setQuery(value);
+        updateSearch();
+    };
+
     const toggleTagFilter = (tag: RecipeTag) => {
         searchQuery.toggleTagFilter(tag);
-
-        setTextQuery(searchQuery.toString());
-
-        const recipeQuery = searchQuery.toRecipeQuery();
-        search.setQuery(recipeQuery);
-        setTagFilters(recipeQuery.tags ?? []);
+        updateSearch();
     };
 
     const setIngredientFilter = (type: 'has' | 'not', value: string) => {
         searchQuery.setIngredientFilter(type, value);
-
-        setTextQuery(searchQuery.toString());
-
-        const recipeQuery = searchQuery.toRecipeQuery();
-        search.setQuery(recipeQuery);
-        setTagFilters(recipeQuery.tags ?? []);
+        updateSearch();
     };
 
     const addRecipe = () => {

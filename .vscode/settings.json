@@ -10,11 +10,8 @@
     "search.exclude": {
         "**/package-lock.json": true,
         "**/dist/": true,
+        "**/docs/recipes.json": true,
     },
-    // "eslint.workingDirectories": [
-    //     "./client",
-    //     "./server",
-    // ],
     "eslint.nodePath": "node_modules/eslint",
     "typescript.tsdk": "node_modules/typescript/lib",
 }

@@ -17,6 +17,12 @@ const MenuButton = styled(IconButton)<{ small?: boolean }>`
     `}
 `;
 
+// Used to prevent scroll and clicks while open
+const Overlay = styled.div`
+    position: fixed;
+    inset: 0;
+`;
+
 const MenuDropdown = styled(Card)`
     position: absolute;
     min-width: 200px;
@@ -82,17 +88,20 @@ export function Menu({ items, small }: ActionsMenuProps) {
     let menu;
     if (open) {
         menu = (
-            <MenuDropdown onMouseDown={e => e.preventDefault()} floating ref={setMenuRef} role="menu">
-                {items.map(item => {
-                    const onClick = () => {
-                        setOpen(false);
+            <>
+                <Overlay />
+                <MenuDropdown onMouseDown={e => e.preventDefault()} floating ref={setMenuRef} role="menu">
+                    {items.map(item => {
+                        const onClick = () => {
+                            setOpen(false);
 
-                        item.action();
-                    };
+                            item.action();
+                        };
 
-                    return <MenuItem key={item.name} onClick={onClick} role="menuitem">{item.icon}{item.name}</MenuItem>;
-                })}
-            </MenuDropdown>
+                        return <MenuItem key={item.name} onClick={onClick} role="menuitem">{item.icon}{item.name}</MenuItem>;
+                    })}
+                </MenuDropdown>
+            </>
         );
     }
 
