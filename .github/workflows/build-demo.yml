@@ -25,7 +25,7 @@ jobs:
       working-directory: client
     - name: Move files
       run: |
-        mv client/dist docs
+        mv client/dist/* docs
         cp docs/index.html docs/404.html
     - name: Push to gh-pages
       run: |
