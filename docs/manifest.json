@@ -1,0 +1,19 @@
+{
+  "name": "Hitpoints",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192"
+    }, {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512"
+    }, {
+      "src": "favicon.svg",
+      "sizes": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#fecb7c",
+  "background_color": "#fecb7c"
+}
