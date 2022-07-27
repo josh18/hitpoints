@@ -1,7 +1,8 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
 
 import { Recipe } from '@hitpoints/shared';
 

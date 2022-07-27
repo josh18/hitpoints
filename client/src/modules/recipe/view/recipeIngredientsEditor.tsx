@@ -1,7 +1,8 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
-import styled, { css } from 'styled-components';
 
 import { Recipe, RecipeIngredientHeadingUpdated, RecipeIngredientItemAdded, RecipeIngredientUpdated, stringToIngredient } from '@hitpoints/shared';
 
@@ -59,9 +60,9 @@ const IngredientRow = styled.div<{ isHeading: boolean; isDragging: boolean }>`
         }
     `}
 
-    ${({ isDragging }) => isDragging && css`
+    ${props => props.isDragging && css`
         ${TextInputContainer} {
-            box-shadow: ${props => props.theme.highShadow};
+            box-shadow: ${props.theme.highShadow};
         }
     `}
 `;

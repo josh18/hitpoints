@@ -1,7 +1,8 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { useEffect, useRef } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
-import styled, { css } from 'styled-components';
 
 import { ShoppingListItem } from '@hitpoints/shared';
 
@@ -105,7 +106,7 @@ const TextInputStyled = styled(TextInput)<{ checked: boolean; isDragging: boolea
     `}
 
     ${props => props.isDragging && css`
-        box-shadow: ${props => props.theme.highShadow};
+        box-shadow: ${props.theme.highShadow};
     `}
 `;
 

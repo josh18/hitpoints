@@ -120,7 +120,7 @@ export function TextEditor({ atItems, value, setValue, onCommit, placeholder }: 
         <Slate
             editor={editor}
             value={value}
-            onChange={value => onChange(value as Element[])}
+            onChange={next => onChange(next as Element[])}
         >
             <AtProvider>
                 <Editable

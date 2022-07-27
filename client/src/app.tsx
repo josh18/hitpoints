@@ -1,7 +1,9 @@
+import createCache from '@emotion/cache';
+import { CacheProvider, ThemeProvider } from '@emotion/react';
+import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { Provider as StoreProvider } from 'react-redux';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import styled, { StyleSheetManager, ThemeProvider } from 'styled-components';
 
 import { auth } from './api/auth';
 import { Error404 } from './components/error404';
@@ -17,6 +19,12 @@ import { store } from './store';
 import { theme } from './theme';
 
 import './app.css';
+
+const emotionCache = createCache({
+    key: 'app',
+    stylisPlugins: [],
+});
+emotionCache.compat = true;
 
 const Main = styled.main`
     position: relative;
@@ -66,7 +74,7 @@ function Content() {
 
 export function App(): JSX.Element {
     return (
-        <StyleSheetManager disableVendorPrefixes>
+        <CacheProvider value={emotionCache}>
             <ThemeProvider theme={theme}>
                 <StoreProvider store={store}>
                     <Router basename={process.env.PUBLIC_PATH}>
@@ -76,6 +84,6 @@ export function App(): JSX.Element {
                     </Router>
                 </StoreProvider>
             </ThemeProvider>
-        </StyleSheetManager>
+        </CacheProvider>
     );
 }

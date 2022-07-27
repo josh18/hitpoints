@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
 
 import { NumberInput } from '../../../components/numberInput';
 import { TimeIcon } from '../../../icons/timeIcon';

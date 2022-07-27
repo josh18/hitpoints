@@ -1,6 +1,7 @@
+import { css, Theme } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { Fragment } from 'react';
-import styled, { css } from 'styled-components';
 
 import { measurementToString, Recipe } from '@hitpoints/shared';
 
@@ -25,9 +26,9 @@ const Heading = styled.div`
     }
 `;
 
-const highlightStyle = css<{ highlight: boolean; }>`
-    ${props => props.highlight && css`
-        color: ${props => props.theme.primaryText};
+const highlightStyle = (props: { highlight: boolean, theme: Theme }) => css`
+    ${props.highlight && css`
+        color: ${props.theme.primaryText};
     `}
 `;
 

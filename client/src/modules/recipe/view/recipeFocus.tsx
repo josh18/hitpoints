@@ -1,6 +1,7 @@
+import { css, Theme } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { useEffect, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
 
 import { isInstructionAt, isInstructionContent, measurementToString, Recipe, RecipeIngredient, RecipeInstruction } from '@hitpoints/shared';
 
@@ -14,9 +15,8 @@ import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
 import { InstructionText } from './instructionText';
 import { RecipeIngredients } from './recipeIngredients';
 
-// 2 minutes
-// const setCompletedDelay = 1000 * 60 * 2;
-const setCompletedDelay = 10_000;
+// 1 minute
+const setCompletedDelay = 60_000;
 
 const Container = styled.div`
     display: flex;
@@ -112,15 +112,13 @@ const InlineAmount = styled(Checkbox)`
     }
 `;
 
-const highlightStyle = css<{ highlight: boolean; }>`
-    ${props => props.highlight && css`
-        color: ${props => props.theme.primaryText};
+const highlightStyle = (props: { highlight: boolean, theme: Theme }) => css`
+    ${props.highlight && css`
+        color: ${props.theme.primaryText};
     `}
 `;
 
 const Name = styled.span<{ highlight: boolean; }>`
-    /* font-weight: 600; */
-
     ${highlightStyle}
 `;
 

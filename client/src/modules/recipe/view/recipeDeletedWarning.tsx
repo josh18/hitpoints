@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
-import styled from 'styled-components';
 
 import { TextButton } from '../../../components/button';
 import { WarningIcon } from '../../../icons/warningIcon';

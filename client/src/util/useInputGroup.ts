@@ -79,7 +79,7 @@ export function useInputGroup({ addLine, updateLine, removeLine }: UseInputGroup
                     removeLine(index);
 
                     if (value.length) {
-                        updateLine(nextIndex, next.textContent + value);
+                        updateLine(nextIndex, next.textContent ?? '' + value);
                     }
                 }
 

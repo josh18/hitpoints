@@ -1,6 +1,7 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
 
 import { Button } from '../../../components/button';
 import { Card } from '../../../components/card';
@@ -26,7 +27,6 @@ import { RecipeInstructions } from './recipeInstructions';
 import { RecipeMenu } from './recipeMenu';
 import { RecipeName } from './recipeName';
 import { RecipeTags } from './recipeTags';
-import { RecipeTime } from './recipeTime';
 
 const Container = styled.div`
     max-width: 1200px;

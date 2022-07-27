@@ -1,8 +1,9 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { useEffect, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
 
 import { pinnedRecipesId, Recipe } from '@hitpoints/shared';
 
@@ -77,7 +78,7 @@ const DragShadow = styled.div<{ isDragging: boolean; }>`
     transition: ${props => props.theme.transition('box-shadow')};
 
     ${props => props.isDragging && css`
-        box-shadow: ${props => props.theme.highShadow};
+        box-shadow: ${props.theme.highShadow};
     `}
 `;
 
@@ -124,7 +125,7 @@ export function PinnedRecipes() {
     const dispatch = useDispatch();
     const pinnedRecipes = useSelector(state => state.pinnedRecipes);
     const isFirstRender = useRef(true);
-    const visible = useRef<PinnedVisible[]>([]);
+    const visibleRecipes = useRef<PinnedVisible[]>([]);
     const [_visibleCount, setVisibleCount] = useState(0);
     const [addToShoppingListActive, setAddToShoppingListActive] = useState(false);
 
@@ -141,7 +142,7 @@ export function PinnedRecipes() {
         return recipes;
     }, []);
 
-    visible.current.forEach(({ recipe }, i) => {
+    visibleRecipes.current.forEach(({ recipe }, i) => {
         if (!pinnedRecipes.ids.includes(recipe.id)) {
             recipes.splice(i, 0, {
                 recipe,
@@ -160,11 +161,11 @@ export function PinnedRecipes() {
     }
 
     isFirstRender.current = false;
-    visible.current = recipes;
+    visibleRecipes.current = recipes;
 
     const onExit = (id: string) => {
-        visible.current = visible.current.filter(({ recipe }) => recipe.id !== id);
-        setVisibleCount(visible.current.length);
+        visibleRecipes.current = visibleRecipes.current.filter(({ recipe }) => recipe.id !== id);
+        setVisibleCount(visibleRecipes.current.length);
     };
 
     const onDragEnd = (result: DropResult) => {

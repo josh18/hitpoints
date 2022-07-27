@@ -1,12 +1,11 @@
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import styled from 'styled-components';
 
 import { Recipe, RecipeTag } from '@hitpoints/shared';
 
 import { Button } from '../../../components/button';
-import { Card } from '../../../components/card';
 import { Dialog } from '../../../components/dialog';
 import { ScrollObserver } from '../../../components/scrollObserver';
 import { TextInput } from '../../../components/textInput';
@@ -188,7 +187,7 @@ export function RecipeSearch(): JSX.Element {
             observer = <ScrollObserver onRangeChange={inRange => search.setInScrollRange(inRange)} />;
         }
 
-        return <RecipeSearchItem recipe={recipe} key={recipe.id + i} observer={observer} />;
+        return <RecipeSearchItem recipe={recipe} key={recipe.id + i.toString()} observer={observer} />;
     });
 
     return (

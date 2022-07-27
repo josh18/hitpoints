@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { ReactNode, SVGAttributes } from 'react';
-import styled from 'styled-components';
 
 export const Svg = styled.svg`
     display: inline-block;
@@ -17,7 +17,7 @@ export function createIcon(displayName: string, path: ReactNode) {
             height: size,
         };
 
-        return <Svg viewBox="0 0 24 24" style={style}  {...props}>{path}</Svg>;
+        return <Svg viewBox="0 0 24 24" style={style} {...props}>{path}</Svg>;
     };
 
     Icon.displayName = displayName;

@@ -17,7 +17,7 @@ export function useActiveRecipe() {
     useEffect(() => {
         let cancelled = false;
 
-        const open = async (id: string) => {
+        const open = async () => {
             const recipe = await getRecipe(id);
 
             if (cancelled) {
@@ -35,7 +35,7 @@ export function useActiveRecipe() {
             });
         };
 
-        open(id);
+        open();
 
         return () => {
             cancelled = true;

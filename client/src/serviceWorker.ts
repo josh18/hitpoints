@@ -40,7 +40,7 @@ registerRoute(
 
         return true;
     },
-    createHandlerBoundToURL(`${process.env.PUBLIC_PATH}/index.html`),
+    createHandlerBoundToURL(`${process.env.PUBLIC_PATH!}/index.html`),
 );
 
 // Cache google fonts

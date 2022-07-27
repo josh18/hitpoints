@@ -1,6 +1,7 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { DragEvent, ReactNode, useState } from 'react';
-import styled, { css } from 'styled-components';
 
 import { uploadImage } from '../api/uploadImage';
 import { demoMode } from '../config';

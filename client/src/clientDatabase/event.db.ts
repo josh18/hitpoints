@@ -45,16 +45,16 @@ export async function addSyncedEvents(events: HitpointsEvent[]) {
 
     // Save events
     const updatedEvents = await Promise.all(
-        Object.entries(groupedEvents).map(async ([id, events]) => {
+        Object.entries(groupedEvents).map(async ([id, eventsForEntity]) => {
             const existingEvents = await transaction.objectStore('events').get(id);
             const storedEvents: StoredEvents = existingEvents ?? {
                 id,
-                type: eventEntityType(events[0]),
+                type: eventEntityType(eventsForEntity[0]),
                 events: new Map(),
                 syncing: new Map(),
             };
 
-            events.forEach(event => {
+            eventsForEntity.forEach(event => {
                 storedEvents.events.set(event.id, event);
                 storedEvents.syncing.delete(event.id);
             });

@@ -19,9 +19,10 @@ jobs:
     - name: Build client
       run: |
         npm ci
-        npm run build-demo
+        npm run build
       env:
        PUBLIC_PATH: /hitpoints
+       HITPOINTS_DEMO: true
       working-directory: client
     - name: Move files
       run: |

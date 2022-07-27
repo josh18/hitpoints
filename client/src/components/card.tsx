@@ -1,5 +1,6 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
-import styled, { css } from 'styled-components';
 
 export const Card = styled.div<{ floating?: boolean }>`
     border-radius: 2px;

@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { HTMLAttributes, ReactNode, TransitionEvent, useCallback, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
 
 const Container = styled.div`
     transition: ${props => props.theme.transition('height')};

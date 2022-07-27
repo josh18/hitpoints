@@ -1,5 +1,5 @@
+import { useTheme } from '@emotion/react';
 import { CSSProperties, HTMLAttributes, ReactNode, TransitionEvent, useLayoutEffect, useRef, useState } from 'react';
-import { useTheme } from 'styled-components';
 
 export interface TransitionInProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode;

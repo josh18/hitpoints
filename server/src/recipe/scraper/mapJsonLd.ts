@@ -2,7 +2,7 @@ import he from 'he';
 import { DomUtils, parseDocument } from 'htmlparser2';
 import { v4 as uuid } from 'uuid';
 
-import { isInstructionAt, RecipeIngredient, RecipeInstruction, RecipeInstructionContent, RecipeTag, recipeTags, stringToIngredient } from '@hitpoints/shared';
+import { isInstructionAt, RecipeIngredient, RecipeInstruction, RecipeInstructionContent, RecipeTag, stringToIngredient } from '@hitpoints/shared';
 
 import { ImportedRecipe, ScrapeRecipeLogger } from './scrapeRecipe';
 
@@ -168,9 +168,9 @@ function linkIngredients(instructionContent: RecipeInstructionContent[], ingredi
     // Clone so we can modify it
     ingredients = [...ingredients];
 
-    return instructionContent.map(content => {
+    return instructionContent.map(contentList => {
         // Starts as a single text object
-        const initial = [content];
+        const initial = [contentList];
 
         const matchedIngredients = new Set<string>();
 

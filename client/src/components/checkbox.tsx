@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { ChangeEvent, forwardRef } from 'react';
-import styled from 'styled-components';
 
 import { CheckboxCheckedIcon } from '../icons/checkboxCheckedIcon';
 import { CheckboxUncheckedIcon } from '../icons/checkboxUncheckedIcon';

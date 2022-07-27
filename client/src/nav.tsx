@@ -1,6 +1,7 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { Link, useMatch } from 'react-router-dom';
-import styled, { css } from 'styled-components';
 
 import { Logo } from './components/logo';
 import { demoMode } from './config';
@@ -26,22 +27,9 @@ const NavPanel = styled.nav`
     }
 `;
 
-const LogoStyled = styled(Logo)<{ $disconnected: boolean }>`
-    margin-top: 32px;
-    margin-bottom: 32px;
-    align-self: center;
+const styledOptions = { shouldForwardProp: (name: string) => name !== 'active' };
 
-    ${props => props.$disconnected && css`
-        filter: brightness(1.2) grayscale(0.75);
-    `}
-
-    @media (max-width: 1100px) {
-        height: 30px;
-        margin: 8px auto 8px 8px;
-    }
-`;
-
-const NavLink = styled(Link)<{ $active: boolean }>`
+const NavLink = styled(Link, styledOptions)<{ active: boolean }>`
     display: flex;
     align-items: center;
     padding: 12px 32px 12px 28px;
@@ -50,10 +38,10 @@ const NavLink = styled(Link)<{ $active: boolean }>`
     border: 0 solid transparent;
     border-left-width: 2px;
 
-    ${({ $active }) => $active && css`
-        color: ${props => props.theme.primary};
-        background-color: ${props => props.theme.darkActiveLessor};
-        border-color: ${props => props.theme.primary};
+    ${props => props.active && css`
+        color: ${props.theme.primary};
+        background-color: ${props.theme.darkActiveLessor};
+        border-color: ${props.theme.primary};
     `}
 
     @media (hover: hover) {
@@ -86,7 +74,7 @@ const NavLink = styled(Link)<{ $active: boolean }>`
     }
 `;
 
-const Advanced = styled(Link)<{ $active: boolean }>`
+const Advanced = styled(Link, styledOptions)<{ active: boolean }>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,12 +86,12 @@ const Advanced = styled(Link)<{ $active: boolean }>`
     border-radius: 20px;
     border: 1px solid transparent;
 
-    ${({ $active }) => $active && css`
-        background-color: ${props => props.theme.darkActiveLessor};
-        border-color: ${props => props.theme.primary};
+    ${props => props.active && css`
+        background-color: ${props.theme.darkActiveLessor};
+        border-color: ${props.theme.primary};
 
         svg {
-            color: ${props => props.theme.primary};
+            color: ${props.theme.primary};
         }
     `}
 
@@ -173,7 +161,7 @@ export function Nav() {
         }
 
         return (
-            <Advanced to="/advanced" $active={active}>
+            <Advanced to="/advanced" active={active}>
                 <SettingsIcon /> <span>Advanced</span>
             </Advanced>
         );
@@ -181,13 +169,26 @@ export function Nav() {
 
     return (
         <NavPanel>
-            <LogoStyled $disconnected={disconnected && !demoMode} />
+            <Logo css={css`
+                margin-top: 32px;
+                margin-bottom: 32px;
+                align-self: center;
 
-            <NavLink to="/recipes" $active={useActive('recipes')}>
+                ${disconnected && !demoMode && css`
+                    filter: brightness(1.2) grayscale(0.75);
+                `}
+
+                @media (max-width: 1100px) {
+                    height: 30px;
+                    margin: 8px auto 8px 8px;
+                }
+            `} />
+
+            <NavLink to="/recipes" active={useActive('recipes')}>
                 <RecipesIcon /> Recipes
             </NavLink>
 
-            <NavLink to="/shopping-list" $active={useActive('shopping-list')}>
+            <NavLink to="/shopping-list" active={useActive('shopping-list')}>
                 <ShoppingIcon /> Shopping List
             </NavLink>
 

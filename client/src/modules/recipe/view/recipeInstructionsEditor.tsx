@@ -79,10 +79,10 @@ export function RecipeInstructionsEditor({ ingredients, instructions }: RecipeIn
         }
     });
 
-    const onCommit = (value: Element[]) => {
+    const onCommit = (next: Element[]) => {
         updateRecipe({
             type: 'RecipeInstructionsSet',
-            instructions: valueToInstructions(value),
+            instructions: valueToInstructions(next),
         });
     };
 

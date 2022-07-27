@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 
 import { auth } from '../../api/auth';
 import { RemoveButton } from '../../components/removeButton';

@@ -1,6 +1,7 @@
+import { keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
 import { AnchorHTMLAttributes, useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
 
 const throb = keyframes`
     0% { transform: scale(1); }

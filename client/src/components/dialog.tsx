@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { ReactNode } from 'react';
-import styled from 'styled-components';
 
 import { useOnEscape } from '../util/useOnEscape';
 import { Card } from './card';

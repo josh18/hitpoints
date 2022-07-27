@@ -1,7 +1,8 @@
+import { css, keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import styled, { css, keyframes } from 'styled-components';
 
 import { connection } from '../../../api/connection';
 import { Button } from '../../../components/button';
@@ -89,8 +90,8 @@ export function RecipeImport({ onClose }: RecipeImportProps) {
         unbsubscribe.current = connection.request('importRecipe', { url: value }, response => {
             dispatch(response.event);
             navigate(response.id);
-        }, error => {
-            setError(error);
+        }, e => {
+            setError(e);
             setImporting(false);
         });
     };

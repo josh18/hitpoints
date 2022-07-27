@@ -1,8 +1,9 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { createContext, KeyboardEvent, ReactNode, useContext, useEffect, useState } from 'react';
 import { Editor, Element, Node, Range, Transforms } from 'slate';
 import { ReactEditor, RenderElementProps, useFocused, useSelected } from 'slate-react';
-import styled, { css } from 'styled-components';
 
 import { AtSuggest, AtSuggestProps } from './atSuggest';
 import { AtElement } from './textEditor';
@@ -141,7 +142,7 @@ export function useAtPlugin(editor: Editor, atItems: AtItems = {}): AtPlugin {
                 afterMatch = /^[^\s|\\.|!|?|,]*/.exec(afterText)?.[0] ?? '';
             }
 
-            const match = beforeMatch + afterMatch;
+            const match = beforeMatch ?? '' + afterMatch;
 
             if (match) {
                 const normalize = (value: string) => value.replace(/[^A-z]/g, '').toLowerCase();

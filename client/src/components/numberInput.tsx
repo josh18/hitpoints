@@ -16,15 +16,15 @@ export interface NumberInputProps extends Omit<TextInputProps, 'value' | 'onComm
 }
 
 export const NumberInput = forwardRef<HTMLTextAreaElement, NumberInputProps>(({ value, onCommit, ...props }, ref) => {
-    const commitToNumber = (value: string) => {
-        const result = onCommit(toNumber(value));
+    const commitToNumber = (next: string) => {
+        const result = onCommit(toNumber(next));
 
         if (result !== undefined) {
             return toString(result);
         }
     };
 
-    return <TextInput ref={ref} value={toString(value)} onCommit={commitToNumber} validateInput={value => toString(toNumber(value))} {...props} />;
+    return <TextInput ref={ref} value={toString(value)} onCommit={commitToNumber} validateInput={next => toString(toNumber(next))} {...props} />;
 });
 
 NumberInput.displayName = 'NumberInput';

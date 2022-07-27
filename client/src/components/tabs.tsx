@@ -1,6 +1,7 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { ReactNode, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
 
 const TabList = styled.div`
     position: relative;
@@ -45,8 +46,8 @@ const TabPanelContainer = styled.div<{ x: number; transition: boolean; }>`
         transform: translateX(${x}%);
     `}
 
-    ${({ transition }) => transition && css`
-        transition: ${props => props.theme.transition('transform')};
+    ${({ transition, theme }) => transition && `
+        transition: ${theme.transition('transform')};
     `}
 `;
 
@@ -106,9 +107,9 @@ export function Tabs({ tabs }: TabsProps) {
     const setTabRef = (index: number) => (element: HTMLElement | null) => {
         tabElements.current[index] = element;
 
-        const nextActiveX = tabElements.current.slice(0, activeTab).reduce((x, element) => {
-            if (element) {
-                x += element.offsetWidth;
+        const nextActiveX = tabElements.current.slice(0, activeTab).reduce((x, tabElement) => {
+            if (tabElement) {
+                x += tabElement.offsetWidth;
             }
 
             return x;
@@ -147,9 +148,9 @@ export function Tabs({ tabs }: TabsProps) {
 }
 
 function tabId(index: number) {
-    return 'tab-' + index;
+    return `tab-${index}`;
 }
 
 function contentId(index: number) {
-    return 'content-' + index;
+    return `content-${index}`;
 }

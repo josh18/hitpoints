@@ -1,5 +1,5 @@
-import { rgba } from 'polished';
-import styled, { css } from 'styled-components';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 import { TextInput } from '../../../components/textInput';
 import { useUpdateRecipe } from '../hooks/useUpdateRecipe';
@@ -46,11 +46,6 @@ export function RecipeName({ editing, name }: RecipeNameProps) {
     };
 
     const defaultName = 'Untitled Recipe';
-
-    let placeholder = undefined;
-    if (!name) {
-        placeholder = defaultName;
-    }
 
     let component;
     if (editing) {

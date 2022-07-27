@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
-import styled from 'styled-components';
 
 import { ImageIcon } from '../icons/imageIcon';
 

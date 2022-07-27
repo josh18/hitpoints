@@ -1,8 +1,8 @@
+import { Theme } from '@emotion/react';
 import { darken, rgba, tint } from 'polished';
-import { DefaultTheme } from 'styled-components';
 
-declare module 'styled-components' {
-    export interface DefaultTheme {
+declare module '@emotion/react' {
+    export interface Theme {
         primary: string;
         primaryActive: string;
         primaryText: string;
@@ -19,7 +19,7 @@ declare module 'styled-components' {
     }
 }
 
-export const theme: DefaultTheme = {
+export const theme: Theme = {
     primary: '#38a3f1',
     primaryActive: darken(0.12, '#38a3f1'),
     primaryText: '#1782cf',
@@ -37,5 +37,3 @@ export const theme: DefaultTheme = {
         return properties.map(property => `${property} ${time}ms cubic-bezier(0.4, 0, 0.2, 1)`).join(', ');
     },
 };
-
-// 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);

@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 import { imageUrl } from '../../api/imageUrl';
 import { ImagePlaceholder } from '../../components/imagePlaceholder';

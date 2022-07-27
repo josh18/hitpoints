@@ -1,6 +1,7 @@
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { useEffect, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
 
 import { RecipeTag, recipeTags } from '@hitpoints/shared';
 

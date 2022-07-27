@@ -2,10 +2,9 @@
     "files.exclude": {
         "**/dist/": true,
         "**/node_modules/": true,
-        "firebase/firestore-debug.log": true,
-        "firebase/firebase-debug.log": true,
-        "firebase/ui-debug.log": true,
-        "shared/hitpoints-shared-1.0.0.tgz": true,
+        "gcloud/firestore-debug.log": true,
+        "gcloud/firebase-debug.log": true,
+        "gcloud/ui-debug.log": true,
     },
     "search.exclude": {
         "**/package-lock.json": true,
