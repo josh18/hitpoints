@@ -21,7 +21,7 @@ jobs:
         npm ci
         npm run build
       env:
-       PUBLIC_PATH: /hitpoints
+       APP_PATH: /hitpoints
        HITPOINTS_DEMO: true
       working-directory: client
     - name: Move files

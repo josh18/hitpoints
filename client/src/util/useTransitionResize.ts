@@ -103,6 +103,8 @@ export function useTransitionResize(ref: RefObject<HTMLElement>, childTransition
             });
 
             if (!transitioning) {
+                element.style.removeProperty('width');
+                element.style.removeProperty('height');
                 return;
             }
 

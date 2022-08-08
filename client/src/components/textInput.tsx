@@ -67,6 +67,7 @@ export const TextInput = forwardRef<HTMLElement, TextInputProps>(
     const ref = useRef<HTMLElement>();
     const [debouncedCommit, cancelDebounce] = useDebounce(() => commit(), debounceTime);
     const setPreventExit = usePreventExit();
+    const expectedValue = useRef(externalValue);
 
     const overrideValue = (next: string) => {
         if (!ref.current) {
@@ -126,17 +127,18 @@ export const TextInput = forwardRef<HTMLElement, TextInputProps>(
         setPreventExit(false);
 
         const result = onCommit(currentValue());
-        if (result !== undefined && result !== currentValue()) {
-            overrideValue(result);
+        if (result !== undefined) {
+            expectedValue.current = result;
         }
     };
 
     useEffect(() => {
-        if (externalValue !== currentValue()) {
+        if (externalValue !== currentValue() && externalValue !== expectedValue.current) {
             setPreventExit(false);
             overrideValue(externalValue);
         }
 
+        expectedValue.current = externalValue;
     }, [externalValue, setPreventExit]);
 
     const onInput = (event: FormEvent<HTMLElement>) => {
@@ -176,6 +178,14 @@ export const TextInput = forwardRef<HTMLElement, TextInputProps>(
         forwardKeyDown?.(event);
     };
 
+    const onBlur = () => {
+        commit();
+
+        if (expectedValue.current !== currentValue() && ref.current) {
+            ref.current.textContent = expectedValue.current;
+        }
+    };
+
     const value = useRef(externalValue); // This ref doesn't get updated
     const setRef = useCallback((element: HTMLElement | null) => {
         if (externalRef) {
@@ -199,7 +209,7 @@ export const TextInput = forwardRef<HTMLElement, TextInputProps>(
     return (
         <TextInputContainer
             ref={setRef}
-            onBlur={commit}
+            onBlur={onBlur}
             onInput={onInput}
             onKeyDown={onKeyDown}
             contentEditable

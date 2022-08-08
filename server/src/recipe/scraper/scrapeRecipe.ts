@@ -18,7 +18,7 @@ export interface ImportedRecipe {
 export type ScrapeRecipeLogger = (message: any) => void;
 
 interface Thing {
-    '@type': string;
+    '@type': string | string[];
 }
 
 type LinkedData = Thing[] | { '@graph': Thing[]; } | Thing;
@@ -55,8 +55,8 @@ function findJSONLD(document: Document, log: ScrapeRecipeLogger): ImportedRecipe
         // Try to find a recipe schema
         let recipeSchema: RecipeSchema | undefined;
         if (Array.isArray(data)) {
-            recipeSchema = data.find(item => item['@type'] === 'Recipe') as RecipeSchema;
-        } else if (data['@type'] === 'Recipe') {
+            recipeSchema = data.find(isRecipeSchema) as RecipeSchema;
+        } else if (isRecipeSchema(data)) {
             recipeSchema = data as RecipeSchema;
         }
 
@@ -65,4 +65,14 @@ function findJSONLD(document: Document, log: ScrapeRecipeLogger): ImportedRecipe
             return mapJSONLD(recipeSchema, log);
         }
     }
+}
+
+function isRecipeSchema(item: Thing): boolean {
+    let type = item['@type'];
+
+    if (Array.isArray(type)) {
+        type = type[0];
+    }
+
+    return type === 'Recipe';
 }

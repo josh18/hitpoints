@@ -77,7 +77,7 @@ export function App(): JSX.Element {
         <CacheProvider value={emotionCache}>
             <ThemeProvider theme={theme}>
                 <StoreProvider store={store}>
-                    <Router basename={process.env.PUBLIC_PATH}>
+                    <Router basename={process.env.APP_PATH}>
                         <Content />
 
                         <Notification />

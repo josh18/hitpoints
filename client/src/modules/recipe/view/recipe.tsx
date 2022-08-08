@@ -173,7 +173,6 @@ export function Recipe() {
     const editButtonRef = useRef<HTMLButtonElement>(null);
 
     const resizeContainer = useTransitionResize(detailsContainerRef, [[detailsCardRef, ['margin-right']]]);
-    // const resizeContainer = useTransitionResize(detailsContainerRef, [[editorContainerRef, ['height']]]);
     const resizeEditButton = useTransitionResize(editButtonRef);
     const smallEditor = useMaxWidth(850);
 
