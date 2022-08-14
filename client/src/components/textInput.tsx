@@ -96,15 +96,15 @@ export const TextInput = forwardRef<HTMLElement, TextInputProps>(
             }
         }
 
-        ref.current.textContent = next;
+        const textNode = ref.current.firstChild as Text | null;
+
+        if (!textNode) {
+            return;
+        }
+
+        textNode.nodeValue = next;
 
         if (offsets) {
-            const textNode = ref.current.firstChild as Text | null;
-
-            if (!textNode) {
-                return;
-            }
-
             const range = document.createRange();
             range.setStart(textNode, Math.min(offsets.start, textNode.length));
 
@@ -181,8 +181,12 @@ export const TextInput = forwardRef<HTMLElement, TextInputProps>(
     const onBlur = () => {
         commit();
 
-        if (expectedValue.current !== currentValue() && ref.current) {
-            ref.current.textContent = expectedValue.current;
+        const textNode = ref.current?.firstChild as Text | null;
+        if (expectedValue.current !== currentValue() && textNode) {
+            // Don't update it straight away or it will refocus the element
+            setTimeout(() => {
+                textNode.nodeValue = expectedValue.current;
+            });
         }
     };
 
