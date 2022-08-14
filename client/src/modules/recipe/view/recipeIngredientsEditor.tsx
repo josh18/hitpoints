@@ -23,16 +23,14 @@ interface RecipeIngredientsEditorProps {
 
 const Ingredients = styled.div`
     margin-left: -24px;
+    margin-top: -8px; // Done this way so margin doesn't change when the row is dropped
 `;
 
 const IngredientRow = styled.div<{ isHeading: boolean; isDragging: boolean }>`
     position: relative;
     display: flex;
     align-items: center;
-
-    & + & {
-        margin-top: 8px;
-    }
+    margin-top: 8px;
 
     ${TextInputContainer} {
         padding-right: 34px;
